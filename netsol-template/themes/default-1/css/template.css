@@ -1,0 +1,757 @@
+body {
+	/* tile horizontally pattern blue with beige bg (top half) - extends down with solid beige color */
+	background: #e8e5c0 url("../images/layout/body_bg.png") left top repeat-x;
+	overflow-x: hidden; /* prevent horizontal scrolling no matter what */
+}
+.text-imr { text-indent: -999em !important; position: absolute; top: -999em; }
+#footer {
+	/* this does not wrap within bodyWrapper - it is its own element spanning 100% width */
+	position: fixed; /* so the footer stays put no matter where the vertical scrolling is */
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 51px;
+	z-index: 998; /* so the florals overlap it in a small screen height situation - but not any content */
+	background: #123047 url("../images/layout/footer_bg.png") left bottom repeat-x;
+	color: #135f99;
+	font: 10px/50px normal Verdana, Arial, Helvetica, sans-serif;
+}
+#footer #content {
+	width: 1010px;
+	height: 50px;
+	margin: 0 auto;
+}
+#footer a {
+	white-space: nowrap;
+	display: block;
+	width: auto;
+	height: auto;
+	padding: 0 10px;
+}
+#wrapper {
+	/* contains the stuff that extends beyond the x-axis limitations of the 1010px boundary */
+	position: absolute;
+	left: 50%;
+	margin-left: -630px;
+	text-align: center;
+	width: 1260px;
+	min-height: 400px;
+	height: auto;
+	/*height: 400px;*/
+	/* TODO: 24-bit alpha pngfix */
+	background: Transparent url("../images/layout/bodyWrapper_floral_tr.png") right 7px no-repeat;
+}
+/* divs nested within #wrapper */
+#mastHead {
+	height: 103px;
+	width: 1010px;
+	position: relative;
+	top: 0;
+	left: 0;
+	/* bg image is the background of the utility navigation */
+		background: url("../images/layout/mastHead_utilityNav_bg.png") 325px top no-repeat;
+}
+/* items nested within #mastHead */
+#mastHead a#ccLogo {
+	position: absolute;
+	top: 4px;
+	left: 31px;
+	width: 245px;
+	height: 97px;
+	text-decoration: none !important;/* TODO: 24-bit alpha pngfix for the <img> nested within this */
+}
+/* UTILITY NAV */
+#utilityNav {
+	position: absolute;
+	right: 28px;
+	top: 4px;
+	height: 26px;
+	width: 650px;
+	font-size: 10px;
+}
+#utilityNav div, #utilityNav #accountTools {
+	float: left;
+	width: auto;
+	height: 26px;
+}
+#utilityNav #accountTools {
+	width: 335px;
+	padding-right: 10px;
+	background: Transparent url("../images/layout/utilityNav_divider.png") right top no-repeat;
+}
+#utilityNav #accountTools li {
+	text-align: left;
+	float: right;
+}
+#utilityNav #accountTools li#userWelcome {
+	float: left;
+}
+#utilityNav #accountTools li a {
+	display: block;
+	height: 26px;
+	padding: 0 10px;
+	white-space: nowrap;
+}
+#utilityNav #accountTools li#userWelcome {
+	padding-left: 0;
+}
+/* FIX THE DEFAULT LOGIN AREA IN THE MASTHEAD */
+.custom-login-vert { width: 100px !important; position: relative; top: -24px; left: -75px; }
+#password-message-horz { display: none; }
+#ctl00_ctl08_lvDisplay_hzUserLabel { position: relative; bottom: -22px; left: -54px; }
+#ctl00_ctl08_lvDisplay_hzPassLabel, #ctl00_ctl08_lvDisplay_hzPassword { display: none; }
+/* FIX THE DEFAULT SEARCH AREA IN THE MASTHEAD */
+#utilSearch {
+    position: relative;
+    left: 0;
+}
+#ctl00_ctl11_go { position: relative; left: 8px; }
+#extraCheckout { position: absolute; top: 1px; right: 20px; }
+/* TOP NAV */
+#mainNav {
+	position: absolute;
+	right: 48px;
+	bottom: -2px;
+	z-index: 4;
+}
+#mainNav ul { *overflow: visible; }
+#mainNav ul li {
+	margin-right: 1px;
+/* IE7 and below */
+cursor: pointer !important;
+*height: 32px;
+*position: relative;
+}
+#mainNav ul li a, #mainNav ul li a em { *position: relative; *bottom: 0; }
+#mainNav ul li a {
+	border-bottom: 2px solid #c0bc9c;
+	cursor: pointer !important;
+}
+#mainNav ul li a, #mainNav ul li a em {
+	display: block;
+	width: auto;
+	height: 26px;
+	color: White;
+	font-style: normal;
+	font-weight: bold;
+	cursor: pointer !important;
+}
+#mainNav ul li a:hover, #mainNav ul li a:hover em {
+	background: White url("../images/layout/main-nav-tab.png") left top no-repeat;
+	cursor: pointer !important;
+}
+#mainNav ul li a:hover, #mainNav ul li a:hover em {
+	color: White !important;
+}
+#mainNav ul li a, #mainNav ul li a {
+	font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
+	font-size: 15px;
+	font-weight: bold !important;
+	line-height: 30px;
+	padding-left: 12px;
+}
+#mainNav ul li a em {
+	display: block;
+	padding-right: 12px;
+}
+#mainNav ul li a:hover {
+	background-color: #477fa8;
+	background-position: left -60px;
+}
+#mainNav ul li a:hover em {
+	background-color: #477fa8;
+	background-position: right -90px;
+}
+/* active tab */
+/*#mainNav ul li a.active, #mainNav ul li a.active:hover {
+	border-bottom: 2px solid #fff;
+}
+#mainNav ul li a.active, #mainNav ul li a.active:hover,  #mainNav ul li a.active em, #mainNav ul li a.active:hover em {
+	color: #0877cd !important;
+}
+#mainNav ul li a.active {
+	background-color: White;
+	background-position: left top;
+}
+#mainNav ul li a.active em {
+	background-color: White;
+	background-position: right -30px;
+}*/
+/* by comparing the class of the body to the ID of the main nav wrapping LI, we determine the "active" nav button */
+.accessoriesdefault-page #mainNav ul li#accessories a, 
+.linensdefault-page #mainNav ul li#linens a, 
+.appareldefault-page #mainNav ul li#apparel a, 
+.drinkwaredefault-page #mainNav ul li#drinkware a, 
+.babydefault-page #mainNav ul li#baby a,
+.babybibsdefault-page #mainNav ul li#baby a, 
+.babyblanketsdefault-page #mainNav ul li#baby a, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a, 
+.cart-page-type #mainNav ul li#cart a, 
+.checkout-page #mainNav ul li#cart a,
+.accessoriesdefault-page #mainNav ul li#accessories a:hover, 
+.linensdefault-page #mainNav ul li#linens a:hover, 
+.appareldefault-page #mainNav ul li#apparel a:hover, 
+.babydefault-page #mainNav ul li#baby a:hover, 
+.drinkwaredefault-page #mainNav ul li#drinkware a:hover, 
+.cart-page-type #mainNav ul li#cart a:hover,
+.checkout-page #mainNav ul li#cart a:hover { border-bottom: 2px solid #fff; }
+
+.accessoriesdefault-page #mainNav ul li#accessories a, 
+.linensdefault-page #mainNav ul li#linens a, 
+.appareldefault-page #mainNav ul li#apparel a, 
+.babydefault-page #mainNav ul li#baby a, 
+.babybibsdefault-page #mainNav ul li#baby a, 
+.babyblanketsdefault-page #mainNav ul li#baby a, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a,
+.drinkwaredefault-page #mainNav ul li#drinkware a, 
+.cart-page-type #mainNav ul li#cart a, 
+.checkout-page #mainNav ul li#cart a,
+.accessoriesdefault-page #mainNav ul li#accessories a:hover, 
+.linensdefault-page #mainNav ul li#linens a:hover, 
+.appareldefault-page #mainNav ul li#apparel a:hover, 
+.babydefault-page #mainNav ul li#baby a:hover, 
+.babybibsdefault-page #mainNav ul li#baby a:hover, 
+.babyblanketsdefault-page #mainNav ul li#baby a:hover, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a:hover,
+.drinkwaredefault-page #mainNav ul li#drinkware a:hover, 
+.cart-page-type #mainNav ul li#cart a:hover, 
+.checkout-page #mainNav ul li#cart a:hover,
+.accessoriesdefault-page #mainNav ul li#accessories a em, 
+.linensdefault-page #mainNav ul li#linens a em, 
+.appareldefault-page #mainNav ul li#apparel a em, 
+.babydefault-page #mainNav ul li#baby a em, 
+.babybibsdefault-page #mainNav ul li#baby a em, 
+.babyblanketsdefault-page #mainNav ul li#baby a em, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a em,
+.drinkwaredefault-page #mainNav ul li#drinkware a em, 
+.cart-page-type #mainNav ul li#cart a em, 
+.checkout-page #mainNav ul li#cart a em,
+.accessoriesdefault-page #mainNav ul li#accessories a:hover em, 
+.linensdefault-page #mainNav ul li#linens a:hover em, 
+.appareldefault-page #mainNav ul li#apparel a:hover em, 
+.babydefault-page #mainNav ul li#baby a:hover em, 
+.drinkwaredefault-page #mainNav ul li#drinkware a:hover em, 
+.cart-page-type #mainNav ul li#cart a:hover em,
+.checkout-page #mainNav ul li#cart a:hover em { color: #0877cd !important; }
+
+
+.accessoriesdefault-page #mainNav ul li#accessories a, 
+.linensdefault-page #mainNav ul li#linens a, 
+.appareldefault-page #mainNav ul li#apparel a, 
+.babydefault-page #mainNav ul li#baby a, 
+.babybibsdefault-page #mainNav ul li#baby a, 
+.babyblanketsdefault-page #mainNav ul li#baby a, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a,
+.drinkwaredefault-page #mainNav ul li#drinkware a, 
+.cart-page-type #mainNav ul li#cart a, 
+.checkout-page #mainNav ul li#cart a,
+.accessoriesdefault-page #mainNav ul li#accessories a em, 
+.linensdefault-page #mainNav ul li#linens a em, 
+.appareldefault-page #mainNav ul li#apparel a em, 
+.babydefault-page #mainNav ul li#baby a em, 
+.babybibsdefault-page #mainNav ul li#baby a em, 
+.babyblanketsdefault-page #mainNav ul li#baby a em, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a em,
+.drinkwaredefault-page #mainNav ul li#drinkware a em, 
+.cart-page-type #mainNav ul li#cart a em,
+.checkout-page #mainNav ul li#cart a em { background-color: White; background-image: url("../images/layout/main-nav-tab.png"); background-repeat: no-repeat; }
+
+.accessoriesdefault-page #mainNav ul li#accessories a, 
+.linensdefault-page #mainNav ul li#linens a, 
+.appareldefault-page #mainNav ul li#apparel a, 
+.babydefault-page #mainNav ul li#baby a, 
+.babybibsdefault-page #mainNav ul li#baby a, 
+.babyblanketsdefault-page #mainNav ul li#baby a, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a,
+.drinkwaredefault-page #mainNav ul li#drinkware a, 
+.cart-page-type #mainNav ul li#cart a,
+.checkout-page #mainNav ul li#cart a { background-color: White; background-position: left top; }
+
+.accessoriesdefault-page #mainNav ul li#accessories a em, 
+.linensdefault-page #mainNav ul li#linens a em, 
+.appareldefault-page #mainNav ul li#apparel a em, 
+.babydefault-page #mainNav ul li#baby a em, 
+.babybibsdefault-page #mainNav ul li#baby a em, 
+.babyblanketsdefault-page #mainNav ul li#baby a em, 
+.babyburp-clothsdefault-page #mainNav ul li#baby a em, 
+.drinkwaredefault-page #mainNav ul li#drinkware a em, 
+.cart-page-type #mainNav ul li#cart a em,
+.checkout-page #mainNav ul li#cart a em { background-color: White; background-position: right -30px; }
+
+
+.page-container {
+	position: relative;
+	width: 1006px; /* 1010 */
+	height: 100%;
+	/*padding: 2px;*/
+	top: 0;
+	left: 128px;
+/* IE7 and below */
+	*left: 3px;
+}
+/* items nested within #contentWrapper */
+#ctl00_columns, .featured_box, .container_border {
+	background-color: White;
+	border: 2px solid #c0bc9c;
+}
+/* this is a netsol template piece that cannot be nested within contentContainer */		
+.breadcrumb {
+	width: 822px;
+	height: 25px;
+	line-height: 25px;
+	padding: 5px 20px; /* left and right padding to simulate being nested within the 25px of padding from #contentContainer. */
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 3; /* keep in front of contentContainer */
+	text-align: left;
+}
+.cart-page-type .breadcrumb, .content-page-type .breadcrumb { display: none; }
+.category-page-type h2 { position: absolute; top: 7px; right: 20px; color: #727272; }
+#ctl00_columns {
+	width: 1006px; /* 1002 */
+	/*padding: 25px;*/
+	padding: 2px 20px 2px 2px;
+	*padding: 0;
+	min-height: 357px;
+	margin-bottom: 10px;
+	/**height: 357px;*/
+	position: relative;
+	display: block;
+	left: 0; /* TODO: this used to be zero - possibly a glitch in the nsPreview  */
+	top: 0;
+	/*top: -25px; only if the breadcrumb is in use.*/
+	text-align: left;
+	/* IE7 and below */
+	*width: 984px;
+}
+.page-column-center { vertical-align: top; }
+.category-page-type #ct100_columns {  width: 1025px; *width: 984px; }
+.contentBox {
+	/* far right column */
+	width: 94%; /* 308px */
+	padding: 3%;
+	border: 1px solid #e5e5e5;
+	background-color: #f3f4f5;
+	position: relative;
+}	
+#featureBoxContainer, #subFooter {
+	*position: inherit;
+	position: relative;
+	margin-bottom: 15px;
+	height: 150px;
+	width: 1006px;
+}
+#featureBoxContainer { 
+    left: 0;
+	bottom: 0;
+	margin-bottom: 0;
+	background-color: #e8e5c0; 
+	padding-top: 10px;
+	border-top: 2px solid #c0bc9c;
+	margin-top: -12px;
+	display: none;
+}
+/* hide feature boxes on all pages that aren't the home page */
+.index-page #featureBoxContainer { display: block; }
+#subFooter {
+	height: 235px;
+}
+.subFooter_box {
+	/* sub footer typography */
+	font: 12px/18px normal Georgia, "Times New Roman", Times, serif;
+	color: #4a4432;
+	text-align: center;
+	float: left;
+	height: 200px;
+	padding-right: 15px; /* to make room for the divider image */
+	background: url("../images/layout/subFooter_vDivider.png") right top no-repeat;
+}
+.subFooter_box .content p {
+	padding: 0 30px;
+}
+#newsletter .content p {
+	padding-top: 15px;
+}
+.subFooter_box blockquote {
+	font-size: 11px;
+	line-height: 14px;
+	font-style: normal;
+	color: #7b694f;
+	text-align: center;
+	padding: 15px 40px 0 40px;
+	margin: 0;
+	display: block;
+	height: 140px;
+	width: 153px;
+	position: relative;
+	top: 0;
+	background: url("../images/layout/subFooter_blockquote.png") left top no-repeat;
+}
+.subFooter_box ul.listLink li {
+	/* solid dual border divider image */
+					background: url("../images/layout/subFooter_listLink_divider.png") left bottom repeat-x;
+}
+.subFooter_box ul.listLink li a {
+	/* gradual horizontal fade-in overlap border divider image */
+					background: url("../images/layout/subFooter_listLink_fadeDivider.png") left bottom no-repeat;
+}
+.subFooter_box.last {
+	background: none;
+	padding-right: 0;
+}
+/* image replaced "handwriting" headlines within subFooter */
+.subFooter_box p.title {
+	display: block;
+	height: 40px;
+	width: 209px;
+	padding: 0;
+	margin: 0 0 15px 0;
+	position: relative;
+	z-index: 0; /* keep the title behind the content box within the subFooter box */
+	top: 28px;
+	background: url("../images/layout/subFooter_titles.png") left top no-repeat;
+}
+/* holds the content below the title IMRs */
+.subFooter_box .content {
+	position: relative;
+	top: 0;
+	right: 3%;
+	padding-left: 2%; /* keep the LI and LI A bg image off the box's vertical dividers */
+	z-index: 1;
+	width: 98%; /* + 2% is 100% */
+	height: auto;
+}
+#newsletter form {
+	position: relative;
+	top: 0;
+	left: 21px;
+}
+#newsletter .btn_submit {
+	position: relative;
+	left: 4px;
+	width: 54px;
+	height: 20px;
+	background: url("../images/buttons/btn_subFooter_newsletterSignup.png") left bottom no-repeat;
+	text-indent: -999em;
+}
+#newsletter.subFooter_box .btn_submit:hover, #newsletter.subFooter_box .btn_submit.hover {
+	background-position: left top !important;
+}
+#needHelp p.title {
+	left: 10px;
+	background-position: left -121px;
+}
+#upcoming p.title {
+	left: 40px;
+    *left: 0;
+	background-position: left -82px;
+	width: 149px;
+}
+#newsletter p.title {
+	left: 44px;
+    *left: 0;
+	background-position: left -36px;
+	width: 149px;
+	height: 46px;
+}
+#testimonials p.title {
+	left: 24px;
+	height: 36px;
+} /* inherits the default BG position */
+.featured_box {
+	z-index: 1;
+	float: left;
+	margin-right: 10px;
+	height: 146px;
+}
+/* home page floral overlap (bottom left) */
+#featureBoxContainer #floral {
+	width: 305px;
+	height: 143px;
+	position: absolute;
+	left: 52px;
+	top: -2px;
+	z-index: 2; /* keep above the .featured_boxe(s) and the footer */
+	background: Transparent url("../images/layout/subFooter_floral_bl.png") left top no-repeat;/* TODO: 24-bit alpha pngfix for the <img> nested within this */
+}
+#last.featured_box {
+	margin-right: 0;
+}
+/* BUTTONS */
+/* big blue form buttons */
+input.btn, a.input {
+	display: block !important;
+	width: auto;
+	height: 41px !important;
+	background-color: Transparent !important;
+	background-position: right bottom !important;
+	background-repeat: no-repeat !important;
+	border: none !important;
+	cursor: pointer !important;
+	text-indent: -999em;
+    *font-size: 1px; 
+    *color: Transparent;
+	padding-bottom: 0 !important;
+}
+input.sm.btn, a.sm.input, small a.input {
+	height: 18px !important;
+}
+input.btn:hover, input.btn.hover, input.btn:focus, input.btn.focus,  a.input:hover, a.input.hover, a.input:focus, a.input.focus {
+	background-position: right top !important;
+}
+input.login,  a.input.login {
+	width: 52px;/*background-image: url("../images/buttons/login.png");*/
+    }
+input.sm.login, a.sm.input.login, small a.input.login {
+	background-image: url("../images/buttons/login_sm.png");
+}
+input.search,  a.input.search {
+	width: 56px;/*background-image: url("../images/buttons/search.png");*/
+    }
+input.sm.search, a.sm.input.search, small a.input.search {
+	background-image: url("../images/buttons/search_sm.png");
+}
+input.checkout,  a.input.checkout {
+	width: 73px;/*background-image: url("../images/buttons/checkout.png");*/
+    }
+input.sm.checkout, a.sm.input.checkout, small a.input.checkout {
+	background-image: url("../images/buttons/checkout_sm.png");
+}
+
+/*--------------- LEFTCOL NAVIGATION  ----------------------------*/
+/* hide on product pages */
+.product-page-type .page-column-left, .product-page-type .page-column-left #left-col-wrap,
+.cart-page-type .page-column-left, .cart-page-type .page-column-left #left-col-wrap { display: none; }
+.page-column-left {
+	vertical-align: top;
+	background: transparent url("../images/layout/left-col-bg.gif") left top repeat-y;	
+}
+.page-column-left #left-col-wrap {
+    width: 132px;
+	*width: 134px;
+	min-height: 353px;
+	height: 100%;
+	background-color: #0f2d44;
+	margin-right: 20px;
+	font-size: 13px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+*html .page-column-left #left-col-wrap { *height: 353px; }
+#left-col-wrap ul {
+    margin-top: 60px;
+}
+
+#left-col-wrap ul li {
+    display: block;
+    margin-right: -2px; /* so the white .selected li is flush right */
+}
+#left-col-wrap ul li a, #left-col-wrap ul li.selected {
+    padding: 5px 0 5px 7px;
+    display: block;
+}
+#left-col-wrap ul li.selected { cursor: default; }
+#left-col-wrap ul li a:hover {
+    background-color: #1b3c55;
+}
+#left-col-wrap ul li.selected {
+    background-color: White;
+    font-weight: bold;
+    color: #0877cd;
+    margin-top: 4px;
+}
+#left-col-wrap ul li ul li.selected { margin-top: 0; }
+#left-col-wrap ul li.selected ul { margin-top: 5px; }
+#left-col-wrap ul li ul { background-color: #f7f7f1; margin-bottom: 4px; margin-top: 1px; }
+#left-col-wrap ul li.selected ul { margin-left: -7px; margin-bottom: -4px; }
+#left-col-wrap ul li ul li { font-weight: normal; font-size: 9px; border-bottom: 1px solid White; padding: 2px 0 2px 7px; }
+#left-col-wrap ul li.selected ul li { padding-left: 10px; }
+#left-col-wrap ul li ul li a { line-height: 18px !important; padding: 0; }
+#left-col-wrap ul li ul li a:hover { background-color: Transparent !important; text-decoration: underline !important; }
+
+/*--------------- PRODUCT LIST (4 column) ---------------------------*/
+.section { 
+	position: relative;
+	top: 2px; 
+	left: -16px;
+	min-height: 113px; 
+	width: 822px; 
+	height: auto; 
+	padding: 20px; 
+	background: url("http://cclaireembroidery.com/themes/default-1-1/images/section-grad-bg.png") left top repeat-x;
+	/* IE7 and below  
+	height: 113px; */
+	*width: 814px;
+} 
+*html .section { height: 113px; }
+.sub-category { 
+	width: 822px; 
+	margin-right: -16px;
+	*left: -18px; 
+	*margin-right: -42px; 
+	*margin-bottom: -4px; 
+}
+/* Everything but IE6-8 */
+:root *> .sub-category { top: 0; margin-right: 0; }  
+hr {
+	background-color: #f4f4f4;
+	color: #f4f4f4;
+	border: 0 none;
+	border-bottom: 1px solid #d7d7d7;
+	height: 2px;
+	margin: 15px 0 0 0;
+}
+ 
+h1 { font-size: 1.8em; }
+.category-page-type h1 { position: absolute; left: 9px; top: 9px; color: White !important; text-shadow: 2px #020f18; line-height: normal; width: 127px; }
+.page-html-content, .product-list-results-header {  }
+.product-list { margin: 15px 0; width: 822px !important; height: auto; }
+.product-list-control, .product-list-price {
+float: left;
+width: 50%;
+}
+.product-list-control { position: relative; top: -10px; }
+.product-list-control input { display: none !important; }
+.product-block, .category-list-item {
+	float: left;
+	width: 190px;
+	height: 220px;
+	padding: 0 20px 20px 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	line-height: 14px;
+	color: #727272;
+
+	text-align: center;
+}
+
+.category-list-item img { width: 190px; height: 142px; }
+.category-list-item { height: 163px; position: relative; top: 20px; }
+.category-list-item-head, .category-list-item-body { position: absolute; }
+.category-list-item-head { bottom: 20px; }
+
+.category-list-item h5 { font-size: 14px; font-weight: bold; }
+.product-block, .product-block h5 { font-size: 12px; } 
+.product-list-options h5 { margin-top: 4px; min-height: 36px; *height: 36px; } /* so all the price line up under the product descriptions */
+.product-box .light, .product-box .product-list-sale { color: #ccc; }
+.product-box .product-list-save { font-style: italic; font-size: 11px; }
+.product-list-control { margin-top: 7px; } /* add to shopping bag button */
+.product-box img { display: block; }
+
+
+/*--------------- VIEW CART ---------------------------*/
+/* never want to display item number */
+.cart-part-number, .cart-item-edit { display: none; }
+/* they cannot update personalizations in this view. */
+.cart-personalizations { display: none; }
+
+.cart-page h1 { margin: -50px 0 70px 0 !important; }
+.cart-cap {
+    height: 50px;
+	width: 1002px !important;
+    position: relative;
+    left: 0;
+    top: 0;
+z-index: 1; /* make sure the buttons appear clickable */
+}
+#top-cap { top: 60px; }
+#bot-cap { top: 10px; margin-bottom: 25px; }
+/* custom shipping calculation area (hide the default one) */
+.cart-shipping-estimate { display: none; }
+.cart-cap .custom-shipping-interface { /*display: block;*/ visibility: hidden; }
+#ctl00_pageContent_shippingRow, .cart-options, .cart-summary, #ctl00_pageContent_lrLoginOptions_rightPane { display: none; } /* hide the default stuff that we're putting in the .cart-cap areas */
+.cart-shipping-estimate label, .cart-shipping-estimate input { float: left; }
+.cart-cap table { float: left; }
+.cart-cap table th {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+}
+.cart-header th, .content-body-row td, .grid-view-invoice tr td { padding: 5px; }
+.cart-container .cart-actions { padding: 10px 0 0 0; }
+.cart-item-options div { margin: 0 0 4px 0; }
+.cart-continue { text-align: right; padding-right: 0 !important; }
+.cart-container tr.cart-header, .grid-view-invoice tr.invoice-detail-header {
+    border-bottom: 2px solid #ccc;
+    font-size: 14px;
+    color: #10587a;
+}
+.cart-container .notification, .cart-container .text-error {
+    padding: 5px 15px;
+    margin: 10px 0;
+    background-color: #fff6dc;
+    border: 1px solid #fff5d2;
+    font-size: 11px;
+    color: Black;
+}
+.cart-container tr.content-body-row, .checkout-ship-bill tr, .grid-view-invoice tr.invoice-detail-row { 
+    background: #f3f4f5;
+    border: 1px solid #e5e5e5;
+}
+.cart-container tr.cart-item, .checkout-ship-bill tr, .grid-view-invoice tr.invoice-detail-row { 
+    background: #f9f9f9;; 
+    border-bottom: 2px solid #e5e5e5;
+}
+.cart-container tr.cart-item td, .checkout-ship-bill tr td, .grid-view-invoice tr.invoice-detail-row td {
+    padding: 10px 5px;
+}
+
+/* cart item thumbnail needs to be clipped and pretty small. */
+
+.cart-item-image a {
+    overflow: hidden;
+    display: block;
+    height: 40px;
+    width: 40px;
+}
+.cart-item-image a img { width: 90px; height: 67px; position: relative; left: -25px; top: -16px; } /* shrink and center the thumbnail img */
+#ctl00_pageContent_ddlActions { display: block; float: left; margin-right: 5px !important; }
+
+/*------------------------ CHECKOUT PAGE ---------------------*/
+#ctl00_pageContent_checkoutPanel { padding: 10px 25px !important; width: 952px !important; }
+table.cart-container {
+    position: relative;
+    top: 0;    
+    left: 25px;
+    width: 952px !important;
+}
+.checkout-customer-container .content-head-row { position: absolute; top: 50px; right: 25px; }
+.checkout-page h1 { font-size: 18px; margin: 5px 0 5px 0; padding-top: 0; border-top: 1px solid #ccc; width: 944px; text-align: right; }
+
+.proceed { position: relative; float: right; right: 25px; }
+/* breadcrumb step-by-step navigation */
+.checkout-step-text, .checkout-step-number { color: Black; font-weight: bold; font-size: 14px; }
+
+/* validation */
+#ctl00_pageContent_checkoutWizard_validationSummary { 
+    color: red;
+}
+/* form panels (global) */
+.personalization-question { width: 100%; }
+.checkout-customer-container { position: relative; } /* to make absolute positioning of all other form panels easy */
+.form-item, .checkout-shipping, .checkout-page .personalization-questions {
+    display: block;
+    float: left;
+    padding: 5px 20px 20px 5px !important;
+    margin-right: 20px;
+    background-color: #f3f4f5;
+    border: 1px solid #e5e5e5;
+}
+.form-item h5 { font-size: 17px; margin: 5px 0; }
+
+/* form panels - specific panels */
+
+.checkout-shipping-address, .checkout-billing-address { min-height: 50px; height: auto; width: 380px; position: relative; }
+*html .checkout-shipping-address, *html .checkout-billing-address { height: 50px; }
+.checkout-shipping-address h5, .checkout-billing-address h5 { position: absolute\9; left: 10px\9; }
+.checkout-billing-address h5 { position: absolute; right: 10px; text-align: right; }
+#ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping, #ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping+label { position: absolute; top: 0; left: 10px; }
+#ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping+label { left: 30px; top: 7px; }
+.checkout-email { margin-top: 20px; clear: both; }
+
+
+/* next button */
+#ctl00_pageContent_checkoutWizard_StartNavigationTemplateContainerID_btnNext { float: right; position: relative; right: 15px; margin: 15px; }
+/* checkboxes that don't have margins for whatever reasons */
+#ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping, .checkout-page .personalization-questions input { margin-top: 10px; margin-right: 5px;}
