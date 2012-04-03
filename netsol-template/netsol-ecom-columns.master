@@ -11,7 +11,10 @@
   </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ns_columns_center_center_page-body" Runat="Server">
-	<asp:ContentPlaceHolder id="ns_page-body" runat="server">
+	<asp:ContentPlaceHolder id="ns_page-body-top" runat="server">
+        
+	</asp:ContentPlaceHolder>	
+	<asp:ContentPlaceHolder id="ns_page-body-bottom" runat="server">
         
 	</asp:ContentPlaceHolder>	
 </asp:Content>
