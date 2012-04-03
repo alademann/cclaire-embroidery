@@ -1,3 +1,6 @@
+html {
+	*overflow-x: hidden; /* IE7 and below */
+}
 body {
 	/* tile horizontally pattern blue with beige bg (top half) - extends down with solid beige color */
 	background: #e8e5c0 url("../images/layout/body_bg.png") left top repeat-x;
@@ -700,7 +703,9 @@ z-index: 1; /* make sure the buttons appear clickable */
 }
 
 /* cart item thumbnail needs to be clipped and pretty small. */
-
+.cart-item-image, .checkout-cart-item-image {
+	*width: 80px !important; /* IE7 and below - override inline */
+}
 .cart-item-image a, .checkout-cart-item-image a {
     overflow: hidden;
     display: block;
