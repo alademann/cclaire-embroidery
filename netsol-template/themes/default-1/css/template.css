@@ -21,6 +21,7 @@ body {
 	height: 50px;
 	margin: 0 auto;
 }
+#footer #content div * { line-height: 50px !important; }
 #footer a {
 	white-space: nowrap;
 	display: block;
@@ -640,12 +641,12 @@ width: 50%;
 
 /*--------------- VIEW CART ---------------------------*/
 /* never want to display item number */
-.cart-part-number, .cart-item-edit { display: none; }
+.cart-part-number, .checkout-cart-part-number { display: none; }
 /* they cannot update personalizations in this view. */
-.cart-personalizations { display: none; }
+.cart-personalizations, .checkout-cart-personalizations { display: none; }
 
 .cart-page h1 { margin: -50px 0 70px 0 !important; }
-.cart-cap {
+.cart-cap, .checkout-cart-cap {
     height: 50px;
 	width: 1002px !important;
     position: relative;
@@ -660,24 +661,25 @@ z-index: 1; /* make sure the buttons appear clickable */
 .cart-cap .custom-shipping-interface { /*display: block;*/ visibility: hidden; }
 #ctl00_pageContent_shippingRow, .cart-options, .cart-summary, #ctl00_pageContent_lrLoginOptions_rightPane { display: none; } /* hide the default stuff that we're putting in the .cart-cap areas */
 .cart-shipping-estimate label, .cart-shipping-estimate input { float: left; }
-.cart-cap table { float: left; }
-.cart-cap table th {
+.cart-cap table, .checkout-cart-cap table { float: left; }
+.cart-cap table th, .checkout-cart-cap table th {
     font-family:Arial, Helvetica, sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: black;
     text-align: right;
 }
-.cart-header th, .content-body-row td, .grid-view-invoice tr td { padding: 5px; }
-.cart-container .cart-actions { padding: 10px 0 0 0; }
-.cart-item-options div { margin: 0 0 4px 0; }
-.cart-continue { text-align: right; padding-right: 0 !important; }
-.cart-container tr.cart-header, .grid-view-invoice tr.invoice-detail-header {
+.cart-header th, .checkout-cart-header th, .content-body-row td, .grid-view-invoice tr td { padding: 5px; }
+.cart-container .cart-actions, .checkout-cart-container .checkout-cart-actions { padding: 10px 0 0 0; }
+.cart-item-options div, .checkout-cart-item-options div { margin: 0 0 4px 0; }
+.cart-continue, .checkout-cart-continue { text-align: right; padding-right: 0 !important; }
+.cart-container tr.cart-header, .checkout-cart-container tr.checkout-cart-header, .grid-view-invoice tr.invoice-detail-header {
     border-bottom: 2px solid #ccc;
     font-size: 14px;
     color: #10587a;
 }
-.cart-container .notification, .cart-container .text-error {
+.cart-container .notification, .cart-container .text-error,
+.checkout-cart-container .notification, .checkout-cart-container .text-error {
     padding: 5px 15px;
     margin: 10px 0;
     background-color: #fff6dc;
@@ -685,38 +687,39 @@ z-index: 1; /* make sure the buttons appear clickable */
     font-size: 11px;
     color: Black;
 }
-.cart-container tr.content-body-row, .checkout-ship-bill tr, .grid-view-invoice tr.invoice-detail-row { 
+.cart-container tr.content-body-row, .checkout-cart-container tr.content-body-row, .checkout-ship-bill tr, .grid-view-invoice tr.invoice-detail-row { 
     background: #f3f4f5;
     border: 1px solid #e5e5e5;
 }
-.cart-container tr.cart-item, .checkout-ship-bill tr, .grid-view-invoice tr.invoice-detail-row { 
+.cart-container tr.cart-item, .checkout-cart-container tr.checkout-cart-item, .checkout-ship-bill tr, .grid-view-invoice tr.invoice-detail-row { 
     background: #f9f9f9;; 
     border-bottom: 2px solid #e5e5e5;
 }
-.cart-container tr.cart-item td, .checkout-ship-bill tr td, .grid-view-invoice tr.invoice-detail-row td {
+.cart-container tr.cart-item td, .checkout-cart-container tr.checkout-cart-item td, .checkout-ship-bill tr td, .grid-view-invoice tr.invoice-detail-row td {
     padding: 10px 5px;
 }
 
 /* cart item thumbnail needs to be clipped and pretty small. */
 
-.cart-item-image a {
+.cart-item-image a, .checkout-cart-item-image a {
     overflow: hidden;
     display: block;
     height: 40px;
     width: 40px;
 }
-.cart-item-image a img { width: 90px; height: 67px; position: relative; left: -25px; top: -16px; } /* shrink and center the thumbnail img */
+.cart-item-image a img, .checkout-cart-item img { width: 90px; height: 67px;  } /* shrink and center the thumbnail img */
+.cart-item-image a img { position: relative; left: -25px; top: -16px; }
 #ctl00_pageContent_ddlActions { display: block; float: left; margin-right: 5px !important; }
 
 /*------------------------ CHECKOUT PAGE ---------------------*/
 #ctl00_pageContent_checkoutPanel { padding: 10px 25px !important; width: 952px !important; }
-table.cart-container {
+table.cart-container, table.checkout-cart-container {
     position: relative;
     top: 0;    
     left: 25px;
     width: 952px !important;
 }
-.checkout-customer-container .content-head-row { position: absolute; top: 50px; right: 25px; }
+/*.checkout-customer-container .content-head-row { position: absolute; top: 50px; right: 25px; }*/
 .checkout-page h1 { font-size: 18px; margin: 5px 0 5px 0; padding-top: 0; border-top: 1px solid #ccc; width: 944px; text-align: right; }
 
 .proceed { position: relative; float: right; right: 25px; }
@@ -748,7 +751,7 @@ table.cart-container {
 .checkout-billing-address h5 { position: absolute; right: 10px; text-align: right; }
 #ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping, #ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping+label { position: absolute; top: 0; left: 10px; }
 #ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping+label { left: 30px; top: 7px; }
-.checkout-email { margin-top: 20px; clear: both; }
+.checkout-email { margin-top: 20px; }
 
 
 /* next button */

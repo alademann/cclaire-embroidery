@@ -124,7 +124,7 @@ TRIPLE FEATURED BOXES
 		<a href="/accessories/key-chain.aspx">
 		<img alt="Custom Keychains" src="/images/home-page/feature-box_BC_custom-keychains.jpg" /><span class="text-imr">Custom embroidered key chains</span></a></div>
 	<div style="width: 320px" id="last" class="featured_box container_border">
-		<a onclick="return: false;" href="#shipping" rel="nofollow">
+		<a href="#shipping" rel="nofollow">
 		<img alt="$5 flat rate shipping" src="/images/home-page/feature-box_BR_5-dollar-shipping-group.jpg" /><span class="text-imr">$5 flat rate shipping</span></a></div>
 	<!--
   END TRIPLE FEATURED BOXES
@@ -182,7 +182,7 @@ END SUB FOOTER
 <div id="footer">
 	<div id="content">
 		<div class="floatL">
-			<small class="ltBrown">© 2010 C. Claire Embroidery Co. | All Rights Reserved.</small></div>
+			<small class="ltBrown">&copy; <%CurrentYear%> C. Claire Embroidery Co. | All Rights Reserved.</small></div>
 		<div class="floatR">
 			<ul class="listLink hor">
 				<li><small class="ltBrown"><a href="/">Home</a></small> </li>
