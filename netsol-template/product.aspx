@@ -61,6 +61,7 @@ display: none;*/
 	font-size: 10px;
 }
 *html #prod-detail-desc { height: 372px; }
+
 	.prod-detail-desc li {
 		font-size: 11px;
 		line-height: 14px;
@@ -75,9 +76,18 @@ display: none;*/
 #prod-detail-desc ul li { margin-bottom: 5px; }
 
 /* main price listing above the long description */
-.prod-detail-cost { font-size: 14px; color: Black; display: block; margin-bottom: 15px; }
+.prod-detail-cost { font-size: 14px; color: Black; display: block; margin-bottom: 15px;margin-top: 10px; }
 .prod-detail-cost-label { display: none; }
-	
+
+/* facebook like button floats to the right of the item's price */
+.prod-detail-price #fbButton {
+	position: relative;
+	float: right;
+	top: -30px;
+	right: -40px;
+	margin-bottom: -29px;
+}
+
 #prod-detail-var {
 	/* far right column */
 	width: 282px; /* 308px */
@@ -235,6 +245,7 @@ display: none;*/
 			<!-- <ns:if condition="Product.HasSavings">
           <div class="prod-detail-save"><span class="prod-detail-save-label"><%Product.SavingsLabel%>:</span> <span class="prod-detail-save-value"><%Product.SavingsText%></span></div>
         </ns:if>-->
+		<%Product.FacebookButton%>
 		</div>
 		<!-- END PRICE -->
 		<ns:if condition="product.HasRatings">
@@ -340,5 +351,7 @@ display: none;*/
 	<!-- END LOWER CONTENT -->
 	<div class="clearer" style="height: 25px; width: 100%;">
 		&nbsp;</div>
+		
+
 </asp:Content>
 
