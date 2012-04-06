@@ -18,6 +18,7 @@ body {
 	background: #123047 url("../images/layout/footer_bg.png") left bottom repeat-x;
 	color: #135f99;
 	font: 10px/50px normal Verdana, Arial, Helvetica, sans-serif;
+	zoom: 1\0/;
 }
 #footer #content {
 	width: 1010px;
