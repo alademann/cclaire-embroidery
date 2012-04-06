@@ -726,7 +726,22 @@ table.cart-container, table.checkout-cart-container {
     width: 952px !important;
 }
 /*.checkout-customer-container .content-head-row { position: absolute; top: 50px; right: 25px; }*/
-.checkout-page h1 { font-size: 18px; margin: 5px 0 5px 0; padding-top: 0; border-top: 1px solid #ccc; width: 944px; text-align: right; }
+.checkout-page h1, .checkout-questions-container .personalization-question-label { 
+	font-size: 18px; 
+	margin: 5px 0 5px 0; 
+	padding-top: 0; 
+	border-top: 1px solid #ccc; 
+	width: 944px; 
+	text-align: right; 
+}
+/* make checkout personalization label appear as the h1 since it has the text content we want */
+.checkout-questions-container h1 { display: none; } 
+.checkout-questions-container .personalization-question-label {
+	font-weight: bold;
+	font-family: "Trebuchet MS", Arial, Verdana, Sans-Serif; 
+	color: Black;
+	line-height: 36px;
+}
 
 .proceed { position: relative; float: right; right: 25px; }
 /* breadcrumb step-by-step navigation */
@@ -739,7 +754,7 @@ table.cart-container, table.checkout-cart-container {
 /* form panels (global) */
 .personalization-question { width: 100%; }
 .checkout-customer-container { position: relative; } /* to make absolute positioning of all other form panels easy */
-.form-item, .checkout-shipping, .checkout-page .personalization-questions {
+.form-item, .checkout-shipping {
     display: block;
     float: left;
     padding: 5px 20px 20px 5px !important;

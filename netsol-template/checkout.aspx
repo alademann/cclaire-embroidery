@@ -6,6 +6,10 @@
 	<style type="text/css">
 	<!--
 	.checkout-page h1 { /* IE ONLY */ top: -60px\9; right: -20px\9; }
+	.checkout-customer-container .text-important { 
+		float: left;
+		clear: both;
+	}
 	-->
 	</style>
 
