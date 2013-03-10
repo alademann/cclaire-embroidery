@@ -27,7 +27,9 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 .sass-cache
-public/css/
+*.css
+*.scssc
+*.sassc
 *.suo
 *.sln
 _resources/Cclaire_concept2.psd
