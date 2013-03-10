@@ -1,0 +1,69 @@
+// UTILITY NAV */
+#utilityNav {
+    position: absolute;
+    right: 28px;
+    top: 4px;
+    height: 26px;
+    width: 650px;
+    font-size: 10px;
+}
+#utilityNav div, #utilityNav #accountTools {
+    float: left;
+    width: auto;
+    height: 26px;
+}
+#utilityNav #accountTools {
+    width: 335px;
+    padding-right: 10px;
+    background: transparent url("../images/layout/utilityNav_divider.png") right top no-repeat;
+}
+#utilityNav #accountTools li {
+    text-align: left;
+    float: right;
+}
+#utilityNav #accountTools li#userWelcome {
+    float: left;
+    line-height: 22px;
+}
+#utilityNav #accountTools li a {
+    display: block;
+    height: 26px;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+#utilityNav #accountTools li#userWelcome {
+    padding-left: 0;
+}
+// FIX THE DEFAULT LOGIN AREA IN THE MASTHEAD */
+.custom-login-vert { 
+    width: 100px !important; 
+    position: relative; 
+    top: -18px;
+    left: -75px; 
+}
+#utilityNav {
+    @include firefox {
+        .custom-login-vert, #utilSearch {
+            .textbox {
+                width: 100px;
+            }
+        }
+    }
+}
+#password-message-horz { display: none; }
+#ctl00_ctl08_lvDisplay_hzUserLabel { 
+    position: relative; 
+    bottom: -19px;
+    left: -54px; 
+}
+#ctl00_ctl08_lvDisplay_hzLoginButton {
+    margin-left: 4px;
+}
+#ctl00_ctl08_lvDisplay_hzPassLabel, #ctl00_ctl08_lvDisplay_hzPassword { display: none; }
+// FIX THE DEFAULT SEARCH AREA IN THE MASTHEAD */
+#utilSearch {
+    position: relative;
+    left: 0;
+}
+#ctl00_ctl11_go { position: relative; left: 8px; }
+#extraCheckout { position: absolute; top: 1px; right: 20px; }

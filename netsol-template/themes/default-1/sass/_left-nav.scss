@@ -1,0 +1,87 @@
+
+//    LEFT NAV STYLES
+//    
+// ----------------------------------------------
+
+.page-column-left {
+    vertical-align: top;
+    background: transparent url("../images/layout/left-col-bg.gif") left top repeat-y;
+    #left-col-wrap {
+        width: $leftColWidth;
+        min-height: 353px;
+        height: 100%;
+        background-color: #0f2d44;
+        margin-right: $leftColMargin;
+        font-size: 13px;
+        font-family: Verdana, Geneva, sans-serif;
+        @include ie((6,7)) {
+            height: 353px; 
+            width: 134px;
+        }
+    }
+}
+
+#left-col-wrap {
+    ul { 
+        margin-top: 60px; 
+
+        li {
+            display: block;
+            margin-right: -2px; // so the white .selected li is flush right
+
+            &.selected, a {
+                padding: 5px 0 5px 7px;
+                display: block;
+            }
+
+            &.selected { 
+                cursor: default;
+                background-color: white;
+                font-weight: bold;
+                color: #0877cd;
+                margin-top: 4px;
+                // sub-category
+                ul {
+                    margin-top: 5px;
+                    margin-left: -7px; 
+                    margin-bottom: -4px;
+
+                    li { padding-left: 10px; }
+                }
+            }
+
+            a {
+                &:hover {
+                    background-color: #1b3c55;
+                }
+            }
+
+            ul {
+                // sub-category
+                background-color: #f7f7f1; 
+                margin-bottom: 4px; 
+                margin-top: 1px;
+
+                li {
+
+                    font-weight: normal; 
+                    font-size: 9px; 
+                    border-bottom: 1px solid white; 
+                    padding: 2px 0 2px 7px;
+                    &.selected { margin-top: 0; }
+                    a {
+                       line-height: 18px !important; 
+                       padding: 0; 
+
+                       &:hover {
+                            background-color: transparent !important; 
+                            text-decoration: underline !important; 
+                       }
+                    }
+                }
+
+            } // END sub-menu
+
+        } // END #left-col-wrap ul li
+    } // END #left-col-wrap ul
+} // END #left-col-wrap

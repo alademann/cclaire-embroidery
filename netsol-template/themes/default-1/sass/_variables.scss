@@ -1,0 +1,9 @@
+$wrapperWidth: 1260px;
+$templateWidth: 1010px;
+$templateBorder: 2px;
+$templatePad: 2px;
+$leftColWidth: 132px;
+$leftColMargin: 20px;
+$sectionPad: 20px;
+$sectionOffset: 3px;
+$sectionWidth: $templateWidth - ($sectionPad * 2) + $sectionOffset;

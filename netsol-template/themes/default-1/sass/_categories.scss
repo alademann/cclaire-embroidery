@@ -1,0 +1,28 @@
+
+//    CATEGORY PAGE STYLES
+//    nested within .category-page-type {}
+// ----------------------------------------------
+
+#ct100_columns {  
+    width: 1025px;
+    @include ie((6,7)) {
+        width: 984px;
+    }
+}
+
+h1 { 
+    position: absolute; 
+    left: 9px; 
+    top: 9px; 
+    color: white !important; 
+    text-shadow: 2px #020f18; 
+    line-height: normal; 
+    width: 127px; 
+}
+
+h2 { 
+    position: absolute; 
+    top: 7px; 
+    right: 20px; 
+    color: #727272; 
+}

@@ -1,0 +1,135 @@
+html {
+    overflow-x: hidden;
+}
+body {
+    font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; 
+    color: #727272;
+    // tile horizontally pattern blue with beige bg (top half) - extends down with solid beige color */
+    background: #e8e5c0 url("../images/layout/body_bg.png") left top repeat-x;
+    overflow-x: hidden; // prevent horizontal scrolling no matter what */
+}
+#wrapper {
+    // contains the stuff that extends beyond the x-axis limitations of the $templateWidth boundary */
+    position: absolute;
+    left: 50%;
+    margin-left: -#{$wrapperWidth / 2};
+    text-align: center;
+    width: $wrapperWidth;
+    min-height: 400px;
+    height: auto;
+    background: transparent url("../images/layout/bodyWrapper_floral_tr.png") right 7px no-repeat;
+}
+// divs nested within #wrapper */
+#mastHead {
+    height: 103px;
+    width: $templateWidth;
+    position: relative;
+    top: 0;
+    left: 0;
+    // bg image is the background of the utility navigation */
+    background: url("../images/layout/mastHead_utilityNav_bg.png") 325px top no-repeat;
+    #ccLogo {
+        position: absolute;
+        top: 4px;
+        left: 31px;
+        width: 245px;
+        height: 97px;
+        text-decoration: none !important;// TODO: 24-bit alpha pngfix for the <img> nested within this */
+    }
+}
+
+.page-container {
+    position: relative;
+    width: $templateWidth;
+    height: 100%;
+    top: 0;
+    left: ($wrapperWidth - $templateWidth) / 2;
+    @include ie((6,7)) {
+        left: 3px;
+    }
+}
+// items nested within #contentWrapper */
+#ctl00_columns, .featured_box, .container_border {
+    background-color: white;
+    border: $templateBorder solid #c0bc9c;
+}
+
+#ctl00_columns {
+    @include box-sizing(border-box);
+    width: $templateWidth;
+    padding: $templatePad;
+    @include ie((6,7)) {
+        padding: 0;
+        width: 984px;
+    }
+    @include chrome {
+        padding-right: 0;
+    }
+    min-height: 357px;
+    margin-bottom: 10px;
+    position: relative;
+    display: block;
+    left: 0;
+    top: 0;
+    text-align: left;
+}
+
+.section { 
+
+    position: relative;
+    min-height: 113px;
+    height: auto;
+    width: $sectionWidth;
+    padding: $sectionPad;
+    top: 2px;
+    left: -16px;
+    background: url("http://cclaireembroidery.com/themes/default-1-1/images/section-grad-bg.png") left top repeat-x;
+    
+    @include ie((6,7)) {
+        width: 814px;
+        height: 113px;
+    }
+
+    &.sub-category { 
+        width: $sectionWidth - $leftColMargin - $leftColWidth + $sectionOffset;
+        // width: 822px; 
+        // margin-right: -16px;
+        top: 0;
+        @include ie((6,7,8)) {
+            top: auto;
+            margin-right: -42px;
+            margin-bottom: -4px; 
+            left: -18px; 
+        }
+    }
+
+}
+
+.page-column-center { 
+    vertical-align: top; 
+    width: $templateWidth - ($templateBorder * 2) - ($templatePad * 2);
+}
+
+.contentBox {
+    // far right column */
+    width: 94%; // 308px */
+    padding: 3%;
+    border: 1px solid #e5e5e5;
+    background-color: #f3f4f5;
+    position: relative;
+}   
+
+// this is a netsol template piece that cannot be nested within contentContainer */     
+.breadcrumb {
+    width: 822px;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 20px; // left and right padding to simulate being nested within the 25px of padding from #contentContainer. */
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3; // keep in front of contentContainer */
+    text-align: left;
+}
+
+#ctl00_pageContent_ddlActions { display: block; float: left; margin-right: 5px !important; }

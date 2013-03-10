@@ -1,0 +1,35 @@
+@import "global-imports";
+
+// C.Claire Embroidery Styles */
+@import "cclaire-ecom";
+@import "buttons";
+@import "main-nav";
+@import "util-nav";
+@import "left-nav";
+@import "header";
+@import "footer";
+
+//  PAGE TYPES
+// ----------------------------------------------
+
+@import "cart";
+@import "products";
+
+.index-page {
+    @import "home";
+}
+
+.category-page-type {
+    @import "categories";
+}
+
+.checkout-page {
+    @import "checkout";
+}
+
+
+
+//  UTILITIES (LAST)
+// ----------------------------------------------
+@import "utilities";
+

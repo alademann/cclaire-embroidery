@@ -1,0 +1,62 @@
+
+//    BUTTON STYLES
+// ----------------------------------------------
+
+.btn, .input {
+    display: block !important;
+    width: auto;
+    height: 41px !important;
+    background-color: transparent !important;
+    background-position: right bottom !important;
+    background-repeat: no-repeat !important;
+    border: none !important;
+    cursor: pointer !important;
+    text-indent: -999em;
+    padding-bottom: 0 !important;
+    @include ie((6,7)) {
+        font-size: 1px; 
+        color: transparent;
+    }
+
+    &:hover, &.hover, 
+    &:focus, &.focus {
+        background-position: right top !important;
+    }
+
+    &.login {
+        width: 52px;
+    }
+
+    &.sm, small & {
+        height: 18px !important;
+
+        &.login {
+            background-image: url("../images/buttons/login_sm.png");
+        }
+
+    }
+
+}
+
+.search {
+    &, &.input { 
+        width: 56px; 
+
+        &.sm, small & {
+            background-image: url("../images/buttons/search_sm.png");
+        } 
+
+    }
+}
+
+.checkout {
+    &, &.input {
+        width: 73px;
+
+        &.sm, small & {
+            background-image: url("../images/buttons/checkout_sm.png");
+        }
+
+    }
+}
+

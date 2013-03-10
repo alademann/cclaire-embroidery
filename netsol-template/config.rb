@@ -3,22 +3,22 @@ require "rgbapng"
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "public/css"
-fonts_dir = "public/fonts"
-sass_dir = "public/sass"
-images_dir = "public/images"
-javascripts_dir = "public/js"
+css_dir = "themes/default-1/css"
+fonts_dir = "themes/default-1/fonts"
+sass_dir = "themes/default-1/sass"
+images_dir = "themes/default-1/images"
+javascripts_dir = "themes/default-1/js"
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
-# use $ compass compile -e production --force to produce compressed css files for production.
-	output_style = (environment == :production) ? :compact : :expanded	
+# You can select your preferred output style here 
+# (can be overridden via the command line): 
+# compass compile -e production --force
+  output_style = (environment == :production) ? :compressed : :expanded
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
- relative_assets = true
+  relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
-# line_comments = false
+  line_comments = false
 
 
 

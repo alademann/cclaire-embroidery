@@ -1,0 +1,96 @@
+
+//    HOME PAGE STYLES
+//    nested within .index-page {}
+// ----------------------------------------------
+
+
+#ctl00_columns {
+    padding: 0 !important;
+    width: 1006px !important;
+    margin-bottom: -6px;
+}
+
+.page-body-columns .page-body-columns {
+    margin: -2px -2px -10px -2px !important;
+}
+
+.section {
+    padding-top: 0;
+    padding-left: 4px;
+    left: 2px;
+    min-height: 153px;
+}
+
+#hero-categories {
+    padding-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px !important;
+    padding-top: 20px;
+    text-align: center;
+}
+
+h2, .h2 {
+    font-size: 13px !important;
+    margin-bottom: 2px;
+    font-weight: bold;
+    font-family: "Lucida Sans", Verdana, Sans-Serif;
+}
+
+.callout-box {
+    height: 100px;
+    float: left;
+    position: relative;
+    p {
+        font-size: 11px;
+        line-height: 16px;
+    }
+}
+
+.sm-img-box {
+    display: block;
+    width: 67px;
+    //75*/
+    height: 56px;
+    //64*/
+    padding: 4px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 4px;
+    background: transparent url("/images/home-page/category-box-img-bg_75x64.png") left bottom no-repeat;
+}
+
+.category-box {
+    display: block;
+    width: 248px;
+    height: 214px;
+    float: left;
+    clear: right;
+    background: transparent url("/images/home-page/category-box-img-bg_245x184.png") left bottom no-repeat;
+
+    &.last {
+        margin-right: -50px;
+    }
+
+    h3 .textlink {
+        float: left;
+        padding: 16px 0 0 7px;
+        font-size: 14px;    
+    }
+
+    // image inside of .category box
+    .imglink {
+        display: block;
+        width: 233px;
+        height: 171px;
+        margin: 36px 0 0 6px;
+        overflow: hidden;
+        
+        img {
+            float: left;
+            display: block;
+        }
+
+    }
+} // END .category-box

@@ -1,0 +1,242 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  __global/_constants/_ua-media/_browsers.scss
+//+  PARENT:   _manifest.scss
+
+// ua-ie ua-ie9 os-mac
+
+    // REQUIRES jquery-client.js (UA SNIFFER)
+
+    // allows us to do SICK stuff like this:
+    //
+    //  .selector {
+    //      margin-right: 10px;
+    //          &:after { content: "Thank you for not using IE" }
+    //      @include ie(6) {
+    //          margin-right: 20px;
+    //          &:after { content: "Go Away IE 6 User!!!"; }
+    //      }
+    //  }
+    //
+    //
+
+//----------------------------------------------------
+
+
+//  UTILITY FUNCTION THAT RETURNS MULTIPLE VERSION .ua- CLASSES
+// ----------------------------------------------
+
+    @function _version-support($target: ua, $ua_os: ua, $min-support: 1, $ver: all, $append: true) {
+        $versions: false;
+        $target: unquote($target);
+        $append: if($append == true, " & ", "");
+
+        // SINGLE VERSION
+        @if type-of($ver) == number { 
+            
+            @if floor($ver) >= $min-support {
+                $versionClass: ".#{$target}-#{$ua_os}#{$ver}#{$append}";
+                $versions: #{$versionClass};
+            }
+
+        } // END @if type-of($ver) == number
+
+        // ALL VERSIONS
+        @if type-of($ver) == string { 
+
+            @if unquote($ver) == all {
+                $versionClass: ".#{$target}-#{$ua-os}#{$append}";
+                $versions: #{$versionClass};
+            } @else {
+                @warn "Invalid #{$ua_os} version passed to @function _version-support: #{$ver}";
+            }
+
+        } // END @if type-of($ver) == string
+
+        // MULTIPLE VERSIONS
+        @if type-of($ver) == list {
+
+            $versions: comma-list(); // create a new empty list
+
+            @if $target == ua or $target == os {
+                $target: unquote($target);
+            } @else {
+                @warn "Invalid $target parameter passed to @function _version-support: #{$target} must equal 'ua' or 'os'";
+            }    
+
+            @if type-of($ua_os) == string {
+                $ua_os: unquote($ua_os);
+            } @else {
+                @warn "Invalid $ua_os parameter passed to @function _version-support: #{$ua_os} is not a string";
+            }
+
+            @each $version in $ver {
+
+                @if floor($version) >= $min-support {
+
+                    @if type-of($version) == number {
+                        
+                        $versionClass: ".#{$target}-#{$ua_os}#{$version}#{$append}";
+                        $versions: append($versions, unquote($versionClass), comma);
+
+                    } @else {
+                        @warn "Invalid $ver parameter passed to @function _version-support: #{$version} is not a number";
+                    }
+
+                }
+
+            }
+        } // END @if type-of($ver) == list
+        
+        @if length($versions) != 0 {
+            @return #{$versions};
+        } @else {
+            @return false;
+        }
+
+    } // END @function _version-support()
+
+//  INTERNET EXPLORER HACKS
+// ----------------------------------------------
+
+    @mixin ie($ver: all, $append: true) { @if $ie-support {
+
+        $versions: _version-support(ua, ie, $min-ie-supported, $ver, $append);
+
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+
+//  MOZILLA HACKS
+// ----------------------------------------------
+
+    @mixin firefox($ver: all, $append: true) { @if $mozilla-support {
+
+        $versions: _version-support(ua, firefox, $min-mozilla-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+
+//  OPERA HACKS
+// ----------------------------------------------
+
+    @mixin opera($ver: all, $append: true) { @if $opera-support {
+
+        $versions: _version-support(ua, opera, $min-opera-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+
+//  SAFARI HACKS
+// ----------------------------------------------
+
+    @mixin safari($ver: all, $append: true) { @if $safari-support {
+
+        $versions: _version-support(ua, safari, $min-safari-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+
+//  CHROME HACKS
+// ----------------------------------------------
+
+    @mixin chrome($ver: all, $append: true) { @if $chrome-support {
+
+        $versions: _version-support(ua, chrome, $min-chrome-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+
+//  WEBKIT HACKS
+// ----------------------------------------------
+
+    @mixin webkit($append: true) { @if $webkit-support {
+        @include safari($append: $append) {
+            @content;
+        }
+        @include chrome($append: $append) {
+            @content;
+        }
+    }}
+
+//  OS / DEVICE HACKS
+// ----------------------------------------------
+
+    @mixin mac($ver: all, $append: true) {
+
+        $versions: _version-support(os, mac, $min-macosx-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }
+    @mixin win($ver: all, $append: true) {
+
+        $versions: _version-support(os, win, $min-win-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }
+    @mixin ios($ver: all, $append: true) { @if $ios-support {
+
+        $versions: _version-support(os, ios, $min-ios-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+    @mixin android($ver: all, $append: true) { @if $droid-support {
+
+        $versions: _version-support(os, android, $min-droid-supported, $ver, $append);
+        
+        @if $versions != false and $versions != 'false' {
+            #{$versions} {
+                @content;
+            }
+        }
+
+    }}
+    @mixin surface { @if $ie-support {
+        .surface { @content; }
+    }}
+    @mixin nexus7 { @if $webkit-support {
+        .nexus7 { @content; }
+        
+    }}
+    @mixin nexus10 { @if $webkit-support {
+        .nexus10 { @content; }
+    }}

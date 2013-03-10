@@ -1,0 +1,52 @@
+
+//    UTILITIES / OVERRIDES   
+// ----------------------------------------------
+
+.text-imr { 
+    text-indent: -999em !important; 
+    position: absolute; 
+    top: -999em; 
+}
+
+//  HIDE LEFT COLUMN ON NON-CATEGORY PAGES
+// ----------------------------------------------
+
+.product-page-type, .cart-page-type {
+    .page-column-left {
+        &, #left-col-wrap { display: none; } 
+    }
+}
+
+
+//  HIDE BREADCRUMBS ON CERTAIN PAGES
+// ----------------------------------------------
+
+.cart-page-type , .content-page-type {
+    .breadcrumb { display: none; }
+}
+
+
+//  HIDE FEATURE BOXES ON ALL PAGES EXCEPT HOME PAGE
+// ----------------------------------------------
+
+#featureBoxContainer {
+    display: none;
+    .index-page & {
+        display: block;
+    }
+}
+
+
+
+//  FONT OVERRIDES
+// ----------------------------------------------
+
+// FONT COLORS
+.linkBlue { color: #0f7ecd; }
+.darkBlue { &, a { color: #10587a; } }
+.brown { &, a { color: #4a4432; } }
+.ltBrown { &, a { color: #7b694f; } }
+.error, .text-error { &, a { color: red; } }
+// TYPE
+.serif { font-family: Georgia, "Times New Roman", Times, serif; }
+.large { font-size: 16px; line-height: 22px; }

@@ -1,0 +1,15 @@
+@mixin cartHeader {
+    border-bottom: 2px solid #ccc;
+    font-size: 14px;
+    color: #10587a;  
+}
+
+@mixin cartItemRow {
+    background: #f9f9f9;
+    border-bottom: 2px solid #e5e5e5;
+
+    td {
+        padding: 10px 5px;
+    }
+
+}

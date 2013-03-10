@@ -1,0 +1,127 @@
+
+//    VIEW CART PAGE STYLES
+//    
+// ----------------------------------------------
+
+// hide stuff that isn't valid on our pages
+.cart-part-number, .checkout-cart-part-number, .cart-shipping-estimate, 
+.cart-personalizations, .checkout-cart-personalizations,
+#ctl00_pageContent_shippingRow, .cart-options, .cart-summary, 
+#ctl00_pageContent_lrLoginOptions_rightPane { display: none; }
+
+.cart-cap .custom-shipping-interface { visibility: hidden; }
+
+.cart-page {
+    h1 { margin: -50px 0 70px 0 !important; }
+} // END .cart-page
+
+.cart-cap, .checkout-cart-cap {
+    height: 50px;
+    width: 1002px !important;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1; // make sure the buttons appear clickable */
+
+    &#top-cap { top: 60px; }
+    &#bot-cap { top: 10px; margin-bottom: 25px; }
+
+    table {
+        float: left;
+
+        th {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            text-align: right;
+        }
+
+    }
+
+} // END .cart-cap
+
+.content-body-row, .invoice-detail-row { 
+    
+    background: #f3f4f5;
+    border: 1px solid #e5e5e5;
+
+    td {
+        padding: 5px; 
+    }
+}
+
+.checkout-ship-bill tr, .invoice-detail-row { 
+    @include cartItemRow;
+}
+
+.grid-view-invoice .invoice-detail-header {
+    @include cartHeader;
+}
+
+.cart-container, .checkout-cart-container {
+    
+    .cart-header, .checkout-cart-header {
+
+        @include cartHeader;
+
+        th { padding: 5px; }
+    } // END .cart-header
+
+    // todo: figure out why these are similar to .checkout-ship-bill tr and .invoice-detail-row
+    .cart-item, .checkout-cart-item {
+        @include cartItemRow;
+    }
+
+    .cart-actions, .checkout-cart-actions { 
+        padding: 10px 0 0 0;
+    }
+
+    .notification, .text-error {
+        padding: 5px 15px;
+        margin: 10px 0;
+        background-color: #fff6dc;
+        border: 1px solid #fff5d2;
+        font-size: 11px;
+        color: black;
+    }
+
+} // END .cart-container
+
+.cart-shipping-estimate {
+    label, input { float: left; }
+} // END .cart-shipping-estimate
+
+.cart-item-options, .checkout-cart-item-options { 
+    div {
+        margin: 0 0 4px 0; 
+    }
+}
+.cart-continue, .checkout-cart-continue { 
+    text-align: right; 
+    padding-right: 0 !important; 
+}
+
+// cart item thumbnail needs to be clipped and pretty small. */
+.cart-item-image, .checkout-cart-item-image {
+    // IE7 and below - override inline */
+    @include ie((6,7)) { width: 80px !important; }
+    a {
+        overflow: hidden;
+        display: block;
+        height: 40px;
+        width: 40px;
+
+        img {
+            position: relative; 
+            left: -25px; 
+            top: -16px;
+        }
+
+    }
+    // shrink and center the thumbnail img
+    a img, img {
+        width: 90px; 
+        height: 67px;
+    }
+}

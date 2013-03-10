@@ -1,0 +1,77 @@
+$min-ie-supported:      9 !default;
+$ie-support:            true !default;
+$ie6-support:           true !default;
+$ie7-support:           true !default;
+$ie8-support:           true !default;
+$ie9-support:           true !default;
+$min-mozilla-supported: 4 !default;
+$mozilla-support:       true !default;
+$min-opera-supported:   8 !default;
+$opera-support:         false !default;
+$owg-support:           false !default;
+$khtml-support:         false !default;
+$svg-prefix-support:    false !default;
+$webkit-support:        true !default;
+$min-safari-supported:  4 !default;
+$safari-support:        true !default;
+$min-chrome-supported:  16 !default;
+$chrome-support:        true !default;
+
+$min-macosx-supported:  1 !default;
+$min-win-supported:     1 !default;
+$ios-support:           false !default;
+$min-ios-supported:     5 !default;
+$droid-support:         $webkit-support !default;
+$min-droid-supported:   1 !default;
+
+
+
+//  THIS IS HERE TO ENSURE THAT ONLY THE SUPPORTED BROWSER PREFIXES
+//  MAKE THEIR WAY INTO OUR STYLESHEET WHEN COMPILED.  THESE VARS,
+//  SINCE THEY DON'T HAVE !default DECLARED, WILL OVERRIDE THE
+//  DEFAULT COMPASS DECLARATIONS THAT ARE IMPORTED AFTER THIS PARTIAL
+// --------------------------------------------------------------------
+
+//+---------------- DO NOT EDIT BELOW THIS LINE ---------------------+//
+
+// (-moz) CSS3 Prefix Support
+$experimental-support-for-mozilla:      $mozilla-support;
+// (-webkit) CSS3 Prefix Support
+$experimental-support-for-webkit:       $webkit-support;
+// Webkit's original gradient syntax
+$support-for-original-webkit-gradients: $owg-support;
+// (-o) Opera CSS3 Prefix Support
+$experimental-support-for-opera:        $opera-support;
+// (-ms) CSS3 Prefix Support
+$experimental-support-for-microsoft:    $ie-support;
+// (-khtml) CSS3 Prefix Support
+$experimental-support-for-khtml:        $khtml-support;
+// (-svg) CSS3 Prefix Support
+$experimental-support-for-svg:          $svg-prefix-support;
+// (-pie) CSS3 Prefix Support (for down-level IE)
+$experimental-support-for-pie:          $ie6-support or $ie7-support;
+
+// IE HACK SUPPORT
+$legacy-support-for-ie:                 $ie-support;
+$legacy-support-for-ie6:                $ie6-support;
+$legacy-support-for-ie7:                $ie7-support;
+$legacy-support-for-ie8:                $ie8-support;
+$legacy-support-for-ie9:                $ie9-support;
+
+
+//  ANGULAR SUPPORT
+// ----------------------------------------------
+
+// are we using angular's dreadful ng-model validation methods?
+$angular-ngmodel-form-validation:       true;
+
+
+// OUTPUT SUPPORT INFO DURING COMPILE FOR TESTING
+// --------------------------------------------------
+//@debug "eval( We Support IE6. ) = #{$legacy-support-for-ie6}";
+
+
+
+//+ DO NOT DELETE THIS
+$cl: ":";
+$cl2: #{$cl}#{$cl};

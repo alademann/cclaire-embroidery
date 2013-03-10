@@ -1,0 +1,60 @@
+
+//    PRODUCT LIST STYLES
+//    
+// ---------------------------------------------- 
+
+.sub-category { 
+    width: 822px; 
+    // margin-right: -16px;
+    top: 0;
+    @include ie((6,7,8)) {
+        top: auto;
+        margin-right: -42px;
+        margin-bottom: -4px; 
+        left: -18px; 
+    }
+}
+
+hr {
+    background-color: #f4f4f4;
+    color: #f4f4f4;
+    border: 0 none;
+    border-bottom: 1px solid #d7d7d7;
+    height: 2px;
+    margin: 15px 0 0 0;
+}
+ 
+h1 { font-size: 1.8em; }
+
+.page-html-content, .product-list-results-header {  }
+.product-list { margin: 15px 0; width: 822px !important; height: auto; }
+.product-list-control, .product-list-price {
+float: left;
+width: 50%;
+}
+.product-list-control { position: relative; top: -10px; }
+.product-list-control input { display: none !important; }
+.product-block, .category-list-item {
+    float: left;
+    width: 190px;
+    height: 220px;
+    padding: 0 20px 20px 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    line-height: 14px;
+    color: #727272;
+
+    text-align: center;
+}
+
+.category-list-item img { width: 190px; height: 142px; }
+.category-list-item { height: 163px; position: relative; top: 20px; }
+.category-list-item-head, .category-list-item-body { position: absolute; }
+.category-list-item-head { bottom: 20px; }
+
+.category-list-item h5 { font-size: 14px; font-weight: bold; }
+.product-block, .product-block h5 { font-size: 12px; } 
+.product-list-options h5 { margin-top: 4px; min-height: 36px; *height: 36px; } // so all the price line up under the product descriptions */
+.product-box .light, .product-box .product-list-sale { color: #ccc; }
+.product-box .product-list-save { font-style: italic; font-size: 11px; }
+.product-list-control { margin-top: 7px; } // add to shopping bag button */
+.product-box img { display: block; }

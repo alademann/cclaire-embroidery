@@ -1,0 +1,71 @@
+
+//    CHECKOUT PAGE STYLES
+//    nested within .checkout-page {}
+// ----------------------------------------------
+
+#ctl00_pageContent_checkoutPanel { padding: 10px 25px !important; width: 952px !important; }
+table.cart-container, table.checkout-cart-container {
+    position: relative;
+    top: 0;    
+    left: 25px;
+    width: 952px !important;
+}
+//.checkout-customer-container .content-head-row { position: absolute; top: 50px; right: 25px; }*/
+h1, .checkout-questions-container .personalization-question-label { 
+    font-size: 18px; 
+    margin: 5px 0 5px 0; 
+    padding-top: 0; 
+    border-top: 1px solid #ccc; 
+    width: 944px; 
+    text-align: right; 
+}
+// make checkout personalization label appear as the h1 since it has the text content we want */
+.checkout-questions-container h1 { display: none; } 
+.checkout-questions-container .personalization-question-label {
+    font-weight: bold;
+    font-family: "Trebuchet MS", Arial, Verdana, Sans-Serif; 
+    color: black;
+    line-height: 36px;
+}
+
+.proceed { position: relative; float: right; right: 25px; }
+// breadcrumb step-by-step navigation */
+.checkout-step-text, .checkout-step-number { color: black; font-weight: bold; font-size: 14px; }
+
+// validation */
+#ctl00_pageContent_checkoutWizard_validationSummary { 
+    color: red;
+}
+// form panels (global) */
+.personalization-question { width: 100%; }
+.checkout-customer-container { position: relative; } // to make absolute positioning of all other form panels easy */
+.form-item, .checkout-shipping {
+    display: block;
+    float: left;
+    padding: 5px 20px 20px 5px !important;
+    margin-right: 20px;
+    background-color: #f3f4f5;
+    border: 1px solid #e5e5e5;
+}
+.form-item h5 { font-size: 17px; margin: 5px 0; }
+
+// form panels - specific panels */
+
+.checkout-shipping-address, .checkout-billing-address { min-height: 50px; height: auto; width: 380px; position: relative; }
+@include ie(6) {
+    .checkout-shipping-address, .checkout-billing-address { 
+        height: 50px; 
+    }
+}
+
+.checkout-shipping-address h5, .checkout-billing-address h5 { position: absolute\9; left: 10px\9; }
+.checkout-billing-address h5 { position: absolute; right: 10px; text-align: right; }
+#ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping, #ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping+label { position: absolute; top: 0; left: 10px; }
+#ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping+label { left: 30px; top: 7px; }
+.checkout-email { margin-top: 20px; }
+
+
+// next button */
+#ctl00_pageContent_checkoutWizard_StartNavigationTemplateContainerID_btnNext { float: right; position: relative; right: 15px; margin: 15px; }
+// checkboxes that don't have margins for whatever reasons */
+#ctl00_pageContent_checkoutWizard_billingAddress_chkBillingSameAsShipping, .personalization-questions input { margin-top: 10px; margin-right: 5px;}
