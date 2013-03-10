@@ -13,6 +13,16 @@
 
 .cart-page {
     h1 { margin: -50px 0 70px 0 !important; }
+
+    .proceed {
+        position: relative;
+        float: right;
+        right: 40px;
+    }
+    #top-cap .proceed {
+        top: -12px;
+    }
+
 } // END .cart-page
 
 .cart-cap, .checkout-cart-cap {

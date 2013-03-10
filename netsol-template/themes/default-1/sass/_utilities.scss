@@ -50,3 +50,26 @@
 // TYPE
 .serif { font-family: Georgia, "Times New Roman", Times, serif; }
 .large { font-size: 16px; line-height: 22px; }
+
+
+
+//  SMOOTH IMAGE RESIZING
+// make sure that when we scale our images... we're outputting them in the best possible interpolation mode
+// ----------------------------------------------
+
+img {
+    image-rendering: optimizeSpeed;                     // Legal fallback
+    image-rendering: optimize-contrast;                 // CSS3 Proposed
+    @if $mozilla-support {
+        image-rendering: -moz-crisp-edges;              // Firefox    
+    }
+    @if $opera-support {
+        image-rendering: -o-crisp-edges;                // Opera
+    }
+    @if $webkit-support {
+        image-rendering: -webkit-optimize-contrast;     // Chrome (and eventually Safari) 
+    }
+    @if $ie-support {
+        -ms-interpolation-mode: nearest-neighbor;       // IE8+    
+    }
+}
