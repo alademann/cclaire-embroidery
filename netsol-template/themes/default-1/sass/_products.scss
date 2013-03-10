@@ -3,18 +3,6 @@
 //    
 // ---------------------------------------------- 
 
-.sub-category { 
-    width: 822px; 
-    // margin-right: -16px;
-    top: 0;
-    @include ie((6,7,8)) {
-        top: auto;
-        margin-right: -42px;
-        margin-bottom: -4px; 
-        left: -18px; 
-    }
-}
-
 hr {
     background-color: #f4f4f4;
     color: #f4f4f4;

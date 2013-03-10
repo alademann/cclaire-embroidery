@@ -1,0 +1,180 @@
+
+//    PRODUCT DETAILS STYLES
+//    nested within .product-page-type {}
+// ---------------------------------------------- 
+/* product detail */
+#ct100_columns  { padding: 10px 20px 2px 10px !important; width: 998px; *width: 976px; *padding: 0 !important; }
+.product-detail { width: 968px; *width: 956px; padding: 15px 0 0 15px; }
+// personalization answer thumbnail image placement */
+.select-answer { height: 25px; }
+//.personalization-question-label { display: block; position: relative; bottom: -10px; }*/
+.personalization-answer img { position: relative; left: 10px; top: 7px; margin-top: -10px; }
+// related products listing td width  */
+td.product-list-item-container { padding: 5px 0 !important; margin-right: 0 !important; width: 130px !important; }
+// link that surrounds the product image in the left column */
+a.display-image-link, a.display-image-link img {
+display: block;
+height: 280px;
+width: 360px;
+}
+a.display-image-link {
+overflow: hidden;
+position: relative;// so we can use absolute positioning for the image within the link */
+top: 0;
+left: 0;
+}
+a.display-image-link img { position: absolute; left: 0; top: 0; }
+
+#prod-detail-navbar {
+    width: 578px; 
+    *width: 568px;
+    height: 14px; 
+    border-bottom: 1px solid #e5e5e5; 
+    line-height: 26px;
+    margin-bottom: 15px;
+    font-size: 11px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+.breadcrumb {
+    width: 822px;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 20px; // left and right padding to simulate being nested within the 25px of padding from #contentContainer. */
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3; // keep in front of contentContainer */
+    text-align: right;
+}
+#prod-detail-desc {
+    width: 245px; 
+    min-height: 372px; 
+    height: auto;
+    margin-right: 25px;
+    line-height: 10px; 
+    font-size: 10px;
+    @include ie((6,7)) {
+        width: 240px;
+        margin-right: 20px;
+        height: 372px;
+    }
+
+    ul { list-style: disc; padding-left: 15px; }
+
+    li {
+        font-size: 11px;
+        line-height: 14px;
+        color: #727272;
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        font-size: 16px;
+        line-height: normal;
+        margin: 0 0 2px 0;
+    }
+
+}
+
+
+// main price listing above the long description */
+.prod-detail-cost { font-size: 14px; color: Black; display: block; margin-bottom: 15px;margin-top: 10px; }
+.prod-detail-cost-label { display: none; }
+
+// facebook like button floats to the right of the item's price */
+.prod-detail-price {
+    position: relative;
+    #fbButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+#prod-detail-var {
+    // far right column */
+    width: 282px; // 308px */
+    height: auto;   
+    padding: 12px;
+    border: 1px solid #e5e5e5;
+    background-color: #f3f4f5;
+}   
+    #prod-detail-var h3, #prod-detail-var .h3 {
+        // please select */
+        font-family: "Lucida Sans Unicode", Arial, sans-serif;
+        font-size: 15px;
+        color: #727272;
+        font-weight: normal;
+        margin: 0 0 10px 0;       
+    }
+.personalization-questions { position: relative; font-size: 11px; }
+.personalization-answer label { font-size: 11px; }
+// shows up on error */
+.personalization-answer .text-required { 
+    display: block; 
+    font-size: 10px;
+    line-height: 12px;
+    color: Red;
+    float: left;
+    width: 100%;
+    height: auto;
+    clear: left;
+    margin-bottom: 3px;
+    *margin-bottom: 10px;
+}
+// "DENOTES REQUIRED FIELD " */
+.personalization-questions p { 
+    margin-bottom: 0; 
+    position: absolute; 
+    top: -40px; 
+    right: 0;
+    font-size: 9px; 
+}
+.personalization-question { 
+    margin: 0 5px 3px 0; 
+    float: left;
+    clear: left;
+}
+.personalization-question input, .personalization-question label { margin: 2px 1px 0 2px; }
+.personalization-answer select { float: left; clear: left; min-width: 200px; *width: 200px; }
+.personalization-question-label, .prod-detail-purchase label { color: black; }
+.personalization-question-label em { font-size: 10px; line-height: 12px; font-style: normal; }
+.prod-detail-purchase { margin-top: 10px; padding-top: 10px; border-top: 1px solid #ccc; }
+.prod-detail-purchase label, .prod-detail-purchase input { float: left; margin-right: 3px; }
+.prod-detail-add { margin-left: 10px; }
+.prod-detail-stock { clear: both; display: block; float: left; margin-top: 10px; height: 20px; font-size: 11px; font-style: italic; }
+
+#prod-detail-lowerL, #prod-detail-lowerR {
+    min-height: 170px;
+    height: auto;
+    border: 1px solid #e5e5e5;
+    overflow: hidden !important;
+}
+#prod-detail-lowerL { padding-left: 12px; margin-left: 0; margin-right: 25px; *margin-right: 20px; width: 616px; *width: 611px; }
+#prod-detail-lowerL h3, #prod-detail-lowerR h3,
+#prod-detail-lowerL .h3, #prod-detail-lowerR .h3  { margin: 9px 0 0 0 !important; width: 600px; position: relative; z-index: 20; }
+#prod-detail-lowerR { padding: 0 10px 10px 10px; width: 285px; min-height: 160px; height: auto; }
+#prod-detail-lowerL { @include ie((6,7)) { height: 170px; } }
+#prod-detail-lowerR { @include ie((6,7)) { height: 160px; } }
+
+#prod-detail-lowerR p { line-height: normal !important; margin-top: 20px; }
+// product list display modifications for when it's being shown as a "related" item */
+#prod-detail-lowerL .product-block { float: left; margin-right: 12px; padding-bottom: 0; width: 114px; height: auto; }
+#prod-detail-lowerL a.imglink { width: 112px; height: 84px; display: block; overflow: hidden; border: 1px solid #e5e5e5; }
+#prod-detail-lowerL a.imglink img { position: relative; width: 106px; height: 78px; border: 3px solid White; }
+#prod-detail-lowerL .product-list-options, #prod-detail-lowerL .product-list-options h5 { font-size: 11px; }
+#prod-detail-lowerL .product-list-price, #prod-detail-lowerL .product-list-control { display: none; }
+
+#prod-detail-lowerL table { overflow: visible !important; }
+#prod-detail-lowerL table.product-list { 
+    width: 616px !important; 
+    *width: 611px; 
+    overflow: hidden; 
+    display: block; 
+    min-height: 143px; // todo: find out why 160 doesn't work here;
+    margin: 0;
+}
+#prod-detail-lowerL table.product-list { @include ie((6,7)) { height: 160px; } }
+#prod-detail-lowerL td { display: block; float: left; overflow: hidden !important; width: 128px !important; }
+/* END product detail */

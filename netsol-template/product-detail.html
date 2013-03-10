@@ -1,0 +1,153 @@
+﻿
+    <!-- BEGIN FAR LEFT COLUMN -->    
+    <div class="floatL" id="prod-detail-img" style="width: 360px; height: 372px; margin-right: 25px;">
+        <ns:choose>
+            <ns:when condition="Product.ImageCount >= 1 && Product.DisplayImageUrl != ''">
+                <a  class="display-image-link" 
+                    target="_blank" 
+                    href="<%Product.DetailedImageUrl%>" 
+                    onclick="Window.open('<%Product.DetailedImageGalleryUrl%>','img-view',100,100,1,0);return false;">
+                    <img src="<%Product.DisplayImageUrl%>" 
+                         title="<%Product.ImageCaption%>" 
+                         alt="<%Product.ImageAlternateText%>" 
+                         border="0" />
+                </a>
+                <ns:if condition="Product.DetailedImageUrl!= ''">
+                    <div style="text-align:center; position: relative; z-index: 900;">
+                        <a  href="<%Product.DetailedImageUrl%>" 
+                            target="_blank" 
+                            onclick="Window.open('<%Product.DetailedImageGalleryUrl%>','img-view',100,100,1,0);return false;">
+                            <ns:choose>
+                                <ns:when condition="Product.ImageCount >1">View More Images</ns:when>
+                                <ns:otherwise>View Larger Image</ns:otherwise>
+                            </ns:choose>
+                        </a>
+                    </div>
+                </ns:if>
+            </ns:when>
+            <ns:otherwise>
+                <img src="<%Product.UnavailableImageUrl%>" alt="unavailable" border="0" />
+            </ns:otherwise>
+        </ns:choose>
+        <p class="h3" style="font-size: 18px; margin-top: 40px; text-align: center; ">
+            <br>    
+            $5.00 Flat Rate Shipping Available!
+            <br>    
+            Free Shipping on orders $100 and over!
+            <br>    
+            <br>Now Accepting PayPal
+        </p>
+        <div style="display: none;">
+            <ns:productpackages />    
+        </div>
+    </div>
+    <!-- END FAR LEFT COLUMN -->    
+    <!-- BEGIN TOP PROD DETAIL NAVBAR -->    
+    <div class="floatL" id="prod-detail-navbar">
+        <ns:if condition="Product.DisplayNextAndPrevious">
+            <table border="0" class="prod-detail-next-prev">
+                <tr>
+                    <td class="prod-detail-prev">
+                        <a href="<%Product.PreviousProductUrl%>">&laquo;&nbsp;Previous in&nbsp;<%Product.CategoryName%></a>
+                    </td>
+                    <td class="prod-detail-next">
+                        <a href="<%Product.NextProductUrl%>">Next in&nbsp;<%Product.CategoryName%>&nbsp;&raquo;</a>
+                    </td>
+                </tr>
+            </table>
+        </ns:if>
+        <ns:if condition="Product.DisplayEmailAFriend">
+            <div class="prod-detail-email-friend">
+                <a  href="<%Product.EmailAFriendUrl%>" 
+                    onclick="Window.open('<%Product.EmailAFriendUrl%>','email-a-friend',550,400,1,0);return false;"  
+                    target="_blank">
+                    Email this page to a friend
+                </a>
+            </div>
+        </ns:if>
+    </div>
+    <!-- END TOP PROD DETAIL NAVBAR -->    
+    <!-- BEGIN MIDDLE DESCRIPTION COLUMN -->    
+    <div class="floatL" id="prod-detail-desc">
+        <h1><%Product.Name%></h1>
+        <div class="prod-detail-price">
+            <ns:if condition="Product.HasCustomerPrice">
+                <div class="prod-detail-cost">
+                    <span class="prod-detail-cost-label"><%Product.CustomerPriceLabel%>:</span>
+                    <span class="prod-detail-cost-value"><%Product.CustomerPriceText%></span>
+                </div>
+            </ns:if>
+            <ns:if condition="Product.HasSalePrice">
+                <div class="prod-detail-sale">
+                    <span class="prod-detail-sale-label">On Sale For Only&nbsp;</span>
+                    <span class="prod-detail-sale-value"><%Product.SalePriceText%></span>
+                </div>
+                <br>
+            </ns:if>
+            <%Product.FacebookButton%>
+        </div>
+        <!-- END PRICE -->
+        
+        <ns:if condition="product.HasRatings">
+            <div class="prod-detail-rating">
+                <ns:ProductRating />    
+            </div>
+        </ns:if>
+        <ns:if condition="Product.LongDescription != ''">
+            <div class="prod-detail-desc">
+                <%Product.LongDescription%> <br />
+                <ns:ProductAttributes />
+            </div>
+        </ns:if>
+    </div>
+    <!-- END MIDDLE DESCRIPTION COLUMN -->    
+    <!-- BEGIN FAR RIGHT COLUMN -->    
+    <div class="floatL" id="prod-detail-var">
+        <ns:if condition="Product.HasVariations">
+            <div>
+                <h3><%Product.VariationsLabel%></h3>
+                <ns:ProductVariations />    
+            </div>
+        </ns:if>
+        <ns:if condition="Product.HasPersonalization">
+            <div>
+                <h3><%Product.PersonalizationLabel%></h3>
+                <ns:ProductPersonalization />    
+            </div>
+        </ns:if>
+        <ns:productaddtocart />    
+        <ns:productaddtoshoppinglist />    
+        <ns:if condition="Product.StockMessage != ''">
+            <div class="prod-detail-stock"><%Product.StockMessage%></div>
+        </ns:if>
+        <ns:if condition="Product.HasFreeShippingPromo || Product.HasOnSalePromo || Product.HasTaxFreePromo">
+            <div class="prod-detail-promo">
+                <ns:if condition="Product.HasFreeShippingPromo"><img src="<%Product.FreeShippingPromoImageUrl%>" alt="free shipping" /></ns:if>
+                <ns:if condition="Product.HasOnSalePromo "><img src="<%Product.OnSalePromoImageUrl%>" alt="on sale" /></ns:if>
+                <ns:if condition="Product.HasTaxFreePromo"><img src="<%Product.TaxFreePromoImageUrl%>" alt="tax free"/></ns:if>
+            </div>
+        </ns:if>
+        <ns:if condition="Product.HasQuantityDiscounts">
+            <div style="margin-top:20px">
+                <h3><%Product.QuantityDiscountsLabel%></h3>
+                <ns:ProductQuantityDiscounts />    
+            </div>
+        </ns:if>
+    </div>
+    <!-- END FAR RIGHT COLUMN -->    
+    <div class="clearer" style="height: 25px; width: 100%;">&nbsp;</div>
+    <!-- BEGIN LOWER CONTENT -->    
+    <div class="floatL" id="prod-detail-lowerL">
+        <ns:productrelatedproducts />    
+        <ns:productreviews />    
+    </div>
+    <div class="floatL" id="prod-detail-lowerR">
+        <h3>Need help with your order?</h3>
+        <p>We&rsquo;re here to help. From custom monograms to shipping questions - we can give you the answers you&rsquo;re looking for.</p>
+        <a href="/contact-us.aspx" rel="nofollow">
+            <span class="text-imr">Get your questions answered</span>
+            <img src="/themes/default-1/images/buttons/questions-answered.png" alt="get your questions answered" />    
+        </a>
+    </div>
+    <!-- END LOWER CONTENT -->    
+    <div class="clearer" style="height: 25px; width: 100%;">&nbsp;</div>

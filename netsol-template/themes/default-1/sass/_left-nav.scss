@@ -51,6 +51,11 @@
             }
 
             a {
+                &, &:hover {
+                    &, * {
+                        color: mix(white, #0f2d44, 60%) !important;
+                    }
+                }
                 &:hover {
                     background-color: #1b3c55;
                 }
