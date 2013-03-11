@@ -1,79 +1,74 @@
-﻿<div id="mastHead">
-    <a id="ccLogo" class="imr" href="/">
+﻿<div class="masthead">
+    <a class="imr logo" href="/" rel="nofollow">
         <img alt="<%Company.Name%>" src="/themes/default-1/images/layout/mastHead_cClaire-Logo.png" width="245" height="97" />
     </a>
-    <div id="utilityNav">
-        <ul style="margin-right: 10px;" id="accountTools" class="listLink hor">
-            <ns:choose>
-            <ns:when condition="User.IsLoggedIn">
-                <li id="userWelcome">
-                    <a href="/account.aspx" rel="nofollow">
-                        Welcome,&nbsp;
-                        <%User.FirstName%></a>
+    <div class="nav-util">
+        <ul class="account-tools listLink hor">
+
+            <ns:if condition="Cart.Count > 0">
+                <li class="util-checkout">
+                    <a class="input checkout sm" href="/cart.aspx" rel="nofollow">checkout</a>
                 </li>
-                <li>
-                    <ns:login layout="horizontal" logouttext="log out">
-                        <br />
-                    </ns:login>
-                </li>
+            </ns:if>
+
+            <li class="util-search">
+                <ns:search customtext="keyword or item #" type="custom"></ns:search>
+            </li>
+
+            <ns:if condition="User.IsLoggedIn">
                 <li>
                     <a href="/account.aspx">my account</a>
                 </li>
                 <li>
                     <a href="/cart.aspx">my bag</a>
                 </li>
-            </ns:when>
-            <ns:otherwise>
-                    <li id="userWelcome">Welcome,&nbsp;Guest</li>
-                    <li>
-                        <ns:login layout="horizontal" logouttext="Logout">
-                            <br />
-                        </ns:login>
-                    </li>
-            </ns:otherwise>
-            </ns:choose>
-        </ul>
-        <div style="margin-right: 10px;" id="utilSearch">
-            <ns:search customtext="keyword or item #" type="custom"></ns:search>
-        </div>
-        <ul id="extraCheckout" class="listLink hor">
-            <li>
-                <a class="input checkout sm" href="/cart.aspx">checkout</a>
+            </ns:if>
+
+            <ns:if condition="!User.IsLoggedIn">
+                <li class="guest-login">
+                    <ns:login layout="horizontal" logouttext="log out">
+                        <br />
+                    </ns:login>
+                </li>
+            </ns:if>
+            
+            <li class="user-welcome">
+                <ns:if condition="User.IsLoggedIn">
+                    <a href="/account.aspx" rel="nofollow">
+                        Welcome,&nbsp;<%User.FirstName%>
+                    </a>
+                </ns:if>
+                <ns:if condition="!User.IsLoggedIn">
+                    Welcome,&nbsp;Guest
+                </ns:if>
             </li>
+
         </ul>
     </div>
     <!--/ utilityNav -->
-    <div id="mainNav" class="&lt;%Category.Name%&gt;">
+    <div class="nav-main &lt;%Category.Name%&gt;">
         <ul class="listLink hor">
             <li id="accessories">
-                <a href="/accessories/default.aspx"> <em>Accessories</em>
-                </a>
+                <a href="/accessories/default.aspx">Accessories</a>
             </li>
             <li id="linens">
-                <a href="/linens/default.aspx"> <em>Linens</em>
-                </a>
+                <a href="/linens/default.aspx">Linens</a>
             </li>
             <li id="apparel">
-                <a href="/apparel/default.aspx">
-                    <em>Apparel</em>
-                </a>
+                <a href="/apparel/default.aspx">Apparel</a>
             </li>
             <li id="baby">
-                <a href="/baby/default.aspx">
-                    <em>Baby</em>
-                </a>
+                <a href="/baby/default.aspx">Baby</a>
             </li>
             <li id="drinkware">
-                <a href="/drinkware/default.aspx">
-                    <em>Drinkware</em>
-                </a>
+                <a href="/drinkware/default.aspx">Drinkware</a>
             </li>
             <li id="cart">
-                <a href="/cart.aspx"><em>Shopping Bag
+                <a href="/cart.aspx">Shopping Bag
                     <ns:choose>
                         <ns:when condition="Cart.Count != 0">(<%Cart.Count%>)</ns:when>
                     </ns:choose>
-                    | Checkout</em> 
+                    | Checkout
                 </a>
             </li>
         </ul>
