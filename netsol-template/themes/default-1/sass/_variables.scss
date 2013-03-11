@@ -1,9 +1,56 @@
-$wrapperWidth: 1260px;
-$templateWidth: 1010px;
-$templateBorder: 2px;
-$templatePad: 2px;
-$leftColWidth: 132px;
-$leftColMargin: 20px;
-$sectionPad: 20px;
-$sectionOffset: 3px;
-$sectionWidth: $templateWidth - ($sectionPad * 2) + $sectionOffset;
+
+//  STUPID ASP WEBFORMS ID NAMES
+// ----------------------------------------------
+    $nsLoginID: "#ctl00_ctl09_lvDisplay";
+
+
+//  SIZES
+// ----------------------------------------------
+    $wrapperWidth: 1260px;
+    $wrapperMinHeight: 400px;
+    
+    $templateWidth: 1010px;
+    $templateBdWidth: 2px;
+    $templatePad: 2px;
+
+    $mastTopBdWidth: 4px;
+    $mastHeight: 103px;
+
+    $mastUtilNavWidth: 650px;
+    $mastUtilNavHeight: 26px;
+    $mastUtilNavOffsetRight: 35px;
+
+    $mastLogoUrl: "layout/mastHead_cClaire-Logo.png"; // 2x image (for retina)
+    $mastLogoWidth: image-width($mastLogoUrl) / 2;
+    $mastLogoHeight: image-height($mastLogoUrl) / 2;
+
+    $mastLogoArea: $templateWidth - ($mastUtilNavWidth + $mastUtilNavOffsetRight); // space reserved for the logo
+    $mastLogoLeftOffset: ($mastLogoArea - $mastLogoWidth) / 2;
+
+    $leftColWidth: 132px;
+    $leftColMargin: 20px;
+    
+    $sectionPad: 20px;
+    $sectionOffset: 3px;
+    $sectionWidth: $templateWidth - ($sectionPad * 2) + $sectionOffset;
+
+    $prodListThumbWidth: 190px;
+    $prodListThumbHeight: 142px;
+
+    // typography
+
+        $baseFontSize: 12px;
+        $baseLineHeight: 18px;
+
+//  COLORS
+// ----------------------------------------------
+
+    $templateBdColor: #c0bc9c;
+    $bodyTextColor: #727272;
+    $bodyBgColor: #e8e5c0;
+    $mastBgColor: #11548e;
+    $mastBgColorLight: #126199;
+    $footerBgColor: darken($mastBgColor, 25%);
+    $mainNavBgHover: lighten($mastBgColorLight, 15%);
+    $mainNavBgActive: #fff;
+
