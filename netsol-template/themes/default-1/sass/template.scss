@@ -3,17 +3,18 @@
 // C.Claire Embroidery Styles */
 @import "cclaire-ecom";
 @import "buttons";
-@import "main-nav";
-@import "util-nav";
+.nav-main {
+    @import "main-nav";
+}
+.nav-util {
+    @import "util-nav";
+}
 @import "left-nav";
 @import "header";
 @import "footer";
 
 //  PAGE TYPES
 // ----------------------------------------------
-
-@import "cart";
-@import "products";
 
 .index-page {
     @import "home";
@@ -23,12 +24,14 @@
     @import "categories";
 }
 
-.checkout-page {
-    @import "checkout";
-}
-
 .product-page-type {
     @import "product-detail";
+}
+
+
+@import "cart";
+.checkout-page {
+    @import "checkout";
 }
 
 

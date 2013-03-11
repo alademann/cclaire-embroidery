@@ -4,15 +4,15 @@
 // ----------------------------------------------
 
 
-#ctl00_columns {
+.page-body-columns {
     padding: 0 !important;
-    width: 1006px !important;
+    // width: 1006px !important;
     margin-bottom: -6px;
 }
 
-.page-body-columns .page-body-columns {
-    margin: -2px -2px -10px -2px !important;
-}
+// .page-body-columns .page-body-columns {
+//     margin: -2px -2px -10px -2px !important;
+// }
 
 .section {
     padding-top: 0;

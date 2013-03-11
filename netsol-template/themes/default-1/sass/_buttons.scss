@@ -31,7 +31,7 @@
         height: 18px !important;
 
         &.login {
-            background-image: url("../images/buttons/login_sm.png");
+            background-image: image-url("buttons/login_sm.png");
         }
 
     }
@@ -43,7 +43,7 @@
         width: 56px; 
 
         &.sm, small & {
-            background-image: url("../images/buttons/search_sm.png");
+            background-image: image-url("buttons/search_sm.png");
         } 
 
     }
@@ -54,7 +54,7 @@
         width: 73px;
 
         &.sm, small & {
-            background-image: url("../images/buttons/checkout_sm.png");
+            background-image: image-url("buttons/checkout_sm.png");
         }
 
     }

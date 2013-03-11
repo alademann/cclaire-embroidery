@@ -1,8 +1,18 @@
-// inline styles for header */
-.prod-detail-sale-label, .prod-detail-sale-value {
-    font-size: 13px; 
-    color: #000000;
-} 
-.product-list-save {
-    display: none !important;
+
+.masthead {
+    height: $mastHeight;
+    width: $templateWidth;
+    position: relative;
+    top: 0;
+    left: 0;
+    // bg image is the background of the utility navigation */
+    background: image-url("layout/mastHead_utilityNav_bg.png") 325px top no-repeat;
+    .logo {
+        position: absolute;
+        top: $mastTopBdWidth;
+        left: $mastLogoLeftOffset; // 31px
+        width: $mastLogoWidth;
+        height: $mastLogoHeight; 
+        text-decoration: none !important;
+    }
 }

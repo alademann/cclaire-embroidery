@@ -6,7 +6,7 @@
     width: 100%;
     height: 51px;
     z-index: 998; // so the florals overlap it in a small screen height situation - but not any content */
-    background: #123047 url("../images/layout/footer_bg.png") left bottom repeat-x;
+    background: $footerBgColor image-url("layout/footer_bg.png") left bottom repeat-x;
     color: #135f99;
     font: 10px/50px normal Verdana, Arial, Helvetica, sans-serif;
     *zoom: 1;
@@ -46,9 +46,9 @@
     left: 0;
     bottom: 0;
     margin-bottom: 0;
-    background-color: #e8e5c0; 
+    background-color: $bodyBgColor; 
     padding-top: 10px;
-    border-top: 2px solid #c0bc9c;
+    border-top: 2px solid $templateBdColor;
     margin-top: -12px;
 }
 
@@ -60,7 +60,7 @@
     float: left;
     height: 200px;
     padding-right: 15px; // to make room for the divider image
-    background: url("../images/layout/subFooter_vDivider.png") right top no-repeat;
+    background: image-url("layout/subFooter_vDivider.png") right top no-repeat;
 
     font: 12px/18px normal Georgia, "Times New Roman", Times, serif;
     color: #4a4432;
@@ -92,7 +92,7 @@
             left: 4px;
             width: 54px;
             height: 20px;
-            background: url("../images/buttons/btn_subFooter_newsletterSignup.png") left bottom no-repeat;
+            background: image-url("buttons/btn_subFooter_newsletterSignup.png") left bottom no-repeat;
             text-indent: -999em;
 
             &.hover, &:hover {
@@ -115,7 +115,7 @@
         position: relative;
         z-index: 0; // keep the title behind the content box within the subFooter box */
         top: 28px;
-        background: url("../images/layout/subFooter_titles.png") left top no-repeat;
+        background: image-url("layout/subFooter_titles.png") left top no-repeat;
     }
     // specific images used for titles
     &#needHelp .title {
@@ -153,17 +153,17 @@
         width: 153px;
         position: relative;
         top: 0;
-        background: url("../images/layout/subFooter_blockquote.png") left top no-repeat;
+        background: image-url("layout/subFooter_blockquote.png") left top no-repeat;
     }
 
     .listLink {
         li {
             // solid dual border divider image
-            background: url("../images/layout/subFooter_listLink_divider.png") left bottom repeat-x;
+            background: image-url("layout/subFooter_listLink_divider.png") left bottom repeat-x;
             
             a {
                 // gradual horizontal fade-in overlap border divider image
-                background: url("../images/layout/subFooter_listLink_fadeDivider.png") left bottom no-repeat;
+                background: image-url("layout/subFooter_listLink_fadeDivider.png") left bottom no-repeat;
             }
         }
     }
@@ -196,5 +196,5 @@
     left: 52px;
     top: -2px;
     z-index: 2; // keep above the .featured_boxe(s) and the footer */
-    background: transparent url("../images/layout/subFooter_floral_bl.png") left top no-repeat;// TODO: 24-bit alpha pngfix for the <img> nested within this */
+    background: transparent image-url("layout/subFooter_floral_bl.png") left top no-repeat;// TODO: 24-bit alpha pngfix for the <img> nested within this */
 }

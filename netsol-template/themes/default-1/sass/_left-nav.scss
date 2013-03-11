@@ -5,7 +5,7 @@
 
 .page-column-left {
     vertical-align: top;
-    background: transparent url("../images/layout/left-col-bg.gif") left top repeat-y;
+    background: transparent image-url("layout/left-col-bg.gif") left top repeat-y;
     #left-col-wrap {
         width: $leftColWidth;
         min-height: 353px;

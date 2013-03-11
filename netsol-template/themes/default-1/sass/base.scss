@@ -151,7 +151,7 @@ select.select { padding-right: 2px; }
 input.textbox, input.textbox-center, textarea {
     width: auto;
     height: auto;
-    background: white url("../images/layout/form_inputBG.png") left top repeat-x;
+    background: white image-url("layout/form_inputBG.png") left top repeat-x;
     border: 1px solid #b9b9b9;
 }
 input.textbox, input.textbox-center, { 

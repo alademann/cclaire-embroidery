@@ -2,10 +2,12 @@ html {
     overflow-x: hidden;
 }
 body {
-    font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; 
-    color: #727272;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    color: $bodyTextColor;
     // tile horizontally pattern blue with beige bg (top half) - extends down with solid beige color */
-    background: #e8e5c0 url("../images/layout/body_bg.png") left top repeat-x;
+    background: $bodyBgColor image-url("layout/body_bg.png") left top repeat-x;
     overflow-x: hidden; // prevent horizontal scrolling no matter what */
 }
 #wrapper {
@@ -15,28 +17,11 @@ body {
     margin-left: -#{$wrapperWidth / 2};
     text-align: center;
     width: $wrapperWidth;
-    min-height: 400px;
+    min-height: $wrapperMinHeight;
     height: auto;
-    background: transparent url("../images/layout/bodyWrapper_floral_tr.png") right 7px no-repeat;
+    background: transparent image-url("layout/bodyWrapper_floral_tr.png") right 7px no-repeat;
 }
 // divs nested within #wrapper */
-#mastHead {
-    height: 103px;
-    width: $templateWidth;
-    position: relative;
-    top: 0;
-    left: 0;
-    // bg image is the background of the utility navigation */
-    background: url("../images/layout/mastHead_utilityNav_bg.png") 325px top no-repeat;
-    #ccLogo {
-        position: absolute;
-        top: 4px;
-        left: 31px;
-        width: 245px;
-        height: 97px;
-        text-decoration: none !important;// TODO: 24-bit alpha pngfix for the <img> nested within this */
-    }
-}
 
 .page-container {
     position: relative;
@@ -49,22 +34,18 @@ body {
     }
 }
 // items nested within #contentWrapper */
-#ctl00_columns, .featured_box, .container_border {
+.page-body-columns, .featured_box, .container_border {
     background-color: white;
-    border: $templateBorder solid #c0bc9c;
+    border: $templateBdWidth solid $templateBdColor;
 }
 
-#ctl00_columns {
+.page-body-columns {
     @include box-sizing(border-box);
     width: $templateWidth;
     padding: $templatePad;
-    @include ie((6,7)) {
-        padding: 0;
-        width: 984px;
-    }
-    @include chrome {
-        padding-right: 0;
-    }
+    // @include chrome {
+    //     padding-right: 0;
+    // }
     min-height: 357px;
     margin-bottom: 10px;
     position: relative;
@@ -107,7 +88,7 @@ body {
 
 .page-column-center { 
     vertical-align: top; 
-    width: $templateWidth - ($templateBorder * 2) - ($templatePad * 2);
+    width: $templateWidth - ($templateBdWidth * 2) - ($templatePad * 2);
 }
 
 .contentBox {

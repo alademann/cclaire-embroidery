@@ -1,69 +1,74 @@
-// UTILITY NAV */
-#utilityNav {
+
+//  MASTHEAD UTILITY NAV
+//    nested within .nav-util
+// ----------------------------------------------
+
+& {
     position: absolute;
-    right: 28px;
-    top: 4px;
-    height: 26px;
-    width: 650px;
+    right: $mastUtilNavOffsetRight;
+    top: $mastTopBdWidth;
+    height: $mastUtilNavHeight;
+    width: $mastUtilNavWidth;
     font-size: 10px;
 }
-#utilityNav div, #utilityNav #accountTools {
-    float: left;
-    width: auto;
-    height: 26px;
-}
-#utilityNav #accountTools {
-    width: 335px;
-    padding-right: 10px;
-    background: transparent url("../images/layout/utilityNav_divider.png") right top no-repeat;
-}
-#utilityNav #accountTools li {
-    text-align: left;
+div, .account-tools {
     float: right;
+    width: 100%;
+    height: $mastUtilNavHeight;
 }
-#utilityNav #accountTools li#userWelcome {
-    float: left;
-    line-height: 22px;
-}
-#utilityNav #accountTools li a {
-    display: block;
-    height: 26px;
-    padding: 0 10px;
-    white-space: nowrap;
-}
-#utilityNav #accountTools li#userWelcome {
-    padding-left: 0;
-}
-// FIX THE DEFAULT LOGIN AREA IN THE MASTHEAD */
-.custom-login-vert { 
-    width: 100px !important; 
-    position: relative; 
-    top: -18px;
-    left: -75px; 
-}
-#utilityNav {
-    @include firefox {
-        .custom-login-vert, #utilSearch {
-            .textbox {
-                width: 100px;
-            }
-        }
-    }
-}
-#password-message-horz { display: none; }
-#ctl00_ctl08_lvDisplay_hzUserLabel { 
-    position: relative; 
-    bottom: -19px;
-    left: -54px; 
-}
-#ctl00_ctl08_lvDisplay_hzLoginButton {
-    margin-left: 4px;
-}
-#ctl00_ctl08_lvDisplay_hzPassLabel, #ctl00_ctl08_lvDisplay_hzPassword { display: none; }
-// FIX THE DEFAULT SEARCH AREA IN THE MASTHEAD */
-#utilSearch {
+.account-tools {
     position: relative;
-    left: 0;
+    width: 100%;
+    top: -#{$mastTopBdWidth / 2};
+    // padding-right: 10px;
+    // background: transparent image-url("layout/utilityNav_divider.png") right top no-repeat;
+    li, li a {
+        text-align: right;
+        float: right !important;
+        line-height: $mastUtilNavHeight - $mastTopBdWidth;
+        min-height: $mastUtilNavHeight - $mastTopBdWidth;
+        height: auto !important;
+        width: auto !important;
+        white-space: nowrap;
+    }
+    li {
+        $liPad: 10px;
+        padding: 0 $liPad;
+        &:last-child { padding-left: 0; position: absolute; left: $liPad; } 
+
+        &.user-welcome {
+            // for some reason this doesn't line up vertically
+            line-height: $mastUtilNavHeight - 1;
+        }
+
+        input[type='image'], button, .btn { 
+            position: relative;
+            top: 2px;
+        }
+
+    }
+
+    // make all the tables in here appear as inline block
+    $tblHeight: $mastUtilNavHeight - $mastTopBdWidth;
+    table, thead, tbody, tr, td, th { 
+        display: inline-block; 
+        position: relative;
+        float: left; 
+        line-height: $tblHeight;
+    }
+    table {
+        top: ($mastUtilNavHeight - $tblHeight) / 2;
+    }
+    td, th {
+        padding: 0 4px;
+    }
+
+    #password-message-horz, 
+    .custom-login-vert table tr:first-child td:nth-child(2) {
+        display: none;
+    }
+
 }
-#ctl00_ctl11_go { position: relative; left: 8px; }
-#extraCheckout { position: absolute; top: 1px; right: 20px; }
+
+
+// .util-checkout { position: absolute; top: 1px; right: 20px; }

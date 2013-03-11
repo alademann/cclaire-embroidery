@@ -58,6 +58,17 @@
 // ----------------------------------------------
 
 img {
+
+    // Responsive images (ensure images don't scale beyond their parents)    
+    max-width: 100%; // Part 1: Set a maxium relative to the parent
+    @include ie((7,8)) {
+        width: auto; // IE7-8 need help adjusting responsive images
+    }
+    height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+    vertical-align: middle;
+    border: 0;
+
+    // anti-aliasing control
     image-rendering: optimizeSpeed;                     // Legal fallback
     image-rendering: optimize-contrast;                 // CSS3 Proposed
     @if $mozilla-support {
