@@ -12,6 +12,7 @@ jQuery(document).ready(function(e) {
 
     var debug = false;
     var _roi = _roi || [];
+    var merchantID = '514258';
 
     var stripDollarSign = function(string){
         return string.substring(1, string.length);
@@ -84,7 +85,7 @@ jQuery(document).ready(function(e) {
 
     };
 
-    var pushOrderSummary = function(orderSummaryRowClass, orderInfoTableClass) {
+    var pushOrderSummary = function(merchID, orderSummaryRowClass, orderInfoTableClass) {
 
         var shipping,
             tax,
@@ -115,13 +116,13 @@ jQuery(document).ready(function(e) {
         });
 
 
-        _roi.push(['_setMerchantId', '514258']); // required
+        _roi.push(['_setMerchantId', merchID]); // required
         _roi.push(['_setOrderId', orderNumber]); // unique customer order ID
         _roi.push(['_setOrderAmount', orderSubtotal]); // order total without tax and shipping
         _roi.push(['_setOrderNotes', '']); // notes on order, up to 50 characters
 
         if(debug) {
-            console.log('pushing: ' + '_setMerchantId, ' + '514258');
+            console.log('pushing: ' + '_setMerchantId, ' + merchID);
             console.log('pushing: ' + '_setOrderId, ' + orderNumber);
             console.log('pushing: ' + '_setOrderAmount, ' + orderSubtotal);
             console.log('pushing: ' + '_setOrderNotes, ' + '');
@@ -130,7 +131,7 @@ jQuery(document).ready(function(e) {
     };
 
     // Step 1: add base order details
-    pushOrderSummary('invoice-summary-item', 'invoice-order-info');
+    pushOrderSummary(merchantID, 'invoice-summary-item', 'invoice-order-info');
 
     // Step 2: add every item in the order
     // where your e-commerce engine loops through each item in the cart and prints out _addItem for each
