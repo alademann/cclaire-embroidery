@@ -1,0 +1,109 @@
+{% assign row_limit = settings.products_per_row_coll | plus: 0 %}
+{% assign total_prods_to_show = row_limit | times: settings.product_rows_on_coll_page %}
+{% paginate collection.products by total_prods_to_show %}
+<div class="sixteen columns">
+    <div id="crumbs">
+        <a href="/" title="Home">Home</a>
+        &raquo;
+        <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+    </div><!-- #crumbs -->
+    
+    {% if settings.show_social_coll %}
+    <div class="social floating">
+        <span class="label">{{ settings.text_sharethis }}</span>
+        {% include 'social-sharing' %}
+    </div>
+    {% endif %}
+    
+    {% unless collection.handle == 'all' %}
+    <h1>{{ collection.title | escape }}</h1>
+    {% if collection.description != '' %}
+        <div class="content-block row">
+            {{ collection.description }}
+        </div><!-- .pagecontent -->
+    {% endif %}
+    {% endunless %}
+
+    {% if paginate.pages > 1 or collection.tags.size > 0 %}
+        <div class="ten columns alpha">
+            <div class="paging">
+            {% if paginate.pages > 1 %}
+                {% if paginate.previous %}
+                    <a class="prev" href="{{ paginate.previous.url }}">&#8249;</a>
+                {% endif %}
+                {% for part in paginate.parts %}
+                    {% if part.is_link %}
+                        <span class="page">{{ part.title | link_to: part.url }}</span>
+                    {% else %}
+                        <span class="page current">{{ part.title }}</span>
+                    {% endif %}        
+                {% endfor %}      
+                {% if paginate.next %}
+                    <a class="next" href="{{ paginate.next.url }}">&#8250;</a>
+                {% endif %}
+            {% endif %}
+            </div>&nbsp;
+        </div>
+        
+        <div class="six columns omega collectionfilter">
+            {% if collection.handle and collection.tags.size > 0 %}
+            <select id="tagfilter">
+                {% if current_tags and current_tags.size > 0 %}
+                    <option value="{{ shop.url }}/collections/{{ collection.handle }}" selected="selected">All Products</option>
+                {% else %}
+                    <option value="{{ shop.url }}/collections/{{ collection.handle }}">All Products</option>
+                {% endif %}
+                    
+                {% for tag in collection.all_tags %}
+                    {% comment %}Don't show tags used for relating products together{% endcomment %}
+                    {% capture tagstart %}{{ tag | remove_first: 'related-' }}{% endcapture %}
+                    {% if tagstart == tag %}
+                        {% if current_tags contains tag %}
+                            <option value="{{ shop.url }}/collections/{{ collection.handle }}/{{ tag | handleize }}" selected="selected">{{ tag }}</option>
+                        {% else %}
+                            <option value="{{ shop.url }}/collections/{{ collection.handle }}/{{ tag | handleize }}">{{ tag }}</option>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <script>
+            $(function(){
+                $('#tagfilter').change(function(){
+                    window.location = $(this).val();
+                });
+            });
+            </script>
+            {% endif %}
+        &nbsp;</div>
+    {% endif %}
+</div>
+{% if collection.products.size == 0 %}
+    <div class="sixteen columns">There are no products here.</div>
+{% else %}
+    <div class="productlist">
+    
+    {% for product in collection.products %}
+        {% include 'product-list-repeatable-item' with product %}
+    {% endfor %}
+    </div><!-- .productlist -->
+{% endif %}
+
+{% if settings.use_inf_scroll == true %}
+<script>
+$('.productlist').infinitescroll({
+    navSelector  : "div.paging",
+    nextSelector : "div.paging .next",
+    itemSelector : "#maincontent .productlist .product, #maincontent .productlist .cf",
+    loading: {
+        img         : '{{ settings.loading_graphic | asset_url }}',
+        msgText     : 'Loading more products...',
+        finishedMsg : 'There are no more products in this collection.'
+    }
+}, function(items){    
+    $(items).find('img:not(.altimg)').each(function(){
+        $(this).trigger('initprodimg');
+    });
+});
+</script>
+{% endif %}
+{% endpaginate %}
