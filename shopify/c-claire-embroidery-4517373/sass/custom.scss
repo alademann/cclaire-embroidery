@@ -3,3 +3,112 @@
  */
 
 @import 'compass';
+@import 'variables';
+
+// CONTENT SECTION TWEAKS
+// -------------------------
+#maincontent .contentsection {
+    &.social {
+        // the buttons that show up in this one
+        // throw off the overall height
+        padding-bottom: 3px;
+
+        // center the buttons
+        > .socialitem, 
+        > a {
+            margin-top: -1px;
+        }
+    }
+} // END .contentsection
+
+.description ul.tabs li a {
+    // DEFAULT PADDING - see "RESPONSIVE" section for 
+    // additional padding based on media-queries
+    padding: 0 15px;
+    // needed for specificity
+    &.active {
+        padding-top: 4px;
+    }
+}
+
+
+// PRODUCT IMAGES
+// -------------------------
+
+
+@function calcProdImgMinHeight($colWidth) {
+    @return floor($colWidth * $prodImgHeightRatio);
+}
+#productinfo {
+    // make sure the columns line up when they are side-by-side
+    #rg-gallery,
+    #detail { 
+        margin-top: $prodColumnTopMargin; 
+    }
+    #detail > h1 {
+        margin-top: 0;
+        padding: 5px 0 0 0;
+    }
+}
+
+.rg-image-wrapper {
+    padding: 0;
+    // DEFAULT MIN HEIGHT - see "RESPONSIVE" section for 
+    // additional min-heights based on media-queries
+    .eight.columns & {
+        min-height: calcProdImgMinHeight(460px);
+    }
+}
+
+// Product image thumbnail nav
+.es-carousel-wrapper {
+    padding: 2px 0;
+}
+
+// RESPONSIVE
+// -------------------------
+// Note: Design for a width of 768px (PORTRAIT TABLET)
+// COLUMNS GET VERY NARROW
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .eight.columns { 
+        .rg-image-wrapper {
+            min-height: calcProdImgMinHeight(364px);
+        }
+    } // END .eight.columns (left column)
+    .description ul.tabs li a {
+        padding: 0 7px;
+    }
+}
+// Note: Design for a width of 320px
+// GRID ELEMENTS ARE STACKED VERTICALLY
+@media only screen and (max-width: 767px) {
+    // add some vertical space below product info
+    // so that related products doesn't distract from the buy now button
+    #productinfo { margin-bottom: 20px; }
+
+    .eight.columns { 
+        .rg-image-wrapper {
+            min-height: calcProdImgMinHeight(300px);
+        }
+        // HIDE EXTRAS TO KEEP LAYOUT CLEAN
+        .contentsection {
+            &.social, 
+            &.producttype { display: none; }
+        }
+    } // END .eight.columns (left column)
+
+    // HIDE EXTRAS TO KEEP LAYOUT CLEAN
+    #maincontent #crumbs {
+        display: none;
+    }
+}
+// Note: Design for a width of 480px
+// GRID ELEMENTS ARE STACKED VERTICALLY
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .eight.columns { 
+        .rg-image-wrapper {
+            min-height: calcProdImgMinHeight(420px);
+        }
+    } // END .eight.columns (left column)
+}
+

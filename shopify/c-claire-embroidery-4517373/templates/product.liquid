@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </noscript>
-            
+
             <div class="rg-thumbs">
                 <!-- Elastislide Carousel Thumbnail Viewer -->
                 <div class="es-carousel-wrapper">
@@ -92,17 +92,18 @@
         </div><!--/ rg-gallery -->
         
         <!-- under gallery -->
+
         {% if settings.show_social_product %}
         <div class="social contentsection">
             <span class="label">{{ settings.text_sharethis }}</span>
             {% include 'social-sharing' %}
         </div>
+        {% endif %}        
+        {% if settings.prod_show_type %}
+        <div class="producttype contentsection">See more: {{ product.type | link_to_type }}</div>
         {% endif %}
 
-        <div class="description contentsection" itemprop="description">{% include 'process-html' with product.description %}</div>
-        
-        {% if settings.prod_show_type %}<div class="contentsection">See more: {{ product.type | link_to_type }}</div>{% endif %}
-    </div>
+    </div><!--/ eight columns (left column) -->
     
     <div id="detail" class="seven columns offset-by-one">
  
@@ -115,6 +116,9 @@
             {% if product.variants.first.compare_at_price > product.variants.first.price %}
                 <div class="was-price">was {{ product.variants.first.compare_at_price | money }}</div>
             {% endif %}
+        </div>
+        <div class="description contentsection" itemprop="description">
+            {% include 'process-html' with product.description %}
         </div>
         
         {% if product.available %}
@@ -186,13 +190,15 @@
             </div>
             
             <div class="addbuttoncont">
-              <!-- Shappify Options -->
-
- {% if shappify_options_loaded == "0" %}
- {% assign shappify_options_loaded = "1" %}
- {% include 'shappify-options' %}
- {% endif %}
+                <!-- Shappify Options -->
+                {% if shappify_options_loaded == "0" %}
+                    {% assign shappify_options_loaded = "1" %}
+                    {% include 'shappify-options' %}
+                {% endif %}
+                <!--/ Shappify Options -->
+                
                 <input type="submit" name ="add" id="updates_{{ item.id }}" class="button large plus" value="ADD TO CART" />
+
             </div>
             
             <script>
@@ -284,7 +290,7 @@
             {% endif %}
             </div>
         {% endif %}
-    </div><!-- #detail -->
+    </div><!-- #detail (right column) -->
 </div>
 
 {% include 'product-page-related' with product %}
