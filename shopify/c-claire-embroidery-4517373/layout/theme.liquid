@@ -298,5 +298,31 @@ input:focus, textarea:focus {
     {% include 'theme-footer' %}
     <a id="scrolltotop" href="#util-bar">Scroll to top</a>
     
+    <script>
+        $(function() {
+            // REVEAL OPTIONS WHEN THE "DUMMY" ADD TO CART BUTTON IS CLICKED
+            var $dummyAddBtn = $('#showOptions');
+            var $options = $('.options');
+            var $shappifyOptions = $('#shappify_custom_options');
+            console.log($dummyAddBtn);
+            $dummyAddBtn.click(function(){
+                console.log("clicked");
+                $(this).addClass('hide');
+                $options.addClass('in');
+            });
+
+            setTimeout(function(){
+                // check to see if there are no shappify options
+                // if there are not... fade the options in
+                var anyShappifyOptions = $shappifyOptions.attr('style') == '';
+                console.log($shappifyOptions.attr('style'));
+                console.log(anyShappifyOptions);
+                if(!anyShappifyOptions) {
+                    $dummyAddBtn.addClass('hide');
+                    $options.addClass('in');
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>

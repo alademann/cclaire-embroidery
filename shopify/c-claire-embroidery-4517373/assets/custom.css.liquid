@@ -79,67 +79,95 @@
   line-height: 28px;
 }
 /* line 73, ../sass/custom.scss */
-#productinfo #rg-gallery .addbuttoncount,
-#productinfo #detail .addbuttoncount {
+#productinfo #rg-gallery .addbuttoncont,
+#productinfo #detail .addbuttoncont {
   float: left;
   clear: both;
   width: 100%;
   margin-top: 20px;
 }
-/* line 80, ../sass/custom.scss */
+/* line 78, ../sass/custom.scss */
+#productinfo #rg-gallery .addbuttoncont.dummy,
+#productinfo #detail .addbuttoncont.dummy {
+  margin-top: 0;
+}
+/* line 83, ../sass/custom.scss */
 #productinfo .singleimage {
   margin-top: 0;
   padding-bottom: 20px;
 }
 
-/* line 86, ../sass/custom.scss */
+/* line 89, ../sass/custom.scss */
 .rg-image-wrapper {
   padding: 0;
 }
-/* line 90, ../sass/custom.scss */
+/* line 93, ../sass/custom.scss */
 .eight.columns .rg-image-wrapper {
   min-height: 342px;
 }
 
-/* line 96, ../sass/custom.scss */
+/* line 99, ../sass/custom.scss */
 .es-carousel-wrapper {
   padding: 2px 0;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-  /* line 106, ../sass/custom.scss */
+  /* line 109, ../sass/custom.scss */
   .eight.columns .rg-image-wrapper {
     min-height: 271px;
   }
 
-  /* line 110, ../sass/custom.scss */
+  /* line 113, ../sass/custom.scss */
   .description ul.tabs li a {
     padding: 0 7px;
   }
 }
 @media only screen and (max-width: 767px) {
-  /* line 119, ../sass/custom.scss */
+  /* line 122, ../sass/custom.scss */
   #productinfo {
     margin-bottom: 20px;
   }
 
-  /* line 122, ../sass/custom.scss */
+  /* line 125, ../sass/custom.scss */
   .eight.columns .rg-image-wrapper {
     min-height: 223px;
   }
-  /* line 128, ../sass/custom.scss */
+  /* line 131, ../sass/custom.scss */
   .eight.columns .contentsection.social, .eight.columns .contentsection.producttype {
     display: none;
   }
 
-  /* line 133, ../sass/custom.scss */
+  /* line 136, ../sass/custom.scss */
   #maincontent #crumbs {
     display: none;
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  /* line 141, ../sass/custom.scss */
+  /* line 144, ../sass/custom.scss */
   .eight.columns .rg-image-wrapper {
     min-height: 313px;
   }
+}
+/* line 1, ../sass/_utilities.scss */
+.collapse {
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+  height: 0;
+  overflow: hidden;
+}
+/* line 6, ../sass/_utilities.scss */
+.collapse.in {
+  height: auto;
+}
+
+/* line 10, ../sass/_utilities.scss */
+.hide {
+  display: none !important;
+}
+
+/* line 13, ../sass/_utilities.scss */
+.show {
+  display: inherit !important;
 }

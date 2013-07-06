@@ -123,15 +123,22 @@
         
         {% if product.available %}
         <form action="/cart/add" method="post" id="product-form" class="shappify_add_to_cart_form" enctype="multipart/form-data" >
-            <div class="options">
-            {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
-            
-            <!-- Shappify Options -->
+
+            <!-- OPTIONS container is shown only after they click the first dummy "add to cart" button if shappify options are in-play -->
             {% if shappify_options_loaded == "0" %}
                 {% assign shappify_options_loaded = "1" %}
-                {% include 'shappify-options' %}
             {% endif %}
-            <!--/ Shappify Options -->
+
+            {% if shappify_options_loaded == "1" %}
+            <div class="options collapse">
+                <!-- Shappify Options -->
+                {% include 'shappify-options' %}
+                <!--/ Shappify Options -->
+            {% else %}
+            <div class="options">
+            {% endif %}
+
+            {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
 
             <!-- DEFAULT SHOPPIFY OPTIONS -->
             <div class="selectors">
@@ -202,11 +209,19 @@
             {% endif %}
             <!--/ END DEFAULT SHOPPIFY OPTIONS -->
 
+                <!-- ACTUAL ADD TO CART BUTTON -->
+                <div class="addbuttoncont">
+                    <input type="submit" name="add" id="updates_{{ item.id }}" class="button large plus" value="ADD TO CART" />
+                </div>
+
             </div><!--/ options -->
-            
-            <div class="addbuttoncont">
-                <input type="submit" name ="add" id="updates_{{ item.id }}" class="button large plus" value="ADD TO CART" />
-            </div>
+
+            {% if shappify_options_loaded == "1" %}
+                <!-- DUMMY ADD TO CART BUTTON (simply reveals options) -->
+                <div class="addbuttoncont button dummy">
+                    <a id="showOptions" class="button large plus">ADD TO CART</a>
+                </div>
+            {% endif %}
             
             <script>
                 Shopify.money_format = '{{shop.money_format | replace: "'", '"'}}';

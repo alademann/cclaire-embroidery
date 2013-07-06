@@ -70,11 +70,14 @@
             padding: 0;
             line-height: $prodNameLineHeight;
         }
-        .addbuttoncount {
+        .addbuttoncont {
             float: left;
             clear: both;
             width: 100%;
             margin-top: $prodOptionMargin * 2; 
+            &.dummy {
+                margin-top: 0;
+            }
         }
     }
     .singleimage { 
@@ -143,4 +146,8 @@
         }
     } // END .eight.columns (left column)
 }
+
+
+// MUST BE LAST
+@import 'utilities';
 

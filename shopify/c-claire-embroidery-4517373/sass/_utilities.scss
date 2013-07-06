@@ -1,0 +1,15 @@
+.collapse {
+    @include transition(height .35s ease);
+    height: 0;
+    overflow: hidden;
+
+    &.in {
+        height: auto;
+    }
+}
+.hide {
+    display: none !important;
+}
+.show {
+    display: inherit !important;
+}
