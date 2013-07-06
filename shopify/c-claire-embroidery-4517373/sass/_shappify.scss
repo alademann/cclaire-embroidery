@@ -1,0 +1,26 @@
+.options { 
+    // wrap everything in options so its specific enough
+    // to over-ride the inline css that this plugin generates in the DOM
+    
+    #shapp_option_list {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .shappify-option-title {
+        padding: 0;
+        font-size: $prodNameFontSize;
+        line-height: $prodNameLineHeight;
+    }
+    .shappify_option {
+        @extend %option;
+
+        // label on left, text-align right
+        .shappify_option_name {
+            @extend %option-label;
+        }
+        // value to the right of the label
+        .shappify_option_value {
+            @extend %option-value;
+        }
+    }
+}

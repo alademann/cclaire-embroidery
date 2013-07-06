@@ -124,21 +124,37 @@
         {% if product.available %}
         <form action="/cart/add" method="post" id="product-form" class="shappify_add_to_cart_form" enctype="multipart/form-data" >
             <div class="options">
+            {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
+            
+            <!-- Shappify Options -->
+            {% if shappify_options_loaded == "0" %}
+                {% assign shappify_options_loaded = "1" %}
+                {% include 'shappify-options' %}
+            {% endif %}
+            <!--/ Shappify Options -->
+
+            <!-- DEFAULT SHOPPIFY OPTIONS -->
+            <div class="selectors">
                 <label for="quantity">Quantity:</label> 
-                <a href="javascript:modifyQuantity('#quantity', -1)" class="minibutton">-</a>
-                <input class="short" type="text" id="quantity" name="quantity" value="1" onfocus="this.select();" />
-                <a href="javascript:modifyQuantity('#quantity', 1)" class="minibutton">+</a>
-             {% if product.variants.size == 1 %}
+                <div class="select-wrapper">
+                    <a href="javascript:modifyQuantity('#quantity', -1)" class="minibutton">-</a>
+                    <input class="short" type="text" id="quantity" name="quantity" value="1" onfocus="this.select();" />
+                    <a href="javascript:modifyQuantity('#quantity', 1)" class="minibutton">+</a>
+                </div>
+            </div>
+            {% if product.variants.size == 1 %}
                 <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
                 {% if settings.prod_show_opts_single %}<p>{{ product.options.first }}: {{ product.variants.first.title }}</p>{% endif %}
             {% else %}
                 <div class="selectors">
                     <label for="product-select">{{ product.options.first }}:</label>
-                    <select id="product-select" name="id" class="noreplace">
-            			{% for variant in product.variants %}
-        				    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-        				{% endfor %}
-    				</select>
+                    <div class="select-wrapper">
+                        <select id="product-select" name="id" class="noreplace">
+                            {% for variant in product.variants %}
+                                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <script type="text/javascript">
                     var selectCallback = function(variant, selector) {
@@ -184,15 +200,7 @@
                     });
                 </script>
             {% endif %}
-            
-            {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
-            
-            <!-- Shappify Options -->
-            {% if shappify_options_loaded == "0" %}
-                {% assign shappify_options_loaded = "1" %}
-                {% include 'shappify-options' %}
-            {% endif %}
-            <!--/ Shappify Options -->
+            <!--/ END DEFAULT SHOPPIFY OPTIONS -->
 
             </div><!--/ options -->
             

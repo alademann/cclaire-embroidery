@@ -2,3 +2,27 @@
 // -------------------------
 $prodImgHeightRatio: 0.74565217391304;
 $prodColumnTopMargin: 0; // was 10px stock
+$prodNameFontSize: 20px;
+$prodNameLineHeight: 28px;
+$prodOptionLabelWidth: 160px;
+$prodOptionLabelPad: 10px;
+$prodOptionMargin: 10px;
+
+// labels on left with right aligned text
+// with options to the right spanning remaining width
+%option {
+    padding-bottom: 0;
+    margin-bottom: $prodOptionMargin;
+    position: relative;
+    min-heght: 38px; // height of <input>
+}
+%option-label {
+    float: left;
+    text-align: right;
+    width: $prodOptionLabelWidth;
+}
+%option-value {
+    position: absolute;
+    left: $prodOptionLabelWidth + $prodOptionLabelPad;
+    right: 0;
+}
