@@ -8,6 +8,7 @@
 
 {{ 'style.css' | asset_url | stylesheet_tag }}
 {{ 'skeleton.css' | asset_url | stylesheet_tag }}
+{{ 'custom.css' | asset_url | stylesheet_tag }}
 
 {% comment %} Google Web Font imports {% endcomment %}
 {% assign font_heading_type_split = settings.font_heading_type | split: '|' %}
