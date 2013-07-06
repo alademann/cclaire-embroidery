@@ -244,8 +244,12 @@ $(function(){
     };
     
     //Restyle all select dropdowns
-    $.selectReplace = function(){
-        $('select:not(.replaced, .noreplace)').each(function(){
+    $.selectReplace = function(container){
+        var $theseSelects = $('select:not(.replaced, .noreplace)');
+        if(container) {
+            $theseSelects = $(container).find('select:not(.replaced, .noreplace)');
+        }
+        $theseSelects.each(function(){
             //Add formatting containers
             var firstText = $(this).selectedOrFirstText();
             if(typeof($(this).data('default')) != 'undefined') {

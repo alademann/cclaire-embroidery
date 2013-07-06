@@ -178,27 +178,26 @@
                         if($('.selector-wrapper .single-option-selector').length != 1) {
                             $('#product-select').siblings('label[for="product-select"]').hide();
                         }
-                        
+
                         //Style any added select dropdowns
-                        $.selectReplace();
+                        $.selectReplace('#product-form');
                     });
                 </script>
             {% endif %}
             
             {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
             
-            </div>
+            <!-- Shappify Options -->
+            {% if shappify_options_loaded == "0" %}
+                {% assign shappify_options_loaded = "1" %}
+                {% include 'shappify-options' %}
+            {% endif %}
+            <!--/ Shappify Options -->
+
+            </div><!--/ options -->
             
             <div class="addbuttoncont">
-                <!-- Shappify Options -->
-                {% if shappify_options_loaded == "0" %}
-                    {% assign shappify_options_loaded = "1" %}
-                    {% include 'shappify-options' %}
-                {% endif %}
-                <!--/ Shappify Options -->
-                
                 <input type="submit" name ="add" id="updates_{{ item.id }}" class="button large plus" value="ADD TO CART" />
-
             </div>
             
             <script>
