@@ -13,90 +13,98 @@
 
 <div id="productinfo" class="cf" data-featimgurl="{{ product.featured_image | product_img_url: 'small' }}" itemscope itemtype="http://schema.org/Product">
     <div class="eight columns">
-        {% if product.images.size > 1 and settings.prod_det_gall_method != 'hide' %}
         <div id="rg-gallery" class="rg-gallery">
-    		<div class="rg-thumbs">
-    			<!-- Elastislide Carousel Thumbnail Viewer -->
-    			<div class="es-carousel-wrapper">
-    				<div class="es-carousel">
-    					<ul>
-                        {% for image in product.images %}<li><a href="#"><img title="{{ image.alt }}" src="{{ image | product_img_url: 'small' }}" data-large="{{ image | product_img_url: 'large' }}" data-zoom="{{ image | product_img_url: 'master' }}" alt="{{ image.alt }}" data-description="" /></a></li>{% endfor %}
-    					</ul>
-    				</div>
-    			</div>
-    			<!-- End Elastislide Carousel Thumbnail Viewer -->
-    		</div><!-- rg-thumbs -->
-            
+        {% if product.images.size > 1 and settings.prod_det_gall_method != 'hide' %}
+
+            <script id="img-wrapper-tmpl" type="text/x-jquery-tmpl">    
+                <div class="rg-image-wrapper">
+                    <div class="rg-image"></div>
+                    <div class="rg-loading"></div>
+                    <div class="rg-caption-wrapper">
+                        <div class="rg-caption" style="display:none;">
+                            <p></p>
+                        </div>
+                    </div>
+                    {{if itemsCount > 1}}
+                        <div class="rg-image-nav">
+                            <a href="#" class="rg-image-nav-prev">Previous Image</a>
+                            <a href="#" class="rg-image-nav-next">Next Image</a>
+                        </div>
+                    {{/if}}
+                </div>
+            </script>
+
             <noscript>
                 <div class="rg-image-wrapper">
-        			<div class="rg-image"><img src="{{ product.featured_image | product_img_url: 'large' }}" /></div>
-        			<div class="rg-loading"></div>
-        			<div class="rg-caption-wrapper">
-        				<div class="rg-caption" style="display:none;">
-        					<p></p>
-        				</div>
-        			</div>
-        		</div>
+                    <div class="rg-image"><img src="{{ product.featured_image | product_img_url: 'large' }}" /></div>
+                    <div class="rg-loading"></div>
+                    <div class="rg-caption-wrapper">
+                        <div class="rg-caption" style="display:none;">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
             </noscript>
-    	</div><!-- rg-gallery -->
-        <script id="img-wrapper-tmpl" type="text/x-jquery-tmpl">    
-            <div class="rg-image-wrapper">
-    			{{if itemsCount > 1}}
-    				<div class="rg-image-nav">
-    					<a href="#" class="rg-image-nav-prev">Previous Image</a>
-    					<a href="#" class="rg-image-nav-next">Next Image</a>
-    				</div>
-    			{{/if}}
-    			<div class="rg-image"></div>
-    			<div class="rg-loading"></div>
-    			<div class="rg-caption-wrapper">
-    				<div class="rg-caption" style="display:none;">
-    					<p></p>
-    				</div>
-    			</div>
-    		</div>
-    	</script>
+            
+            <div class="rg-thumbs">
+                <!-- Elastislide Carousel Thumbnail Viewer -->
+                <div class="es-carousel-wrapper">
+                    <div class="es-carousel">
+                        <ul>
+                        {% for image in product.images %}<li><a href="#"><img title="{{ image.alt }}" src="{{ image | product_img_url: 'small' }}" data-large="{{ image | product_img_url: 'large' }}" data-zoom="{{ image | product_img_url: 'master' }}" alt="{{ image.alt }}" data-description="" /></a></li>{% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Elastislide Carousel Thumbnail Viewer -->
+            </div><!-- rg-thumbs -->
+            
         {% elsif product.images.size == 1 or settings.prod_det_gall_method == 'hide' %}
-        <div class="singleimage">
-            {% if settings.prod_det_gall_method == 'zoom' %}
-        	<a href="{{ product.featured_image | product_img_url: 'master' }}" target="_blank"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.featured_image.alt }}" /></a>
-            {% elsif settings.prod_det_gall_method == 'lightbox' %}
-            <a href="{{ product.featured_image | product_img_url: 'master' }}" target="_blank"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.featured_image.alt }}" /></a>
-            {% else %}
-            <a href="{{ product.featured_image | product_img_url: 'master' }}" target="_blank"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.featured_image.alt }}" /></a>
-            {% endif %}
-            {% if settings.prod_det_gall_method == 'zoom' %}
-            <script>
-                //Not when touch
-                if( !!!('ontouchstart' in window) ? 1 : 0 ) {
+            <div class="singleimage">
+                {% if settings.prod_det_gall_method == 'zoom' %}
+            	<a href="{{ product.featured_image | product_img_url: 'master' }}" target="_blank"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.featured_image.alt }}" /></a>
+                {% elsif settings.prod_det_gall_method == 'lightbox' %}
+                <a href="{{ product.featured_image | product_img_url: 'master' }}" target="_blank"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.featured_image.alt }}" /></a>
+                {% else %}
+                <a href="{{ product.featured_image | product_img_url: 'master' }}" target="_blank"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.featured_image.alt }}" /></a>
+                {% endif %}
+                {% if settings.prod_det_gall_method == 'zoom' %}
+                <script>
+                    //Not when touch
+                    if( !!!('ontouchstart' in window) ? 1 : 0 ) {
+                        $(function(){
+                            var opts = {};
+                            $.extend(opts, thumbZoomOptions);
+                            opts.blockClicks = true;
+                            $('#productinfo .singleimage a').jqzoom(opts);
+                            $('#productinfo .singleimage a').slimbox();
+                        });
+                    }
+                </script>
+                {% elsif settings.prod_det_gall_method == 'lightbox' %}
+                <script>
                     $(function(){
-                        var opts = {};
-                        $.extend(opts, thumbZoomOptions);
-                        opts.blockClicks = true;
-                        $('#productinfo .singleimage a').jqzoom(opts);
                         $('#productinfo .singleimage a').slimbox();
                     });
-                }
-            </script>
-            {% elsif settings.prod_det_gall_method == 'lightbox' %}
-            <script>
-                $(function(){
-                    $('#productinfo .singleimage a').slimbox();
-                });
-            </script>
+                </script>
+                {% endif %}
+            </div>
             {% endif %}
-        </div>
-        {% endif %}
+        </div><!--/ rg-gallery -->
+        
         <!-- under gallery -->
-    </div>
-    
-    <div id="detail" class="seven columns offset-by-one">
-     {% if settings.show_social_product %}
+        {% if settings.show_social_product %}
         <div class="social contentsection">
             <span class="label">{{ settings.text_sharethis }}</span>
             {% include 'social-sharing' %}
         </div>
         {% endif %}
+
+        <div class="description contentsection" itemprop="description">{% include 'process-html' with product.description %}</div>
+        
+        {% if settings.prod_show_type %}<div class="contentsection">See more: {{ product.type | link_to_type }}</div>{% endif %}
+    </div>
+    
+    <div id="detail" class="seven columns offset-by-one">
  
         <h1 itemprop="name">{{ product.title }}</h1>
         {% if settings.prod_show_vendor %}
@@ -246,17 +254,6 @@
         </form>
         {% else %}
         <h3>{{ settings.text_soldout }}</h3>
-        {% endif %}
-        
-        <div class="description contentsection" itemprop="description">{% include 'process-html' with product.description %}</div>
-        
-        {% if settings.prod_show_type %}<div class="contentsection">See more: {{ product.type | link_to_type }}</div>{% endif %}
-        
-        {% if settings.show_social_product %}
-        <div class="social contentsection">
-            <span class="label">{{ settings.text_sharethis }}</span>
-            {% include 'social-sharing' %}
-        </div>
         {% endif %}
         
         {% comment %} List out product tags - don't show special 'related' tags {% endcomment %}
