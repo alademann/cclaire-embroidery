@@ -119,6 +119,9 @@ select {
             margin-top: $prodOptionMargin * 2; 
             &.dummy {
                 margin-top: 0;
+                a {
+                    width: auto;
+                }
             }
         }
     }
