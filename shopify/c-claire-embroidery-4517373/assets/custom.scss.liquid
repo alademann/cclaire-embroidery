@@ -1,6 +1,21 @@
 /**
  * CClaire Embroidery Custom Shopify CSS 
  */
+
+$cclaireBtnHoverDarken: 5%;
+$color_bg_main: {{ settings.color_bg_main }};
+$color_bg_header: {{ settings.color_bg_header }};
+$color_bg_footer: {{ settings.color_bg_footer }};
+$color_nav_divider: {{ settings.color_nav_divider }};
+$color_paging_bg: {{ settings.color_paging_bg }};
+$color_form_field_bg: {{ settings.color_form_field_bg }};
+$color_form_field_border: {{ settings.color_form_field_border }};
+$color_form_field_text: {{ settings.color_form_field_text }};
+// buttons
+$color_btn_text: {{ settings.color_btn_text }};
+$color_btn_bg: {{ settings.color_btn_bg }};
+$color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
+
 .options .shappify_option, .selectors {
   padding-bottom: 0;
   margin-bottom: 10px;
@@ -114,6 +129,10 @@ select:focus {
 #productinfo #rg-gallery .addbuttoncont.dummy,
 #productinfo #detail .addbuttoncont.dummy {
   margin-top: 0;
+}
+#productinfo #rg-gallery .addbuttoncont.dummy a,
+#productinfo #detail .addbuttoncont.dummy a {
+  width: auto;
 }
 #productinfo .singleimage {
   margin-top: 0;
