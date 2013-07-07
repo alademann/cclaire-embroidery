@@ -23,7 +23,7 @@
   # $ compass compile -e development --force
   if environment != :production
     output_style = :expanded
-    line_comments = true
+    line_comments = false
     # give us all the info
     disable_warnings = false
     sass_options = {:quiet => false}
@@ -53,7 +53,8 @@
   
   on_stylesheet_saved do |filename|
     if File.exists?(filename) 
-      s = filename + ".liquid"
+      a = filename.split('.css')
+      s = a[0] + ".scss.liquid"
       puts "copying to: " + s
       FileUtils.cp(filename, s)
       puts "removing: " + filename

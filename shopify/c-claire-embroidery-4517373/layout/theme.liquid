@@ -8,7 +8,7 @@
 
 {{ 'style.css' | asset_url | stylesheet_tag }}
 {{ 'skeleton.css' | asset_url | stylesheet_tag }}
-{{ 'custom.css' | asset_url | stylesheet_tag }}
+{{ 'custom.scss.css' | asset_url | stylesheet_tag }}
 
 {% comment %} Google Web Font imports {% endcomment %}
 {% assign font_heading_type_split = settings.font_heading_type | split: '|' %}
@@ -304,9 +304,9 @@ input:focus, textarea:focus {
             var $dummyAddBtn = $('#showOptions');
             var $options = $('.options');
             var $shappifyOptions = $('#shappify_custom_options');
-            console.log($dummyAddBtn);
+            
             $dummyAddBtn.click(function(){
-                console.log("clicked");
+                
                 $(this).addClass('hide');
                 $options.addClass('in');
             });
@@ -315,8 +315,7 @@ input:focus, textarea:focus {
                 // check to see if there are no shappify options
                 // if there are not... fade the options in
                 var anyShappifyOptions = $shappifyOptions.attr('style') == '';
-                console.log($shappifyOptions.attr('style'));
-                console.log(anyShappifyOptions);
+                
                 if(!anyShappifyOptions) {
                     $dummyAddBtn.addClass('hide');
                     $options.addClass('in');

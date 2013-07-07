@@ -1,3 +1,18 @@
+// COLORS
+// -------------------------
+$cclaireGray: #3f3e3a;
+$cclaireGrayDark: #191817;
+$cclaireDividerBg: #393835;
+$cclaireBtnHoverDarken: 5%;
+
+// COLOR OPTIONS
+$cclaireGreen: #a8b73a;
+$cclaireGreenMuted: mix($cclaireGray, $cclaireGreen, 50%);
+
+$cclairePink: #e45556;
+$cclairePinkMuted: mix($cclaireGray, $cclairePink, 50%);
+@debug $cclairePinkMuted;
+
 // PRODUCT PAGES
 // -------------------------
 $prodImgHeightRatio: 0.74565217391304;
@@ -26,3 +41,36 @@ $prodOptionMargin: 10px;
     left: $prodOptionLabelWidth + $prodOptionLabelPad;
     right: 0;
 }
+
+
+// vars that we'll eventually put inside our .scss.liquid template in the editor
+// so they can change based on theme options
+$color_bg_main: $cclaireGray;
+$color_bg_header: $cclaireGrayDark;
+$color_bg_footer: $cclaireGrayDark;
+$color_nav_divider: $cclaireGreenMuted;
+$color_paging_bg: $cclaireDividerBg;
+$color_form_field_bg: #f7f7f7;
+$color_form_field_border: $cclaireDividerBg;
+$color_form_field_text: $cclaireGrayDark;
+// buttons
+$color_btn_text: #fff;
+$color_btn_bg: $cclaireGreen;
+$color_btn_alt_bg: #31302e; // slightly darker than divider bg
+
+
+
+// UNCOMMENT AND PASTE THIS IN THE LIQUID SCSS FILE
+// $cclaireBtnHoverDarken: 5%;
+// $color_bg_main: {{ settings.color_bg_main }};
+// $color_bg_header: {{ settings.color_bg_header }};
+// $color_bg_footer: {{ settings.color_bg_footer }};
+// $color_nav_divider: {{ settings.color_nav_divider }};
+// $color_paging_bg: {{ settings.color_paging_bg }};
+// $color_form_field_bg: {{ settings.color_form_field_bg }};
+// $color_form_field_border: {{ settings.color_form_field_border }};
+// $color_form_field_text: {{ settings.color_form_field_text }};
+// // buttons
+// $color_btn_text: {{ settings.color_btn_text }};
+// $color_btn_bg: {{ settings.color_btn_bg }};
+// $color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
