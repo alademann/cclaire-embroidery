@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Clean v2.0.4 -->
+
+{% include 'theme-meta' %}
+{{ content_for_header }}
+
+{{ 'style.css' | asset_url | stylesheet_tag }}
+{{ 'skeleton.css' | asset_url | stylesheet_tag }}
+{{ 'custom.scss.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Google Web Font imports {% endcomment %}
+{% assign font_heading_type_split = settings.font_heading_type | split: '|' %}
+{% assign font_logo_type_split = settings.font_logo_type | split: '|' %}
+{% assign font_nav_type_split = settings.font_nav_type | split: '|' %}
+{% assign font_standard_type_split = settings.font_standard_type | split: '|' %}
+
+{% if settings.font_heading_type == 'GWF|CUSTOM' %}
+    <link href="http://fonts.googleapis.com/css?family={{ settings.font_heading_type_custom }}" rel="stylesheet" type="text/css"/>
+{% elsif font_heading_type_split.first == 'GWF' %}
+    <link href="http://fonts.googleapis.com/css?family={{ font_heading_type_split.last }}" rel="stylesheet" type="text/css"/>
+{% endif %}
+{% if settings.font_logo_type == 'GWF|CUSTOM' %}
+    <link href="http://fonts.googleapis.com/css?family={{ settings.font_logo_type_custom }}" rel="stylesheet" type="text/css"/>
+{% elsif font_logo_type_split.first == 'GWF' %}
+    <link href="http://fonts.googleapis.com/css?family={{ font_logo_type_split.last }}" rel="stylesheet" type="text/css"/>
+{% endif %}
+{% if settings.font_nav_type == 'GWF|CUSTOM' %}
+    <link href="http://fonts.googleapis.com/css?family={{ settings.font_nav_type_custom }}" rel="stylesheet" type="text/css"/>
+{% elsif font_nav_type_split.first == 'GWF' %}
+    <link href="http://fonts.googleapis.com/css?family={{ font_nav_type_split.last }}" rel="stylesheet" type="text/css"/>
+{% endif %}
+{% if settings.font_standard_type == 'GWF|CUSTOM' %}
+    <link href="http://fonts.googleapis.com/css?family={{ settings.font_standard_type_custom }}" rel="stylesheet" type="text/css"/>
+{% elsif font_standard_type_split.first == 'GWF' %}
+    <link href="http://fonts.googleapis.com/css?family={{ font_standard_type_split.last }}" rel="stylesheet" type="text/css"/>
+{% endif %}
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+<!--[if lte IE 7]>
+    {{ 'json2.js' | shopify_asset_url | script_tag }}
+<![endif]-->
+{% if template contains 'customers' %}
+    {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+    {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+{% endif %}
+
+{% comment %} Required before custom JS {% endcomment %}
+<script>
+var underIE9 = false;
+
+//Indicate to do image fade-in
+$('html').addClass('doimgfade');
+    
+//Global colours
+var color_body_bg = '{{ settings.color_bg_main }}';
+var color_divider = '{{ settings.color_general_divider }}';
+
+//For Ajax
+Shopify.money_format = '{{shop.money_format | replace: "'", '"'}}';
+
+//Acquire loading graphic asap
+var loadingGraphic = new Image();
+loadingGraphic.src = '{{ settings.loading_graphic | asset_url }}';
+{% if template == 'collection' or template == 'search' %}
+    var productsPerRow = {{ settings.products_per_row_coll }};
+{% elsif template == 'list-collections' %}
+    var productsPerRow = {{ settings.collrow_numperrow }};
+{% elsif template == 'search' %}
+    var productsPerRow = {{ settings.products_per_row_coll }};
+{% elsif template == 'product' %}
+    var productsPerRow = 4;
+{% else %}
+    var productsPerRow = {{ settings.products_per_row_home }};
+{% endif %}
+var vertSnapWidth = 768;//When window is under this width, everything is vertically aligned
+
+var thumbZoomOptions = {  
+    zoomType: 'innerzoom',  
+    lens:true,
+{% if settings.prod_preload_thumb_zoom %}
+    preloadImages: !!!('ontouchstart' in window) ? 1 : 0, //Only repload if not touch
+{% else %}
+    preloadImages: false,
+{% endif %}
+    alwaysOn:false,
+    title:false,
+    showEffect:'fadein',
+    hideEffect:'fadeout',
+    preloadText:'',
+    blockClicks: false
+};
+</script>
+
+<!--[if lte IE 9]>
+<script>
+underIE9 = true;
+</script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+<script>
+    document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('figure');
+	document.createElement('aside');
+    document.createElement('footer');
+    document.createElement('cite');
+    document.createElement('canvas');
+</script>
+<![endif]-->
+
+{{ "slimbox2.js" | asset_url | script_tag }}
+{{ "jquery.flexslider-min.js" | asset_url | script_tag }}
+{{ "jquery.tweet.js" | asset_url | script_tag }}
+{{ "jquery.jqzoom-core-pack.js" | asset_url | script_tag }}
+{% if template contains 'blog' and settings.blog_display != 'onecolumn_side' %}
+    {{ "jquery.masonry.min.js" | asset_url | script_tag }}
+{% endif %}
+{% if template contains 'collection' and settings.use_inf_scroll == true %}
+    {{ "jquery.infinitescroll.min.js" | asset_url | script_tag }}
+{% endif %}
+{{ "blackandwhite.js" | asset_url | script_tag }}
+
+
+
+<script>
+$(function(){
+    $(window).resize(function() {
+        //Do things when theme snaps - and on DOM ready
+        var $mainCont = $('#maincontent.container');
+        var contWidth = $mainCont.width();
+        if(typeof($mainCont.data('prevwidth')) == 'undefined'
+                || $mainCont.data('prevwidth') != contWidth) {
+            //When CSS framework 'snaps'
+            
+            var productsPerRowRightNow = $(window).width() >= vertSnapWidth ? productsPerRow : 1;
+            var collsPerRowRightNow = $(window).width() >= vertSnapWidth ? {{ settings.collrow_numperrow }} : 1;
+            
+            $('.productlist').normaliseHeights({
+                numPerRow:productsPerRowRightNow,
+                itemClass:'.product',
+                textRegionClasses:'.imgcont, .title, .desc, .price'
+            });
+            $('.widgets:not(.collection-row)').normaliseHeights({
+                numPerRow:productsPerRowRightNow,
+                itemClass:'.widget',
+                textRegionClasses:'h6, .title, .align',
+                affectOnlyDirectlyChildren: true
+            });
+            $('.widgets.collection-row').normaliseHeights({
+                numPerRow:collsPerRowRightNow,
+                itemClass:'.widget',
+                textRegionClasses:'.title, .align',
+                affectOnlyDirectlyChildren: true
+            });
+            $('#mainslider').each(function(){
+                //Images?
+                var $img = $(this).find('img:first');
+                if($img.length > 0) {
+                    $(this).find('.slides li').height($img[0].naturalHeight * $(this).width() / $img[0].naturalWidth);
+                    $(this).find('.slides').css('height', '');
+                }
+            });
+            //Product pile
+            $('.productpilewidget ul').normaliseHeights({
+                numPerRow:3,
+                itemClass:'li',
+                textRegionClasses:'a'
+            });
+            //Product thumb zoom
+            $('.zoomPad').each(function(){
+                var $img = $(this).children('img');
+                var w = $img.width();
+                var h = $img.height();
+                $(this).find('.zoomPup, .zoomWindow .zoomWrapper').width(w).height(h);
+            });
+            {% if template contains 'blog' and settings.blog_display != 'onecolumn_side' %}
+            //Masonry is used to tile blog articles
+            $('.masonry').masonry({
+                itemSelector : 'article',
+                columnWidth: function( containerWidth ) {
+                    {% if settings.blog_display == 'tiled_3' %}
+                        return containerWidth / 3;
+                    {% else %}
+                        return containerWidth / 2;
+                    {% endif %}
+                }
+            });
+            {% endif %}
+            
+            {% if settings.prod_thumb_hover_method == 'zoom' %}
+            //Rebuild product thumb zoom *if it already exists*
+            $('.productlist .product .delayedzoom').each(function(){
+                if(typeof($(this).data('jqzoom')) != 'undefined') {
+                    //Rebuild zoom
+                    $(this).find('.zoomPad > img').unwrap();
+                    $(this).data('jqzoom', null).find('.zoomPup, .zoomWindow, .zoomPreload').remove();
+                    $(this).jqzoom(thumbZoomOptions);
+                }
+            });
+            {% endif %}
+        }
+        $mainCont.data('prevwidth', contWidth);
+    }).trigger('resize');
+    
+    //Trigger again once any fonts are loaded - force resize event
+    $(window).load(function(){
+        $('#maincontent.container').data('prevwidth', null);
+        $(window).trigger('resize');
+    });
+    
+    {% if template contains 'blog' and settings.blog_display != 'onecolumn_side' %}
+    //Fade in images, and resize masonry
+    $('.masonry img').css('visibility', 'hidden');
+    $('.masonry').imagesLoaded(function(){
+        $('.masonry img').hide().css('visibility','visible').fadeIn(200);
+        $('.masonry').masonry({
+            itemSelector : 'article',
+            columnWidth: function( containerWidth ) {
+                {% if settings.blog_display == 'tiled_3' %}
+                    return containerWidth / 3;
+                {% else %}
+                    return containerWidth / 2;
+                {% endif %}
+            }
+        });
+    });
+    {% endif %}
+
+    // $(document).on('DOMNodeInserted', '#shapp_option_list', function(e) {
+    //     //Style any added select dropdowns (from shappify)
+    //     $.selectReplace('#shapp_option_list');
+    // }); 
+
+});
+</script>
+
+{% comment %} CSS that needs snippets {% endcomment %}
+<style type="text/css">
+{% assign hex2rgb_hex = settings.color_highlight_hover %}
+{% include 'hex2rgb' %}
+a.highlight:hover,
+input:focus, textarea:focus {
+    -webkit-box-shadow:inset 0px 0px 60px rgba({{ hex2rgb_r }},{{ hex2rgb_g }},{{ hex2rgb_b }}, 0.3);
+    -moz-box-shadow:inset 0px 0px 60px rgba({{ hex2rgb_r }},{{ hex2rgb_g }},{{ hex2rgb_b }}, 0.3);
+    box-shadow:inset 0px 0px 60px rgba({{ hex2rgb_r }},{{ hex2rgb_g }},{{ hex2rgb_b }}, 0.3);
+}
+
+{% assign hex2rgb_hex = settings.color_general_divider %}
+{% include 'hex2rgb' %}
+#util-bar #searchcont.slideout input.search,
+#pagefooter .registercont .registerform input[type=email] {
+    border-bottom:1px solid rgba({{ hex2rgb_r }},{{ hex2rgb_g }},{{ hex2rgb_b }}, 0.5);
+}
+
+{% assign hex2rgb_hex = settings.color_slider_mask %}
+{% include 'hex2rgb' %}
+#mainslider .overlay {
+    background:{{ settings.color_slider_mask }};
+    background:rgba({{ hex2rgb_r }},{{ hex2rgb_g }},{{ hex2rgb_b }}, 0.5);
+}
+</style>
+
+<!--[if IE]>
+<style type="text/css">
+#mainslider .lowerdesc {
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99{{ settings.color_slider_mask | replace:'#','' }},endColorstr=#99{{ settings.color_slider_mask | replace:'#','' }});
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99{{ settings.color_slider_mask | replace:'#','' }},endColorstr=#99{{ settings.color_slider_mask | replace:'#','' }});
+    zoom: 1;
+} 
+</style>
+<![endif]-->
+
+</head>
+
+<body class="{% if customer %}customer-logged-in {% endif %}template-{{ template | split: '.' | first }}">
+
+    {% include 'theme-header' %}
+    	<div id="maincontent" class="container">
+        
+            {% if template == 'list-collections' %}
+                {% include 'collection-listing' %}
+            {% else %}
+                {{ content_for_layout }}
+            {% endif %}
+            {% if social_is_on_the_page and template != 'product' %}<div class="socialspacer"></div>{% endif %}
+        </div>
+    </div><!-- .bodywrap -->
+    {% include 'theme-footer' %}
+    <a id="scrolltotop" href="#util-bar">Scroll to top</a>
+    
+    <script>
+        $(function() {
+            // REVEAL OPTIONS WHEN THE "DUMMY" ADD TO CART BUTTON IS CLICKED
+            var $dummyAddBtn = $('#showOptions');
+            var $options = $('.options');
+            var $shappifyOptions = $('#shappify_custom_options');
+            
+            $dummyAddBtn.click(function(){
+                
+                $(this).addClass('hide');
+                $options.addClass('in');
+            });
+
+            setTimeout(function(){
+                // check to see if there are no shappify options
+                // if there are not... fade the options in
+                var anyShappifyOptions = $shappifyOptions.attr('style') == '';
+                
+                if(!anyShappifyOptions) {
+                    $dummyAddBtn.addClass('hide');
+                    $options.addClass('in');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

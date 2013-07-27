@@ -1,0 +1,198 @@
+/**
+ * CClaire Embroidery Custom Shopify CSS 
+ */
+
+@import 'compass';
+@import 'variables';
+@import 'shappify';
+
+// BUTTONS
+// -------------------------
+a.button, 
+input.button, 
+.button a {
+    @include box-shadow(none);
+    &:hover {
+        @include box-shadow(none);
+        background-color: #{"darken($color_btn_bg, $cclaireBtnHoverDarken)"};
+    }
+}
+
+// alt buttons (not primary green)
+a.button.altcolor,
+input.button.altcolor,
+.button.altcolor a {
+    &:hover {
+        background-color: #{"darken($color_btn_alt_bg, $cclaireBtnHoverDarken)"};
+    }
+}
+
+a, 
+button,
+input[type="submit"] {
+    &:focus {
+        outline: 0; // no native blurred outline please
+    }
+}
+
+// INPUTS
+// -------------------------
+input,
+textarea,
+select {
+    &:focus {
+        background-color: #fff;
+        outline: 0; // no native blurred outline please
+        border-color: #{"$color_btn_bg"};
+        @include box-shadow(0 0 0 1px #{"$color_btn_bg"});
+    }
+}
+
+// PRODUCT OPTIONS
+// -------------------------
+.selectors {
+    @extend %option;
+    float: left;
+    clear: both;
+    width: 100%;
+
+    label {
+        @extend %option-label;
+    }
+    .select-wrapper {
+        @extend %option-value;
+    }
+}
+.options > .selectors:first-of-type {
+    margin-top: $prodOptionMargin;
+}
+
+
+// CONTENT SECTION TWEAKS
+// -------------------------
+#maincontent .contentsection {
+    &.social {
+        // the buttons that show up in this one
+        // throw off the overall height
+        padding-bottom: 3px;
+
+        // center the buttons
+        > .socialitem, 
+        > a {
+            margin-top: -1px;
+        }
+    }
+} // END .contentsection
+
+.description ul.tabs li a {
+    // DEFAULT PADDING - see "RESPONSIVE" section for 
+    // additional padding based on media-queries
+    padding: 0 15px;
+    // needed for specificity
+    &.active {
+        padding-top: 4px;
+    }
+}
+
+
+// PRODUCT IMAGES
+// -------------------------
+
+
+@function calcProdImgMinHeight($colWidth) {
+    @return floor($colWidth * $prodImgHeightRatio);
+}
+#productinfo {
+    // make sure the columns line up when they are side-by-side
+    #rg-gallery,
+    #detail { 
+        margin-top: $prodColumnTopMargin; 
+        > h1 {
+            margin: 0;
+            padding: 0;
+            line-height: $prodNameLineHeight;
+        }
+        .addbuttoncont {
+            float: left;
+            clear: both;
+            width: 100%;
+            margin-top: $prodOptionMargin * 2; 
+            &.dummy {
+                margin-top: 0;
+                a {
+                    width: auto;
+                }
+            }
+        }
+    }
+    .singleimage { 
+        margin-top: 0; 
+        padding-bottom: $prodOptionMargin * 2;
+    }
+}
+
+.rg-image-wrapper {
+    padding: 0;
+    // DEFAULT MIN HEIGHT - see "RESPONSIVE" section for 
+    // additional min-heights based on media-queries
+    .eight.columns & {
+        min-height: calcProdImgMinHeight(460px);
+    }
+}
+
+// Product image thumbnail nav
+.es-carousel-wrapper {
+    padding: 2px 0;
+}
+
+// RESPONSIVE
+// -------------------------
+// Note: Design for a width of 768px (PORTRAIT TABLET)
+// COLUMNS GET VERY NARROW
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .eight.columns { 
+        .rg-image-wrapper {
+            min-height: calcProdImgMinHeight(364px);
+        }
+    } // END .eight.columns (left column)
+    .description ul.tabs li a {
+        padding: 0 7px;
+    }
+}
+// Note: Design for a width of 320px
+// GRID ELEMENTS ARE STACKED VERTICALLY
+@media only screen and (max-width: 767px) {
+    // add some vertical space below product info
+    // so that related products doesn't distract from the buy now button
+    #productinfo { margin-bottom: 20px; }
+
+    .eight.columns { 
+        .rg-image-wrapper {
+            min-height: calcProdImgMinHeight(300px);
+        }
+        // HIDE EXTRAS TO KEEP LAYOUT CLEAN
+        .contentsection {
+            &.social, 
+            &.producttype { display: none; }
+        }
+    } // END .eight.columns (left column)
+
+    // HIDE EXTRAS TO KEEP LAYOUT CLEAN
+    #maincontent #crumbs {
+        display: none;
+    }
+}
+// Note: Design for a width of 480px
+// GRID ELEMENTS ARE STACKED VERTICALLY
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .eight.columns { 
+        .rg-image-wrapper {
+            min-height: calcProdImgMinHeight(420px);
+        }
+    } // END .eight.columns (left column)
+}
+
+
+// MUST BE LAST
+@import 'utilities';
+

@@ -1,0 +1,95 @@
+<footer id="pagefooter">
+    <div class="container">
+        {% if settings.enable_signup %}
+        <div class="eight columns offset-by-four row registercont">
+            <h4>{{ settings.text_subscribetolist }}</h4>
+            {% form 'customer' %}
+                {% if form.posted_successfully? %}
+                    <p class="thanks">Thank you for your interest!</p>
+                    <script>window.scroll(0,1000000)</script>
+                {% else %}
+                    {% if form.errors %}
+                        <script>window.scroll(0,1000000)</script>
+                        {% for field in form.errors %}
+                        <p class="error">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <a class="button altcolor showregister" href="#">Click here to sign-up</a>
+                    {% endif %}
+                        <div class="registerform formfields smarttextinput">
+                            <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+                            <div class="inputrow">
+                                <label class="hoverlabel" for="mailinglist_email">Email address</label>
+                                <input type="email" class="required" data-fieldname="Email" value="" id="mailinglist_email" name="contact[email]" />
+                                <input type="submit" value="→" />
+                            </div>
+                        </div>
+                {% endif %}
+            {% endform %}
+        </div>
+        {% endif %}
+        
+        {% if linklists.footer.links.size > 0 %}
+        <nav class="sixteen columns">
+            <ul>
+            {% for link in linklists.footer.links %}
+                <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </nav>
+        {% endif %}
+    
+        <div class="sixteen columns copyright">
+            Copyright &copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}. </a> 
+        	{% if settings.show_cc_link == true %}Original theme by <a href="http://www.cleancanvas.co.uk" target="_blank">Clean Canvas.</a>{% endif %} 
+            {{ powered_by_link }}
+        </div>
+    	<div class="paymentmethods sixteen columns row">
+    		{% if settings.payment_2co_enabled == true %}
+            <span class="2co"><span>2Checkout</span></span>
+            {% endif %}
+            {% if settings.payment_amex_enabled == true %}
+            <span class="amex"><span>American Express</span></span>
+            {% endif %}
+            {% if settings.payment_cirrus_enabled == true %}
+            <span class="cirrus"><span>Cirrus</span></span>
+            {% endif %}
+            {% if settings.payment_delta_enabled == true %}
+            <span class="delta"><span>Delta</span></span>
+            {% endif %}
+            {% if settings.payment_discover_enabled == true %}
+            <span class="discover"><span>Discover</span></span>
+            {% endif %}
+            {% if settings.payment_google_enabled == true %}
+            <span class="google"><span>Google Checkout</span></span>
+            {% endif %}
+            {% if settings.payment_maestro_enabled == true %}
+            <span class="maestro"><span>Maestro</span></span>
+            {% endif %}
+            {% if settings.payment_mastercard_enabled == true %}
+            <span class="mastercard"><span>Mastercard</span></span>
+            {% endif %}
+            {% if settings.payment_moneybookers_enabled == true %}
+            <span class="moneybook"><span>Moneybookers</span></span>
+            {% endif %}
+            {% if settings.payment_paypal_enabled == true %}
+            <span class="paypal"><span>PayPal</span></span>
+            {% endif %}
+            {% if settings.payment_sagepay_enabled == true %}
+            <span class="sage"><span>SagePay</span></span>
+            {% endif %}
+            {% if settings.payment_solo_enabled == true %}
+            <span class="solo"><span>Solo</span></span>
+            {% endif %}
+            {% if settings.payment_switch_enabled == true %}
+            <span class="switch"><span>Switch</span></span>
+            {% endif %}
+            {% if settings.payment_visa_enabled == true %}
+            <span class="visa"><span>Visa</span></span>
+            {% endif %}
+            {% if settings.payment_visaelectron_enabled == true %}
+            <span class="electron"><span>Visa Electron</span></span>
+            {% endif %}
+    	</div>
+    </div>
+</footer>

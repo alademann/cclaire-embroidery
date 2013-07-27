@@ -1,0 +1,86 @@
+{% if these_are_related_products %}
+    {% assign producturl = product-list-repeatable-item.url %}
+{% else %}
+    {% assign producturl = product-list-repeatable-item.url | within: collection %}
+{% endif %}
+{% if forloop.last %}
+    {% assign lastclass = ' last' %}
+{% else %}
+    {% assign lastclass = '' %}
+{% endif %}
+
+{% if row_limit == 2 %}
+    <div class="product eight columns{{ lastclass }}">
+    {% capture output %}
+        {% cycle '<div class="columnfluff"></div>', '' %}
+    {% endcapture %}
+    {% unless forloop.last %}{{ output }}{% endunless %}
+{% elsif row_limit == 3 %}
+    <div class="product one-third column{{ lastclass }}">
+    {% capture output %}
+        {% cycle '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '' %}
+    {% endcapture %}
+    {% unless forloop.last %}{{ output }}{% endunless %}
+{% elsif row_limit == 5 %}
+    <div class="product one-fifth column{{ lastclass }}">
+    {% capture output %}
+        {% cycle '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '' %}
+    {% endcapture %}
+    {% unless forloop.last %}{{ output }}{% endunless %}
+{% else %}
+    <div class="product four columns{{ lastclass }}">
+    {% capture output %}
+        {% cycle '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '' %}
+    {% endcapture %}
+    {% unless forloop.last %}{{ output }}{% endunless %}
+{% endif %}
+    {% assign product_thumb_size = 'large' %}
+    <div class="imgcont loadingimg">
+        {% if settings.prod_thumb_hover_method == 'zoom' %}
+            <a class="delayedzoom" href="{{ product-list-repeatable-item.featured_image | product_img_url: 'grande' }}" rel="" title="">
+                <img src="{{ product-list-repeatable-item.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item.featured_image.alt }}" />
+            </a>
+        {% elsif settings.prod_thumb_hover_method == 'duelimage' and product-list-repeatable-item.images.size > 1 %}
+            <a class="imgswitch" href="{{ producturl }}">
+                <img src="{{ product-list-repeatable-item.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item.featured_image.alt }}" />
+                <div class= "altimgcont">
+                    <img class="altimg" src="{{ product-list-repeatable-item.images[1] | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item.images[1].alt }}" />
+                </div>
+            </a>
+        {% else %}
+            <a href="{{ producturl }}" {% if settings.prod_thumb_hover_method == 'simple' %}class="highlight"{% endif %}>
+                <img src="{{ product-list-repeatable-item.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item.featured_image.alt }}" />
+            </a>
+        {% endif %}
+        {% if product-list-repeatable-item.compare_at_price_max > product-list-repeatable-item.price and settings.prod_sale_mode != 'none' %}
+            <div class="salecontainer"><a class="sale" href="{{ producturl }}">{{ settings.text_sale }}</a></div>
+        {% endif %}
+    </div>
+
+    <p class="title"><a href="{{ producturl }}">{{ product-list-repeatable-item.title }}</a></p>
+    {% unless settings.prod_thumb_desc_chars == '0' %}
+    <a class="desc" href="{{ producturl }}">
+        {% capture proddesc %}{% include 'process-html-strip' with product-list-repeatable-item.description %}{% endcapture %}
+        {{ proddesc | strip_html | truncate: settings.prod_thumb_desc_chars }}
+    </a>
+    {% endunless %}
+    
+    <div class="price">
+        {% if product-list-repeatable-item.compare_at_price_max > product-list-repeatable-item.price %}<span class="reducedfrom">{{ product-list-repeatable-item.compare_at_price_max | money }}</span>{% endif %}
+        {% if product-list-repeatable-item.price_varies %}<span class="from">from</span>{% endif %}
+		<span class="actual">{{ product-list-repeatable-item.price | money }}</span>
+	</div>
+</div>
+
+{% if template contains 'collection' %}
+    {% comment %} Clear the row after each group - makes it look nicer while loading {% endcomment %}
+    {% if row_limit == 2 %}
+        {% cycle '', '<div class="cf"></div>' %}
+    {% elsif row_limit == 3 %}
+        {% cycle '', '', '<div class="cf"></div>' %}
+    {% elsif row_limit == 5 %}
+        {% cycle '', '', '', '', '<div class="cf"></div>' %}
+    {% else %}
+        {% cycle '', '', '', '<div class="cf"></div>' %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,201 @@
+/**
+ * CClaire Embroidery Custom Shopify CSS 
+ */
+
+$cclaireBtnHoverDarken: 5%;
+$color_bg_main: {{ settings.color_bg_main }};
+$color_bg_header: {{ settings.color_bg_header }};
+$color_bg_footer: {{ settings.color_bg_footer }};
+$color_nav_divider: {{ settings.color_nav_divider }};
+$color_paging_bg: {{ settings.color_paging_bg }};
+$color_form_field_bg: {{ settings.color_form_field_bg }};
+$color_form_field_border: {{ settings.color_form_field_border }};
+$color_form_field_text: {{ settings.color_form_field_text }};
+// buttons
+$color_btn_text: {{ settings.color_btn_text }};
+$color_btn_bg: {{ settings.color_btn_bg }};
+$color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
+
+.options .shappify_option, .selectors {
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  position: relative;
+  min-heght: 38px;
+}
+
+.options .shappify_option .shappify_option_name, .selectors label {
+  float: left;
+  text-align: right;
+  width: 160px;
+}
+
+.options .shappify_option .shappify_option_value, .selectors .select-wrapper {
+  position: absolute;
+  left: 170px;
+  right: 0;
+}
+
+.options #shapp_option_list {
+  padding-left: 0;
+  padding-right: 0;
+}
+.options .shappify-option-title {
+  padding: 0;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+a.button,
+input.button,
+.button a {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+a.button:hover,
+input.button:hover,
+.button a:hover {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: darken($color_btn_bg, $cclaireBtnHoverDarken);
+}
+
+a.button.altcolor:hover,
+input.button.altcolor:hover,
+.button.altcolor a:hover {
+  background-color: darken($color_btn_alt_bg, $cclaireBtnHoverDarken);
+}
+
+a:focus,
+button:focus,
+input[type="submit"]:focus {
+  outline: 0;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: #fff;
+  outline: 0;
+  border-color: $color_btn_bg;
+  -webkit-box-shadow: 0 0 0 1px $color_btn_bg;
+  -moz-box-shadow: 0 0 0 1px $color_btn_bg;
+  box-shadow: 0 0 0 1px $color_btn_bg;
+}
+
+.selectors {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+.options > .selectors:first-of-type {
+  margin-top: 10px;
+}
+
+#maincontent .contentsection.social {
+  padding-bottom: 3px;
+}
+#maincontent .contentsection.social > .socialitem,
+#maincontent .contentsection.social > a {
+  margin-top: -1px;
+}
+
+.description ul.tabs li a {
+  padding: 0 15px;
+}
+.description ul.tabs li a.active {
+  padding-top: 4px;
+}
+
+#productinfo #rg-gallery,
+#productinfo #detail {
+  margin-top: 0;
+}
+#productinfo #rg-gallery > h1,
+#productinfo #detail > h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 28px;
+}
+#productinfo #rg-gallery .addbuttoncont,
+#productinfo #detail .addbuttoncont {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 20px;
+}
+#productinfo #rg-gallery .addbuttoncont.dummy,
+#productinfo #detail .addbuttoncont.dummy {
+  margin-top: 0;
+}
+#productinfo #rg-gallery .addbuttoncont.dummy a,
+#productinfo #detail .addbuttoncont.dummy a {
+  width: auto;
+}
+#productinfo .singleimage {
+  margin-top: 0;
+  padding-bottom: 20px;
+}
+
+.rg-image-wrapper {
+  padding: 0;
+}
+.eight.columns .rg-image-wrapper {
+  min-height: 342px;
+}
+
+.es-carousel-wrapper {
+  padding: 2px 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .eight.columns .rg-image-wrapper {
+    min-height: 271px;
+  }
+
+  .description ul.tabs li a {
+    padding: 0 7px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #productinfo {
+    margin-bottom: 20px;
+  }
+
+  .eight.columns .rg-image-wrapper {
+    min-height: 223px;
+  }
+  .eight.columns .contentsection.social, .eight.columns .contentsection.producttype {
+    display: none;
+  }
+
+  #maincontent #crumbs {
+    display: none;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .eight.columns .rg-image-wrapper {
+    min-height: 313px;
+  }
+}
+.collapse {
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+  height: 0;
+  overflow: hidden;
+}
+.collapse.in {
+  height: auto;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: inherit !important;
+}
