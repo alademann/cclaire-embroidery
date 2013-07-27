@@ -1,0 +1,19 @@
+// we don't want prices to use the heading font
+.price, 
+[itemprop="price"],
+.amount,
+.total,
+#cost {
+    font-family: $font_standard_type_custom !important;
+    strong {
+        font-weight: 700 !important;
+    }
+}
+#productinfo {
+    [itemprop="price"] {
+        strong { font-size: 24px; }
+    }
+}
+#cost {
+    font-weight: 700 !important;
+}

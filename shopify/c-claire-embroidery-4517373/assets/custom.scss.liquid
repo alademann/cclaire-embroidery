@@ -15,6 +15,7 @@ $color_form_field_text: {{ settings.color_form_field_text }};
 $color_btn_text: {{ settings.color_btn_text }};
 $color_btn_bg: {{ settings.color_btn_bg }};
 $color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
+$font_standard_type_custom: {{ settings.font_standard_type_custom }};
 
 .options .shappify_option, .selectors {
   padding-bottom: 0;
@@ -43,6 +44,30 @@ $color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
   padding: 0;
   font-size: 20px;
   line-height: 28px;
+}
+
+
+.price,
+[itemprop="price"],
+.amount,
+.total,
+#cost {
+  font-family: "Droid Sans", Helvetica, Arial, sans-serif !important;
+}
+.price strong,
+[itemprop="price"] strong,
+.amount strong,
+.total strong,
+#cost strong {
+  font-weight: 700 !important;
+}
+
+#productinfo [itemprop="price"] strong {
+  font-size: 24px;
+}
+
+#cost {
+  font-weight: 700 !important;
 }
 
 a.button,

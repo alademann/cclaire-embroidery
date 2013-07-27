@@ -112,7 +112,9 @@
             <p>By <span itemprop="brand">{{ product.vendor | link_to_vendor }}</span></p>
         {% endif %}
         <div id="price-field" class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <span itemprop="price">{{ product.variants.first.price | money }}</span>
+            <span itemprop="price">
+                $<strong>{{ product.variants.first.price | money_with_currency }}</strong>
+            </span>
             {% if product.variants.first.compare_at_price > product.variants.first.price %}
                 <div class="was-price">was {{ product.variants.first.compare_at_price | money }}</div>
             {% endif %}
