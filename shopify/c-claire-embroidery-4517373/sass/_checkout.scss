@@ -1,0 +1,11 @@
+// CHECKOUT
+// -------------------------
+.step1 {
+
+    #thumbs div {
+        // don't assume the thumbnail is a square
+        height: auto !important;
+        max-height: $product_img_size_thumb; 
+    }
+
+} // END .step1

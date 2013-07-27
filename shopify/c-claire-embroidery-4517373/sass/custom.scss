@@ -5,6 +5,8 @@
 @import 'compass';
 @import 'variables';
 @import 'shappify';
+@import 'slider';
+@import 'cart';
 @import 'fonts';
 
 // BUTTONS
@@ -12,6 +14,7 @@
 a.button, 
 input.button, 
 .button a {
+    text-decoration: none !important;
     @include box-shadow(none);
     &:hover {
         @include box-shadow(none);
@@ -33,6 +36,13 @@ button,
 input[type="submit"] {
     &:focus {
         outline: 0; // no native blurred outline please
+    }
+}
+
+.minibutton {
+    &:hover,
+    &:focus {
+        color: $cclaireGreen;
     }
 }
 

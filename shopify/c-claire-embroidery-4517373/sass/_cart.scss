@@ -1,0 +1,90 @@
+// CART
+// -------------------------
+#basket {
+    ul > li {
+        &:first-child {
+            .cartitem {
+                padding-top: 30px - $checkoutRowItemPadTop;
+            }
+        }
+    }
+    .cartitem {
+        .image {
+            margin-top: $checkoutRowItemPadTop;
+        }
+        .desc {
+            padding-top: $checkoutRowItemPadTop;
+            color: #{"lighten($color_foot_standard, 8)"};
+            .title {
+                display: block;
+                font-size: 18px;
+                margin-bottom: $lineHeightBase;
+                a {
+                    font-size: inherit;
+                }
+            }
+            .properties {
+                font-size: inherit;
+                li {
+                    font-size: 12px;
+                    line-height: 16px;
+                    strong {
+                        color: #{"lighten($color_foot_standard, 15)"};
+                    }
+                }
+            }
+            .long-desc {
+                // all the product option info printing out is enough
+                display: none;
+            }
+        }
+        // these all "set" lower so they are below the title in .desc
+        .qty, 
+        .amt,
+        .remove {
+            padding-top: $checkoutRowItemPadTop;
+        }
+        .qty {
+            // since the "qty" label sits on top...
+            // we have to adjust to get the qty input to align 
+            // vertically with the remove button and price
+            padding-top: 0;
+            .minibutton {
+                font-size: inherit;
+            }
+            input {
+                font-size: inherit;
+            }
+        }
+        .amt {
+            line-height: $btnHeight; // vertically align with remove btn
+            .amount {
+                font-size: inherit;
+            }
+        }
+        .remove {
+            font-size: inherit;
+            .button {
+                float: none;
+                width: auto;
+                padding: 7px 15px;
+            }
+        }
+    }
+}
+
+
+
+// MISC UTILITIES USED MOSTLY IN CART
+// -------------------------
+.button {
+    &.remove {
+        background-color: $removeBtnBg !important;
+        @include opacity(.5);
+        &:hover,
+        &:focus {
+            @include opacity(1.0);
+            background-color: darken($removeBtnBg, $cclaireBtnHoverDarken) !important;
+        }
+    }
+}

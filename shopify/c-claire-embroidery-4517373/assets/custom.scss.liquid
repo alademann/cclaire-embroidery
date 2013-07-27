@@ -11,10 +11,13 @@ $color_paging_bg: {{ settings.color_paging_bg }};
 $color_form_field_bg: {{ settings.color_form_field_bg }};
 $color_form_field_border: {{ settings.color_form_field_border }};
 $color_form_field_text: {{ settings.color_form_field_text }};
+$color_foot_standard: {{ settings.color_foot_standard }};
 // buttons
 $color_btn_text: {{ settings.color_btn_text }};
 $color_btn_bg: {{ settings.color_btn_bg }};
 $color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
+// homepage slider overlay
+$color_slider_mask: {{ settings.color_slider_mask }};
 $font_standard_type_custom: {{ settings.font_standard_type_custom }};
 
 .options .shappify_option, .selectors {
@@ -46,6 +49,81 @@ $font_standard_type_custom: {{ settings.font_standard_type_custom }};
   line-height: 28px;
 }
 
+#mainslider .overlay {
+  background: white !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+#basket ul > li:first-child .cartitem {
+  padding-top: 11px;
+}
+#basket .cartitem .image {
+  margin-top: 19px;
+}
+#basket .cartitem .desc {
+  padding-top: 19px;
+  color: lighten($color_foot_standard, 8);
+}
+#basket .cartitem .desc .title {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 19px;
+}
+#basket .cartitem .desc .title a {
+  font-size: inherit;
+}
+#basket .cartitem .desc .properties {
+  font-size: inherit;
+}
+#basket .cartitem .desc .properties li {
+  font-size: 12px;
+  line-height: 16px;
+}
+#basket .cartitem .desc .properties li strong {
+  color: lighten($color_foot_standard, 15);
+}
+#basket .cartitem .desc .long-desc {
+  display: none;
+}
+#basket .cartitem .qty,
+#basket .cartitem .amt,
+#basket .cartitem .remove {
+  padding-top: 19px;
+}
+#basket .cartitem .qty {
+  padding-top: 0;
+}
+#basket .cartitem .qty .minibutton {
+  font-size: inherit;
+}
+#basket .cartitem .qty input {
+  font-size: inherit;
+}
+#basket .cartitem .amt {
+  line-height: 33px;
+}
+#basket .cartitem .amt .amount {
+  font-size: inherit;
+}
+#basket .cartitem .remove {
+  font-size: inherit;
+}
+#basket .cartitem .remove .button {
+  float: none;
+  width: auto;
+  padding: 7px 15px;
+}
+
+.button.remove {
+  background-color: #bf3030 !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+.button.remove:hover, .button.remove:focus {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  background-color: #ab2b2b !important;
+}
 
 .price,
 [itemprop="price"],
@@ -73,6 +151,7 @@ $font_standard_type_custom: {{ settings.font_standard_type_custom }};
 a.button,
 input.button,
 .button a {
+  text-decoration: none !important;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -96,6 +175,10 @@ a:focus,
 button:focus,
 input[type="submit"]:focus {
   outline: 0;
+}
+
+.minibutton:hover, .minibutton:focus {
+  color: #a8b73a;
 }
 
 input:focus,

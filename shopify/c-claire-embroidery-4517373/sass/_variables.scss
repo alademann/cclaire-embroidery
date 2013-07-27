@@ -1,3 +1,9 @@
+// BASE VARS
+// -------------------------
+$lineHeightBase: 19px;
+$btnHeight: 33px;
+$btnHeightLarge: 49px;
+
 // COLORS
 // -------------------------
 $cclaireGray: #3f3e3a;
@@ -12,8 +18,14 @@ $cclaireGreenMuted: mix($cclaireGray, $cclaireGreen, 50%);
 $cclairePink: #e45556;
 $cclairePinkMuted: mix($cclaireGray, $cclairePink, 50%);
 
+// remove buttons
+$removeBtnBg: #bf3030;
+
+$checkoutRowItemPadTop: $lineHeightBase;
+
 // PRODUCT PAGES
 // -------------------------
+$product_img_size_thumb: 50px;
 $prodImgHeightRatio: 0.74565217391304;
 $prodColumnTopMargin: 0; // was 10px stock
 $prodNameFontSize: 20px;
@@ -42,6 +54,8 @@ $prodOptionMargin: 10px;
 }
 
 
+//+ vars that get applied via liquid template settings
+//+ in _liquid-scss-vars.scss
 // vars that we'll eventually put inside our .scss.liquid template in the editor
 // so they can change based on theme options
 $color_bg_main: $cclaireGray;
@@ -52,11 +66,14 @@ $color_paging_bg: $cclaireDividerBg;
 $color_form_field_bg: #f7f7f7;
 $color_form_field_border: $cclaireDividerBg;
 $color_form_field_text: $cclaireGrayDark;
+$color_foot_standard: #ababab;
 // buttons
 $color_btn_text: #fff;
 $color_btn_bg: $cclaireGreen;
 $color_btn_alt_bg: #31302e; // slightly darker than divider bg
-
+// homepage slider overlay
+$color_slider_mask: #fff;
+$color_slider_alpha: .8;
 // fonts
 $font_standard_type_custom: 'Droid Sans', Helvetica, Arial, sans-serif;
 

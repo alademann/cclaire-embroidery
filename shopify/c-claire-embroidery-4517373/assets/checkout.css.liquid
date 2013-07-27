@@ -3,6 +3,108 @@
  * Checkout CSS
  */
  
+/* PASTE CONTENTS OF checkout-extras.css here */
+#basket ul > li:first-child .cartitem {
+  padding-top: 11px;
+}
+#basket .cartitem .image {
+  margin-top: 19px;
+}
+#basket .cartitem .desc {
+  padding-top: 19px;
+  color: lighten($color_foot_standard, 8);
+}
+#basket .cartitem .desc .title {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 19px;
+}
+#basket .cartitem .desc .title a {
+  font-size: inherit;
+}
+#basket .cartitem .desc .properties {
+  font-size: inherit;
+}
+#basket .cartitem .desc .properties li {
+  font-size: 12px;
+  line-height: 16px;
+}
+#basket .cartitem .desc .properties li strong {
+  color: lighten($color_foot_standard, 15);
+}
+#basket .cartitem .desc .long-desc {
+  display: none;
+}
+#basket .cartitem .qty,
+#basket .cartitem .amt,
+#basket .cartitem .remove {
+  padding-top: 19px;
+}
+#basket .cartitem .qty {
+  padding-top: 0;
+}
+#basket .cartitem .qty .minibutton {
+  font-size: inherit;
+}
+#basket .cartitem .qty input {
+  font-size: inherit;
+}
+#basket .cartitem .amt {
+  line-height: 33px;
+}
+#basket .cartitem .amt .amount {
+  font-size: inherit;
+}
+#basket .cartitem .remove {
+  font-size: inherit;
+}
+#basket .cartitem .remove .button {
+  float: none;
+  width: auto;
+  padding: 7px 15px;
+}
+
+.button.remove {
+  background-color: #bf3030 !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+.button.remove:hover, .button.remove:focus {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  background-color: #ab2b2b !important;
+}
+
+.step1 #thumbs div {
+  height: auto !important;
+  max-height: 50px;
+}
+
+.price,
+[itemprop="price"],
+.amount,
+.total,
+#cost {
+  font-family: "Droid Sans", Helvetica, Arial, sans-serif !important;
+}
+.price strong,
+[itemprop="price"] strong,
+.amount strong,
+.total strong,
+#cost strong {
+  font-weight: 700 !important;
+}
+
+#productinfo [itemprop="price"] strong {
+  font-size: 24px;
+}
+
+#cost {
+  font-weight: 700 !important;
+}
+
+/* END checkout-extras.css */
+
 {% assign font_heading_type_split = settings.font_heading_type | split: '|' %}
 {% if font_heading_type_split.first == 'GWF' %}
     {% if font_heading_type_split.last == 'CUSTOM' %}

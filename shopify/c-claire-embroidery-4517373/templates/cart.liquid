@@ -25,39 +25,43 @@
                                 <a href="{{ item.product.url }}"><img src="{{ item.product.images.first | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" /></a>
                             </div>
                             <div class="desc">
-            					<span class="title"><a href="{{ item.product.url }}">{{ item.title }}</a>
-                              {% for p in item.properties %}
-   {% unless p.last == blank %}
-    <br /> <b>{{ p.first }}</b>:
-     {% if p.last contains '/uploads/' %}
-       <a class="lightbox" href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-     {% else %}
-       {{ p.last }}
-     {% endif %}
-   {% endunless %}
- {% endfor %}
-                              
-                              
-                              
-                              </span>
+            					<span class="title"><a href="{{ item.product.url }}">{{ item.title }}</a></span>
+                                <ul class="properties">
+                                  {% for p in item.properties %}
+                                   {% unless p.last == blank %}
+                                    <li>{{ p.first }}:
+                                        <strong>
+                                         {% if p.last contains '/uploads/' %}
+                                            <a class="lightbox" href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                                         {% else %}
+                                            {{ p.last }}
+                                         {% endif %}
+                                        </strong>
+                                    </li>
+                                   {% endunless %}
+                                  {% endfor %}
+                                </ul>
                                 {% capture proddesc %}{% include 'process-html-strip' with item.product.description %}{% endcapture %}
-                                <p>{{ proddesc | strip_html | truncate: 120 }}</p>
+                                <p class="long-desc">{{ proddesc | strip_html | truncate: 120 }}</p>
                 			</div>
                 			<div class="qty">
-                              <br />
-                              <label >Quantity</label>
-                              <input type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
-                                <!--<label for="updates_{{ item.variant.id }}">Qty</label>
+                                <label for="updates_{{ item.variant.id }}">Qty</label>
+                                <!-- <input type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" /> -->
                                 {% unless settings.hide_plusmin_hide %}
                                 <a href="javascript:modifyQuantity('#updates_{{ item.id }}', -1, {{ item.id }})" class="minibutton">-</a>
                                 {% endunless %}
-                                <input class="short" type="text" size="4" name="updates[{{item.variant.id}}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
+                                <input class="short" type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();">
                                 {% unless settings.hide_plusmin_hide %}
                                 <a href="javascript:modifyQuantity('#updates_{{ item.id }}', 1, {{ item.id }})" class="minibutton">+</a>
-                                {% endunless %} -->
+                                {% endunless %}
                             </div>
-                            <div class="amt"><span class="amount" id="row_amt_{{ item.variant.id }}">{{ item.line_price | money_with_currency }}</span></div>
-                			<div class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" onclick="">Remove</a></div>
+                            <div class="amt">
+                                <span class="amount" id="row_amt_{{ item.variant.id }}">{{ item.line_price | money_with_currency }}
+                                </span>
+                            </div>
+                			<div class="remove">
+                                <a class="button remove" href="/cart/change?line={{ forloop.index }}&quantity=0" onclick="">Remove</a>
+                            </div>
                 		</div>
                     </li>
                 {% endfor %}
