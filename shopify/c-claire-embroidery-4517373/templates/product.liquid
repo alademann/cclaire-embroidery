@@ -125,17 +125,10 @@
         <form action="/cart/add" method="post" id="product-form" class="shappify_add_to_cart_form" enctype="multipart/form-data" >
 
             <!-- OPTIONS container is shown only after they click the first dummy "add to cart" button if shappify options are in-play -->
+            <div class="options">
             {% if shappify_options_loaded == "0" %}
                 {% assign shappify_options_loaded = "1" %}
-            {% endif %}
-
-            {% if shappify_options_loaded == "1" %}
-            <div class="options collapse">
-                <!-- Shappify Options -->
                 {% include 'shappify-options' %}
-                <!--/ Shappify Options -->
-            {% else %}
-            <div class="options">
             {% endif %}
 
             {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
@@ -215,13 +208,6 @@
                 </div>
 
             </div><!--/ options -->
-
-            {% if shappify_options_loaded == "1" %}
-                <!-- PERSONALIZE BUTTON (simply reveals options) -->
-                <div class="addbuttoncont button dummy">
-                    <a id="showOptions" class="button large plus">PERSONALIZE</a>
-                </div>
-            {% endif %}
             
             <script>
                 Shopify.money_format = '{{shop.money_format | replace: "'", '"'}}';
