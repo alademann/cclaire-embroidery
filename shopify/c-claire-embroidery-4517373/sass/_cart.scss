@@ -52,7 +52,7 @@
 
             .title {
                 display: block;
-                font-size: 18px;
+                font-size: $font_standard_size + 2;
                 margin-bottom: $lineHeightBase;
                 a {
                     /**/
@@ -86,12 +86,26 @@
 
             label {
                 display: block;
+                font-size: 80%;
             }
             .minibutton {
-                /**/
+                // keep the + and - minibuttons an even width
+                // so that the Qty label is centered above the input
+                min-width: 34px;
+                padding-left: 0;
+                padding-right: 0;
             }
             input {
-                /**/
+                font-size: 100%;
+                width: 38px; // just enough for 4 numbers
+                text-indent: 0;
+                @include transition(all .2s linear);
+                background-color: rgba($color_form_field_bg, .1);
+                color: #{"$color_btn_text"};
+                &:focus {
+                    background-color: rgba($color_form_field_bg, 1.0);
+                    color: #{"$color_form_field_text"};
+                }
             }
         }
         .amt {

@@ -75,12 +75,11 @@ input[type="submit"] {
 // red "remove" buttons
 .button {
     &.remove {
-        background-color: $removeBtnBg !important;
         @include opacity(.5);
         &:hover,
         &:focus {
             @include opacity(1.0);
-            background-color: darken($removeBtnBg, $cclaireBtnHoverDarken) !important;
+            background-color: $removeBtnBg !important;
         }
     }
 }

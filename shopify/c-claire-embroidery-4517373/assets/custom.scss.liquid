@@ -45,7 +45,7 @@ $theme_icons_mode_head:         {{ settings.theme_icons_mode_head }};
 $theme_icons_mode_body:         {{ settings.theme_icons_mode_body }};
 /* misc */
 $prod_sale_mode:                {{ settings.prod_sale_mode }};
- 
+
 .options .shappify_option, .selectors {
   padding-bottom: 0;
   margin-bottom: 10px;
@@ -197,14 +197,13 @@ input[type="submit"]:focus {
 }
 
 .button.remove {
-  background-color: #bf3030 !important;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
 .button.remove:hover, .button.remove:focus {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
-  background-color: #ab2b2b !important;
+  background-color: #bf3030 !important;
 }
 
 input:focus,
@@ -350,7 +349,7 @@ select:focus {
 }
 #basket .cartitem .desc .title {
   display: block;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 19px;
 }
 #basket .cartitem .desc .title a {
@@ -376,12 +375,27 @@ select:focus {
 }
 #basket .cartitem .qty label {
   display: block;
+  font-size: 80%;
 }
 #basket .cartitem .qty .minibutton {
-  /**/
+  min-width: 34px;
+  padding-left: 0;
+  padding-right: 0;
 }
 #basket .cartitem .qty input {
-  /**/
+  font-size: 100%;
+  width: 38px;
+  text-indent: 0;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background-color: rgba(237, 237, 237, 0.1);
+  color: $color_btn_text;
+}
+#basket .cartitem .qty input:focus {
+  background-color: #ededed;
+  color: $color_form_field_text;
 }
 #basket .cartitem .amt {
   width: 15%;
