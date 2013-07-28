@@ -11,7 +11,7 @@
   sass_dir         = "sass/"
   css_dir          = "assets/"
   fonts_dir        = "assets/fonts/"
-  images_dir       = "assets/img/"
+  images_dir       = "assets/"
   # DO NOT ADD javascripts_dir statement in this file!!!
 
 # =================================================

@@ -1,8 +1,12 @@
 // BASE VARS
 // -------------------------
 $lineHeightBase:            19px;
+$btnPadding:                7px 15px;
+$btnPaddingLarge:           nth($btnPadding, 2);
+$inputHeight:               36px;
 $btnHeight:                 33px;
 $btnHeightLarge:            49px;
+$btnFontSizeLarge:          20px;
 $borderRadiusBase:          2px; // standard for buttons
 $borderRadiusInput:         5px;
 
@@ -23,7 +27,18 @@ $cclairePinkMuted:          mix($cclaireGray, $cclairePink, 50%);
 // remove buttons
 $removeBtnBg:               #bf3030;
 
+// CHECKOUT PAGES
+// -------------------------
+$checkoutRowItemDefaultPad: 30px;
 $checkoutRowItemPadTop:     $lineHeightBase;
+$checkoutImgColMarginRt:    2%;
+$checkoutImgColWidth:       13%;
+$checkoutImgColWidthTtl:    $checkoutImgColMarginRt + $checkoutImgColWidth;
+$checkoutDescColWidth:      38%;
+$checkoutQtyColWidth:       17%;
+$checkoutAmtColWidth:       11%; // TODO: increase?
+$checkoutBtnColWidth:       19%;
+
 
 // PRODUCT PAGES
 // -------------------------
@@ -42,7 +57,7 @@ $prodOptionMargin:          10px;
     padding-bottom: 0;
     margin-bottom: $prodOptionMargin;
     position: relative;
-    min-heght: 38px; // height of <input>
+    min-height: 38px; // height of <input>
 }
 %option-label {
     float: left;
@@ -67,6 +82,20 @@ $prodOptionMargin:          10px;
 // declared using {{ settings.var_name }} when uploaded
 // e.g. we don't want these values actually calculated yet - we want shopify to do that.
 
+// --------------------------------------------------
+// FOR EXAMPLE
+//
+//  When looking at a css.liquid declaration like 
+//
+//      background: {{ settings.color_bg_main }};
+//
+//  in order to make this dynamically work in an scss file,
+//  declare that variable in _liquid-scss-vars.scss, 
+//  and change the style to
+//
+//      background: #{"$color_bg_main"};
+// --------------------------------------------------
+
 // bgcolors
 $color_bg_main:             $cclaireGray;
 $color_bg_header:           $cclaireGrayDark;
@@ -75,6 +104,7 @@ $color_nav_divider:         $cclaireGreenMuted;
 $color_paging_bg:           $cclaireDividerBg;
 $color_form_field_bg:       #f3f3f3;
 $color_form_field_border:   $cclaireDividerBg;
+$color_general_divider:     $cclaireDividerBg;
 // buttons
 $color_btn_text:            #fff;
 $color_btn_bg:              $cclaireGreen;
@@ -84,9 +114,19 @@ $color_slider_mask:         #fff;
 $color_slider_alpha:        .8;
 // text colors
 $color_body_standard:       #f3f3f3;
+$color_body_link:           #fff;
 $color_form_field_text:     $cclaireGrayDark;
 $color_foot_standard:       #ababab;
+$color_foot_heading:        #fff;
 // fonts
 $font_standard_type_custom: 'Droid Sans', Helvetica, Arial, sans-serif;
+$font_heading_type:         'Roboto Condensed', Helvetica, Arial, sans-serif;
 $font_standard_size:        14px;
 $font_heading_size:         36px;
+$font_nav_size:             20px;
+$fontBigPriceSize:          $font_heading_size - 12px;
+// images
+$loading_graphic:           "loader-black.gif";
+$theme_icons_mode_head:     'dark';
+$theme_icons:               "themeicons.png";
+$social_icons:              "socialicons.png";

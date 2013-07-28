@@ -1,30 +1,64 @@
 // CART
 // -------------------------
 #basket {
+
+    // GENERAL
+    // -------------------------
+    textarea {
+        width: 360px;
+        height: 111px;
+    }
+
+
+    // CART ITEM ROWS
+    // -------------------------
     ul > li {
+        // used to be .cartitem.first - but that is not working in the template
         &:first-child {
             .cartitem {
-                padding-top: 30px - $checkoutRowItemPadTop;
+                padding-top: $checkoutRowItemDefaultPad - $checkoutRowItemPadTop;
+                border-top: 0;
             }
         }
     }
     .cartitem {
+        border-bottom: 1px solid #{"$color_general_divider"};
+        padding: $checkoutRowItemDefaultPad 0;
+        
+        // all the immediate children of cartitem float left
+        .image, 
+        .desc,
+        .qty,
+        .amt,
+        .remove { 
+            float: left; 
+            padding: $checkoutRowItemPadTop 0 0;
+        }
+
         .image {
+            width: $checkoutImgColWidth;
+            margin-right: $checkoutImgColMarginRt;
             margin-top: $checkoutRowItemPadTop;
+            padding-top: 0;
+
+            img {
+                max-height: 100%;
+                max-width: 100%;   
+            }
         }
         .desc {
-            padding-top: $checkoutRowItemPadTop;
+            width: $checkoutDescColWidth;
             color: #{"lighten($color_foot_standard, 8)"};
+
             .title {
                 display: block;
                 font-size: 18px;
                 margin-bottom: $lineHeightBase;
                 a {
-                    font-size: inherit;
+                    /**/
                 }
             }
             .properties {
-                font-size: inherit;
                 li {
                     font-size: 12px;
                     line-height: 16px;
@@ -38,53 +72,123 @@
                 display: none;
             }
         }
-        // these all "set" lower so they are below the title in .desc
-        .qty, 
-        .amt,
-        .remove {
-            padding-top: $checkoutRowItemPadTop;
-        }
         .qty {
+            width: $checkoutQtyColWidth;
             // since the "qty" label sits on top...
             // we have to adjust to get the qty input to align 
             // vertically with the remove button and price
             padding-top: 0;
+
+            &, 
+            input {
+                text-align: center;
+            }
+
+            label {
+                display: block;
+            }
             .minibutton {
-                font-size: inherit;
+                /**/
             }
             input {
-                font-size: inherit;
+                /**/
             }
         }
         .amt {
+            width: $checkoutAmtColWidth;
+            text-align:center;
             line-height: $btnHeight; // vertically align with remove btn
             .amount {
-                font-size: inherit;
+                font-size: #{"$font_standard_size + 2"};
             }
         }
         .remove {
-            font-size: inherit;
+            width: $checkoutBtnColWidth;
+            text-align: center;
+            /**/
             .button {
                 float: none;
                 width: auto;
-                padding: 7px 15px;
+                padding: $btnPadding;
             }
         }
     }
-}
 
+    // CART FOOTER
+    // -------------------------
+    .foot {
 
+        padding-top: $checkoutRowItemDefaultPad - 8px;
 
-// MISC UTILITIES USED MOSTLY IN CART
-// -------------------------
-.button {
-    &.remove {
-        background-color: $removeBtnBg !important;
-        @include opacity(.5);
-        &:hover,
-        &:focus {
-            @include opacity(1.0);
-            background-color: darken($removeBtnBg, $cclaireBtnHoverDarken) !important;
+        .button {
+            display: inline;   
         }
-    }
-}
+
+        // --------------------------------------------------
+        // LINE UP COLUMNS WITH COLUMNS FROM CARTITEM ABOVE
+        // improves readability
+        .instructions,
+        .updatecont,
+        .checkoutcont {
+            float: left;
+        }
+
+        .instructions {
+            // should be the same width as .image + .desc
+            width: $checkoutImgColWidthTtl;
+        }
+        .updatecont {
+            // should be the same width as qty column
+            // since update button relates to updated quantities
+            width: $checkoutQtyColWidth;
+            text-align: center;
+        }
+        .checkoutcont {
+            // contains both the subtotal and the checkout btn
+            width: $checkoutAmtColWidth + $checkoutBtnColWidth;
+            text-align: center;
+            .total {
+                // should line up with .amt column
+                float: left;
+                // should be the proportional amount that 
+                // the .amt column takes up
+                width: $checkoutAmtColWidth / $checkoutBtnColWidth;
+                font-size: #{"$fontBigPriceSize"};
+            }
+        }
+
+
+        // END LINE UP COLUMNS FROM CARTITEM ABOVE
+        // --------------------------------------------------
+
+
+        // EXTRA PAYMENT METHODS
+        // ensure that paypal, etc... buttons
+        // show up / are legible against our dark bg
+        .extrapaymentmethods {
+            // buttons like the default paypal button are input[type="image"]
+            input[type="image"] {
+                border: 0;
+                background-color: #{"$color_body_standard"};
+                padding: $borderRadiusBase;
+                @include border-radius($borderRadiusBase);
+
+                &:hover,
+                &:focus {
+                    background-color: #{"lighten($color_body_standard, 5)"};
+                }
+
+                // specific buttons 
+                // paypal
+                &[name="goto_pp"] {
+                    // align the paypal graphic so it looks centered on our colored bg
+                    padding: $borderRadiusBase ($borderRadiusBase - 1) 0;
+                }
+            }
+        }
+
+    } // END #basket .foot
+} // END #basket
+
+// REDECLARE WIDTHS TO KEEP RESPONSIVE STYLES IN PLACE
+@import 'cart-responsive-layout';

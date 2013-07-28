@@ -4,69 +4,11 @@
 
 @import 'compass';
 @import 'variables';
-@import 'shappify';
-@import 'slider';
-@import 'cart';
-@import 'fonts';
 
-// BUTTONS
-// -------------------------
-a.button, 
-input.button, 
-.button a {
-    text-decoration: none !important;
-    @include box-shadow(none);
-    &:hover {
-        @include box-shadow(none);
-        background-color: #{"darken($color_btn_bg, $cclaireBtnHoverDarken)"};
-    }
-}
-
-// alt buttons (not primary green)
-a.button.altcolor,
-input.button.altcolor,
-.button.altcolor a {
-    &:hover {
-        background-color: #{"darken($color_btn_alt_bg, $cclaireBtnHoverDarken)"};
-    }
-}
-
-a, 
-button,
-input[type="submit"] {
-    &:focus {
-        outline: 0; // no native blurred outline please
-    }
-}
-
-// the +/- qty buttons
-.minibutton {
-    &:hover,
-    &:focus {
-        // plus
-        color: $cclaireGreen;
-    }
-    &.minus {
-        &:hover,
-        &:focus {
-            // minus
-            color: $removeBtnBg;
-        }
-    }
-}
-
-// INPUTS
-// -------------------------
-input,
-textarea,
-select {
-    &:focus {
-        background-color: #fff;
-        outline: 0; // no native blurred outline please
-        border-color: #{"$color_btn_bg"};
-        @include box-shadow(0 0 0 1px #{"$color_btn_bg"});
-    }
-}
+// replacement for style.css.liquid
+@import '_style.scss';
+/* CUSTOM BEGINS HERE */
+@import 'custom-manifest';
 
 // PRODUCT OPTIONS
 // -------------------------

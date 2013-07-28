@@ -1,0 +1,21 @@
+#shipping-calculator { 
+    .selectreplace {
+        vertical-align: middle;
+        width: 100%;
+    }
+    label {
+        display: block;
+        margin-bottom: 3px;
+        margin-top: 5px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    // calculate shipping button
+    .button {
+        margin-top: 25px;
+        padding: 7px 22px;
+    }
+} // END #shipping-calculator

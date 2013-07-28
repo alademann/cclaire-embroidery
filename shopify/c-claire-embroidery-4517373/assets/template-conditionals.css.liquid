@@ -1,0 +1,400 @@
+/**
+ * SHOPIFY TEMPLATE CONDITIONALS
+ * (basically all the shtuff that cannot be parsed using SCSS)
+ */
+
+{% assign font_heading_type_split = settings.font_heading_type | split: '|' %}
+{% if font_heading_type_split.first == 'GWF' %}
+    {% if font_heading_type_split.last == 'CUSTOM' %}
+        {% capture font_heading_type %}'{{ settings.font_heading_type_custom | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% else %}
+        {% capture font_heading_type %}'{{ font_heading_type_split.last | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% endif %}
+{% else %}
+    {% assign font_heading_type = settings.font_heading_type %}
+{% endif %}
+
+{% assign font_logo_type_split = settings.font_logo_type | split: '|' %}
+{% if font_logo_type_split.first == 'GWF' %}
+    {% if font_logo_type_split.last == 'CUSTOM' %}
+        {% capture font_logo_type %}'{{ settings.font_logo_type_custom | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% else %}
+        {% capture font_logo_type %}'{{ font_logo_type_split.last | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% endif %}
+{% else %}
+    {% assign font_logo_type = settings.font_logo_type %}
+{% endif %}
+
+{% assign font_nav_type_split = settings.font_nav_type | split: '|' %}
+{% if font_nav_type_split.first == 'GWF' %}
+    {% if font_nav_type_split.last == 'CUSTOM' %}
+        {% capture font_nav_type %}'{{ settings.font_nav_type_custom | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% else %}
+        {% capture font_nav_type %}'{{ font_nav_type_split.last | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% endif %}
+{% else %}
+    {% assign font_nav_type = settings.font_nav_type %}
+{% endif %}
+
+{% assign font_standard_type_split = settings.font_standard_type | split: '|' %}
+{% if font_standard_type_split.first == 'GWF' %}
+    {% if font_standard_type_split.last == 'CUSTOM' %}
+        {% capture font_standard_type %}'{{ settings.font_standard_type_custom | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% else %}
+        {% capture font_standard_type %}'{{ font_standard_type_split.last | split: ':' | first | replace:'+',' ' }}'{% endcapture %}
+    {% endif %}
+{% else %}
+    {% assign font_standard_type = settings.font_standard_type %}
+{% endif %}
+
+
+/*  Site
+ */
+
+body {
+    font:{{ settings.font_standard_style }} {{ settings.font_standard_size }}px {{ font_standard_type }}, sans-serif;
+}
+
+.bodywrap {
+    background:{{ settings.color_bg_main }}
+    {% unless settings.bg_image_body == '' %}
+        {% if settings.bg_offset_body_y == '' %}
+            {% assign bg_offset_body_y = '0px' %}
+        {% else %}
+            {% capture bg_offset_body_y %}{{ settings.bg_offset_body_y }}px{% endcapture %}
+        {% endif %}
+        url('{{ settings.bg_image_body | asset_url }}') {{ settings.bg_repeat_body | replace: 'top', bg_offset_body_y }}
+    {% endunless %};
+    position: relative;
+    z-index: 5;
+    {% if settings.head_foot_border == true %}
+    border-top: {{ settings.color_general_divider }} 1px solid;
+    {% else %}
+    border-top: none;
+    {% endif %}
+}
+
+.loadingimg {
+    background: url('{{ settings.loading_graphic | asset_url }}') center center no-repeat;
+    min-height: 40px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font:{{ settings.font_heading_style }} {{ settings.font_heading_size }}px/{{ settings.font_heading_size }}px {{ font_heading_type }}, sans-serif;
+}
+
+h1 {
+    font-size: {{ settings.font_heading_size }};
+}
+h2 {
+    font-size: {{ settings.font_heading_size | plus: -4 }}px;
+}
+h3 {
+    font-size: {{ settings.font_heading_size | plus: -6 }}px;
+}
+h4 {
+    font-size: {{ settings.font_heading_size | plus: -8 }}px;
+}
+h5 {
+    font-size: {{ settings.font_heading_size | plus: -10 }}px;
+}
+h6 {
+    font-size: {{ settings.font_heading_size | plus: -12 }}px;
+}
+
+a.button, 
+input.button, 
+.button a {
+    font-family: {{ font_heading_type }}, Helvetica, Arial, sans-serif;
+}
+
+{% comment %} Calculate the sprite offset, and create the high-DPI offset too {% endcomment %}
+{% if settings.social_sprite_mode == 'light' %}
+    {% assign social_sprite_offset = -28 %}
+{% elsif settings.social_sprite_mode == 'colorful' %}
+    {% assign social_sprite_offset = -56 %}
+{% else %}
+    {% assign social_sprite_offset = 0 %}
+{% endif %}
+
+#util-bar .actions .logindrop {
+    {% if settings.theme_icons_mode_head == 'dark' %}
+        background: url('') no-repeat right -220px;
+    {% else %}
+        background: url('{{ 'themeicons.png' | asset_url }}') no-repeat right -311px;
+    {% endif %}
+    padding-right: 15px;
+    margin-left: 10px;
+}
+
+#util-bar .actions .logindrop.open {
+    {% if settings.theme_icons_mode_head == 'dark' %}
+        background-position: right -176px;
+    {% else %}
+        background-position: right -266px;
+    {% endif %}
+}
+
+#util-bar .socialicons li a {
+    background: url({{ 'social_icons.png' | asset_url }});
+}
+
+#util-bar .socialicons li.rss a { background-position:{{ social_sprite_offset }}px 0; }
+#util-bar .socialicons li.facebook a { background-position:{{ social_sprite_offset }}px -28px; }
+#util-bar .socialicons li.twitter a { background-position:{{ social_sprite_offset }}px -56px; }
+#util-bar .socialicons li.tumblr a { background-position:{{ social_sprite_offset }}px -84px; }
+#util-bar .socialicons li.pinterest a { background-position:{{ social_sprite_offset }}px -112px; }
+#util-bar .socialicons li.youtube a { background-position:{{ social_sprite_offset }}px -140px; }
+#util-bar .socialicons li.instagram a { background-position:{{ social_sprite_offset }}px -168px; }
+
+#util-bar #searchcont.slideout .searchbtn {
+    {% if settings.theme_icons_mode_head == 'dark' %}
+        background-position: 5px -354px;
+    {% else %}
+        background-position: 5px -409px;
+    {% endif %}
+}
+
+#searchcont.inline input[type="submit"] {
+    background: url('#{"{{ 'theme_icons.png' | asset_url }}"}') no-repeat 5px -360px;
+}
+
+#util-bar #searchcont.slideout .searchbtn {
+    background-image: url('{{ 'theme_icons.png' | asset_url }}');
+}
+
+#pageheader .nav ul li .hasdropdown {
+    padding-right: 15px;
+    {% if settings.theme_icons_mode_body == 'dark' %}
+    background: url('#{"$theme_icons"}') right -215px no-repeat;
+    {% else %}
+    background: url('#{"$theme_icons"}') right -306px no-repeat;
+    {% endif %}
+}
+
+#pageheader .nav ul li.open .hasdropdown {
+    {% if settings.theme_icons_mode_body == 'dark' %}
+        background-position: right -171px;
+    {% else %}
+        background-position: right -261px;
+    {% endif %}
+}
+
+#pageheader #logo-area {
+    position: relative;
+    {% if settings.logo_margin_left == 'center' or settings.logo_margin_left == 'centre' %}
+    text-align:center;
+    {% elsif settings.logo_margin_left != '' %}
+    padding-left:{{ settings.logo_margin_left }}px;
+    {% endif %}
+}
+
+#pageheader #logo-area #logo {
+    {% if settings.logo_margin_top != '' %}
+    padding-top:{{ settings.logo_margin_top }}px;
+    {% endif %}
+    {% if settings.logo_margin_under != '' %}
+    padding-bottom:{{ settings.logo_margin_under }}px;
+    {% endif %}
+}
+
+#pageheader #logo-area #logo img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+#pageheader #logo-area #logo .text-logo {
+    display: block;
+    color:{{ settings.color_body_shoptitle }};
+    font:{{ settings.font_logo_style }} {{ settings.font_logo_size }}px {{ font_logo_type }}, sans-serif;
+}
+
+#pageheader nav ul ul,
+#pageheader nav ul div.multi-column {
+    filter: alpha(opacity={{ settings.nav_drop_alpha | times: 100 }}); /* ie */
+    opacity: {{ settings.nav_drop_alpha }};
+}
+
+#pageheader nav ul ul li {
+    display: block;
+    margin: 2px 10px 2px;
+    {% if settings.nav_drop_div_en %}
+    border-top: 1px solid rgb(67, 67, 67);
+    border-top: 1px solid rgba(67, 67, 67, .5);
+    {% endif %}
+    line-height: {{ settings.nav_drop_font_size | plus: 4 }}px;
+}
+
+#pageheader nav ul ul li:first-child {
+    border-top:0;
+}
+
+#pageheader nav ul ul li a {
+    text-align: {{ settings.nav_drop_just }};
+    color: {{ settings.nav_drop_text }};
+    height: auto;
+    font-size: {{ settings.nav_drop_font_size }}px;
+    line-height: {{ settings.nav_drop_font_size | plus: 3 }}px;
+    width: {{ settings.nav_drop_width }}px;
+    padding: {{ settings.nav_drop_pad_betw }}px 10px;
+}
+
+#pageheader nav ul div.multi-column.columns-2 { width: {{ settings.nav_drop_width | plus: 40 | times: 2 }}px; }
+#pageheader nav ul div.multi-column.columns-3 { width: {{ settings.nav_drop_width | plus: 40 | times: 3 }}px; }
+#pageheader nav ul div.multi-column.columns-4 { width: {{ settings.nav_drop_width | plus: 40 | times: 4 }}px; }
+#pageheader nav ul div.multi-column.columns-5 { width: {{ settings.nav_drop_width | plus: 40 | times: 5 }}px; }
+
+.paging a.prev,
+.paging a.next,
+.flex-direction-nav .flex-next,
+.flex-direction-nav .flex-prev {
+    {% if settings.theme_icons_mode_head == 'dark' %}
+    background-position: 1px -32px;
+    {% else %}
+    background-position: 1px -130px;
+    {% endif %}
+}
+.paging a.prev,
+.flex-direction-nav .flex-prev {
+    {% if settings.theme_icons_mode_head == 'dark' %}
+    background-position: 0 7px;
+    {% else %}
+    background-position: 0 -80px;
+    {% endif %}
+}
+
+{% if settings.prod_sale_mode == 'middle' %}
+    .productlist .product .imgcont .salecontainer {
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        width: 60%;
+        margin-top: -14px;
+        text-align: center;
+        z-index: 10000;
+    }
+    .productlist .product .imgcont .sale {
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
+    }
+{% elsif settings.prod_sale_mode == 'top' %}
+    .productlist .product .imgcont .salecontainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 10000;
+        opacity: .9;
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    }
+    .productlist .product .imgcont .sale {
+        display: block;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+{% endif %}
+
+.productlist .product .imgcont .sale {
+    font-family:{{ font_heading_type }}, Helvetica, Arial, sans-serif;
+}
+
+#productinfo #detail .added {
+    font-family:{{ font_heading_type }}, Helvetica, Arial, sans-serif;
+}
+
+#productinfo #detail .added .basket {
+    background: url('{{ 'transblack20.png' | asset_url }}');
+}
+
+#pagefooter .paymentmethods > span {
+    background: url('{{ 'payment-methods-sprite.png' | asset_url }}') 0 0 no-repeat;
+}
+
+.paging a.prev,
+.paging a.next,
+.flex-direction-nav .flex-next,
+.flex-direction-nav .flex-prev {
+    background-image: url('{{ 'theme_icons.png' | asset_url }}');
+}
+
+#maincontent .socialicons .rss {
+    {% if settings.theme_icons_mode_body == 'dark' %}
+    background: url('#{"$social_icons"}') no-repeat 0 0;
+    {% else %}
+    background: url('#{"$social_icons"}') no-repeat -28px 0;
+    {% endif %}
+}
+
+#pagefooter {
+    color: {{ settings.color_foot_standard }};
+    background:{{ settings.color_bg_footer }}
+    {% unless settings.bg_image_foot == '' %}
+    url({{ settings.bg_image_foot | asset_url }}) {{ settings.bg_repeat_foot }}
+    {% endunless %};
+    {% if settings.head_foot_border == true %}
+    border-top: {{ settings.color_general_divider }} 1px solid;
+    {% else %}
+    border-top: none;
+    {% endif %}
+}
+
+.rg-image-nav a {
+    background: url('{{ 'gallery-nav.png' | asset_url }}') no-repeat -20% 50%;
+}
+
+.rg-view a {
+    background: #464646 url('{{ 'gallery-views.png' | asset_url }}') no-repeat top left;   
+}
+
+.rg-loading,
+.lbLoading {
+    background: url('{{ settings.loading_graphic | asset_url }}') no-repeat center center;
+}
+
+.es-nav span{
+    font-family: {{ font_heading_type }}, Helvetica, Arial, sans-serif;
+}
+
+#lbPrevLink:hover {
+  background: transparent url('{{ 'prevlabel.gif' | asset_url }}') no-repeat 0 15%;
+}
+
+#lbNextLink:hover {
+  background: transparent url('{{ 'nextlabel.gif' | asset_url }}') no-repeat 100% 15%;
+}
+
+#lbCloseLink {
+  background: transparent url('{{ 'closelabel.gif' | asset_url }}') no-repeat center;
+}
+
+/* High DPI devices get some graphical upgrades */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+        #util-bar .socialicons li a,
+        #maincontent .socialicons .rss {
+            background-image: url('{{ 'social_icons_2x.png' | asset_url }}');
+            -moz-background-size: 84px 196px;
+            -ie-background-size: 84px 196px;
+            -o-background-size: 84px 196px;
+            -webkit-background-size: 84px 196px;
+            background-size: 84px 196px;
+        }
+        
+        #util-bar .actions .logindrop,
+        #util-bar .actions .searchbtn,
+        #pageheader nav ul li .hasdropdown,
+        .paging a.prev,
+        .paging a.next,
+        .flex-direction-nav .flex-next,
+        .flex-direction-nav .flex-prev {
+            background-image: url('{{ 'theme_icons_2x.png' | asset_url }}');
+            background-size: 14px 500px;
+        }
+}
+
+/* Add custom code under here */

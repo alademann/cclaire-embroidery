@@ -4,14 +4,14 @@
 .amount,
 .total,
 #cost {
-    font-family: #{"$font_standard_type_custom"} !important;
+    font-family: $font_standard_type_custom !important;
     strong {
         font-weight: 700 !important;
     }
 }
 #productinfo {
     [itemprop="price"] {
-        strong { font-size: #{"$font_heading_size - 12px"}; }
+        strong { font-size: #{"$fontBigPriceSize"}; }
     }
 }
 #cost {

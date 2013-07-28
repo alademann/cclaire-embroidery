@@ -1,6 +1,94 @@
 // customizations for image slider (used on home page)
+#mainslider {
+    position: relative;
+}
+
+#mainslider .flexslider .slides > li img { width: 100%; }
 
 #mainslider .overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 20;
     background: #{"$color_slider_mask"} !important;
-    background: #{"rgba($color_slider_mask, $color_slider_alpha)"} !important;
+    background: rgba($color_slider_mask, $color_slider_alpha) !important;
+}
+
+#mainslider .overlay.left,
+#mainslider .overlay.right {
+    top: 0;
+    bottom: auto;
+    height: 100%;
+    width: 300px;
+}
+
+#mainslider .overlay.right {
+    left: auto;
+    right: 0;
+}
+
+#mainslider .overlay.bottom {
+    padding: 10px 0 15px;
+}
+
+#mainslider .overlay p,
+#mainslider .overlay h6 {
+    color: #{"$color_slider_text"};
+    margin: 5px 15px;
+}
+
+#mainslider .overlay.left .title,
+#mainslider .overlay.right .title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#mainslider .overlay .price {
+    font-size: 190%;
+    margin: 10px 15px 20px;    
+    display: block;
+    color: #{"$color_slider_text"};
+}
+
+#mainslider .overlay.bottom.haslower .price {
+    text-align: right;
+}
+
+#mainslider .overlay .button {
+    border-color: transparent;
+    text-align: center;
+    margin: 10px 15px 0;
+}
+
+#mainslider .overlay.left .lower,
+#mainslider .overlay.right .lower {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+#mainslider .overlay.bottom.haslower .upper {
+    float: left;
+    width: 68%;
+}
+
+#mainslider .overlay.bottom.haslower .lower {
+    float: left;
+    width: 32%;
+}
+
+#mainslider .flex-direction-nav {
+    display: none;
+}
+
+#mainslider .flex-control-nav li a {
+    height: 8px;
+    width: 8px;
+}
+
+#mainslider .flex-control-nav {
+    display: block;
 }

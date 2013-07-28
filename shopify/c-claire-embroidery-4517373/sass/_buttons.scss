@@ -1,0 +1,86 @@
+a.button, 
+input.button, 
+.button a {
+    font-size:  1.05em;
+    border: none !important;
+    background: #{"$color_btn_bg"};
+    color: #{"$color_btn_text"};
+    text-decoration: none !important;
+    padding: $btnPadding;
+    cursor: pointer;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    @include border-radius($borderRadiusBase);
+    &:hover {
+        color: #{"$color_btn_text"};
+        background-color: #{"darken($color_btn_bg, $cclaireBtnHoverDarken)"};
+    }
+}
+
+// alt buttons (not primary green)
+a.button.altcolor,
+input.button.altcolor,
+.button.altcolor a {
+    background-color: #{"$color_btn_alt_bg"};
+    &:hover {
+        background-color: #{"darken($color_btn_alt_bg, $cclaireBtnHoverDarken)"};
+    }
+}
+
+// large buttons
+a.button.large,
+input.button.large,
+.button.large a {
+    padding: $btnPaddingLarge;
+    display: block;
+    text-transform: uppercase;
+    font-size: $btnFontSizeLarge;
+}
+    a.button.large.plus,
+    input.button.large.plus,
+    .button.large.plus a {
+        text-align: left;
+    }
+
+a, 
+button,
+input[type="submit"] {
+    &:focus {
+        outline: 0; // no native blurred outline please
+    }
+}
+
+.betweenbuttons {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+// the +/- qty buttons
+.minibutton {
+    &:hover,
+    &:focus {
+        // plus
+        color: $cclaireGreen;
+    }
+    &.minus {
+        &:hover,
+        &:focus {
+            // minus
+            color: $removeBtnBg;
+        }
+    }
+}
+
+// red "remove" buttons
+.button {
+    &.remove {
+        background-color: $removeBtnBg !important;
+        @include opacity(.5);
+        &:hover,
+        &:focus {
+            @include opacity(1.0);
+            background-color: darken($removeBtnBg, $cclaireBtnHoverDarken) !important;
+        }
+    }
+}

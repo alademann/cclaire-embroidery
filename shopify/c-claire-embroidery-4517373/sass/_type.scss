@@ -1,0 +1,20 @@
+/* Hover for standard text <a> tags */
+#maincontent { 
+    p a,
+    .content-block a,
+    .contentsection a,
+    .tags a,
+    .info a,
+    .pagesnippetwidget a,
+    .recentarticles a h4,
+    #basket .desc a,
+    #basket .remove a {
+        border-bottom: 1px dashed transparent;
+        @include transition(border-color 200ms linear);
+
+        &:hover {
+            border-color: #{"$color_body_link"};
+        }
+
+    }
+}
