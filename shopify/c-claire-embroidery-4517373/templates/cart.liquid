@@ -48,11 +48,11 @@
                                 <label for="updates_{{ item.variant.id }}">Qty</label>
                                 <!-- <input type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" /> -->
                                 {% unless settings.hide_plusmin_hide %}
-                                <a href="javascript:modifyQuantity('#updates_{{ item.id }}', -1, {{ item.id }})" class="minibutton">-</a>
+                                <a class="minibutton minus" href="javascript:modifyQuantity('#updates_{{ item.id }}', -1, {{ item.id }})">-</a>
                                 {% endunless %}
                                 <input class="short" type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();">
                                 {% unless settings.hide_plusmin_hide %}
-                                <a href="javascript:modifyQuantity('#updates_{{ item.id }}', 1, {{ item.id }})" class="minibutton">+</a>
+                                <a class="minibutton plus" href="javascript:modifyQuantity('#updates_{{ item.id }}', 1, {{ item.id }})">+</a>
                                 {% endunless %}
                             </div>
                             <div class="amt">

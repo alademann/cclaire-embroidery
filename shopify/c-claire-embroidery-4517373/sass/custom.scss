@@ -39,10 +39,19 @@ input[type="submit"] {
     }
 }
 
+// the +/- qty buttons
 .minibutton {
     &:hover,
     &:focus {
+        // plus
         color: $cclaireGreen;
+    }
+    &.minus {
+        &:hover,
+        &:focus {
+            // minus
+            color: $removeBtnBg;
+        }
     }
 }
 
