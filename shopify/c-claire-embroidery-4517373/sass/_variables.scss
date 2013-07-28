@@ -1,38 +1,38 @@
 // BASE VARS
 // -------------------------
-$lineHeightBase: 19px;
-$btnHeight: 33px;
-$btnHeightLarge: 49px;
+$lineHeightBase:            19px;
+$btnHeight:                 33px;
+$btnHeightLarge:            49px;
 
 // COLORS
 // -------------------------
-$cclaireGray: #3f3e3a;
-$cclaireGrayDark: #191817;
-$cclaireDividerBg: #393835;
-$cclaireBtnHoverDarken: 5%;
+$cclaireGray:               #3f3e3a;
+$cclaireGrayDark:           #191817;
+$cclaireDividerBg:          #393835;
+$cclaireBtnHoverDarken:     5%;
 
 // COLOR OPTIONS
-$cclaireGreen: #a8b73a;
-$cclaireGreenMuted: mix($cclaireGray, $cclaireGreen, 50%);
+$cclaireGreen:              #a8b73a;
+$cclaireGreenMuted:         mix($cclaireGray, $cclaireGreen, 50%);
 
-$cclairePink: #e45556;
-$cclairePinkMuted: mix($cclaireGray, $cclairePink, 50%);
+$cclairePink:               #e45556;
+$cclairePinkMuted:          mix($cclaireGray, $cclairePink, 50%);
 
 // remove buttons
-$removeBtnBg: #bf3030;
+$removeBtnBg:               #bf3030;
 
-$checkoutRowItemPadTop: $lineHeightBase;
+$checkoutRowItemPadTop:     $lineHeightBase;
 
 // PRODUCT PAGES
 // -------------------------
-$product_img_size_thumb: 50px;
-$prodImgHeightRatio: 0.74565217391304;
-$prodColumnTopMargin: 0; // was 10px stock
-$prodNameFontSize: 20px;
-$prodNameLineHeight: 28px;
-$prodOptionLabelWidth: 160px;
-$prodOptionLabelPad: 10px;
-$prodOptionMargin: 10px;
+$product_img_size_thumb:    50px;
+$prodImgHeightRatio:        0.74565217391304;
+$prodColumnTopMargin:       0; // was 10px stock
+$prodNameFontSize:          20px;
+$prodNameLineHeight:        28px;
+$prodOptionLabelWidth:      160px;
+$prodOptionLabelPad:        10px;
+$prodOptionMargin:          10px;
 
 // labels on left with right aligned text
 // with options to the right spanning remaining width
@@ -56,39 +56,28 @@ $prodOptionMargin: 10px;
 
 //+ vars that get applied via liquid template settings
 //+ in _liquid-scss-vars.scss
-// vars that we'll eventually put inside our .scss.liquid template in the editor
-// so they can change based on theme options
-$color_bg_main: $cclaireGray;
-$color_bg_header: $cclaireGrayDark;
-$color_bg_footer: $cclaireGrayDark;
-$color_nav_divider: $cclaireGreenMuted;
-$color_paging_bg: $cclaireDividerBg;
-$color_form_field_bg: #f7f7f7;
-$color_form_field_border: $cclaireDividerBg;
-$color_form_field_text: $cclaireGrayDark;
-$color_foot_standard: #ababab;
+// NOTE: if you add something here - make sure you add
+// a counterpart in the _liquid-scss-vars.scss file mentioned above.
+// so they update when customer changes theme options
+
+// bgcolors
+$color_bg_main:             $cclaireGray;
+$color_bg_header:           $cclaireGrayDark;
+$color_bg_footer:           $cclaireGrayDark;
+$color_nav_divider:         $cclaireGreenMuted;
+$color_paging_bg:           $cclaireDividerBg;
+$color_form_field_bg:       #f3f3f3;
+$color_form_field_border:   $cclaireDividerBg;
 // buttons
-$color_btn_text: #fff;
-$color_btn_bg: $cclaireGreen;
-$color_btn_alt_bg: #31302e; // slightly darker than divider bg
+$color_btn_text:            #fff;
+$color_btn_bg:              $cclaireGreen;
+$color_btn_alt_bg:          #31302e; // slightly darker than divider bg
 // homepage slider overlay
-$color_slider_mask: #fff;
-$color_slider_alpha: .8;
+$color_slider_mask:         #fff;
+$color_slider_alpha:        .8;
+// text colors
+$color_body_standard:       #f3f3f3;
+$color_form_field_text:     $cclaireGrayDark;
+$color_foot_standard:       #ababab;
 // fonts
 $font_standard_type_custom: 'Droid Sans', Helvetica, Arial, sans-serif;
-
-
-// UNCOMMENT AND PASTE THIS IN THE LIQUID SCSS FILE
-// $cclaireBtnHoverDarken: 5%;
-// $color_bg_main: {{ settings.color_bg_main }};
-// $color_bg_header: {{ settings.color_bg_header }};
-// $color_bg_footer: {{ settings.color_bg_footer }};
-// $color_nav_divider: {{ settings.color_nav_divider }};
-// $color_paging_bg: {{ settings.color_paging_bg }};
-// $color_form_field_bg: {{ settings.color_form_field_bg }};
-// $color_form_field_border: {{ settings.color_form_field_border }};
-// $color_form_field_text: {{ settings.color_form_field_text }};
-// // buttons
-// $color_btn_text: {{ settings.color_btn_text }};
-// $color_btn_bg: {{ settings.color_btn_bg }};
-// $color_btn_alt_bg: {{ settings.color_btn_alt_bg }};
