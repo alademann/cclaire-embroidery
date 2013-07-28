@@ -1,6 +1,6 @@
 // customizations for image slider (used on home page)
 
 #mainslider .overlay {
-    background: $color_slider_mask !important;
-    background: rgba($color_slider_mask, $color_slider_alpha) !important;
+    background: #{"$color_slider_mask"} !important;
+    background: #{"rgba($color_slider_mask, $color_slider_alpha)"} !important;
 }

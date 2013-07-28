@@ -27,7 +27,7 @@ $checkoutRowItemPadTop:     $lineHeightBase;
 
 // PRODUCT PAGES
 // -------------------------
-$product_img_size_thumb:    50px;
+$productImgSizeThumb:       50px;
 $prodImgHeightRatio:        0.74565217391304;
 $prodColumnTopMargin:       0; // was 10px stock
 $prodNameFontSize:          20px;
@@ -62,6 +62,11 @@ $prodOptionMargin:          10px;
 // a counterpart in the _liquid-scss-vars.scss file mentioned above.
 // so they update when customer changes theme options
 
+// NOTE: When these are used - you must wrap them in a #{""} so that 
+// the liquid scss file is still requesting the var that will be 
+// declared using {{ settings.var_name }} when uploaded
+// e.g. we don't want these values actually calculated yet - we want shopify to do that.
+
 // bgcolors
 $color_bg_main:             $cclaireGray;
 $color_bg_header:           $cclaireGrayDark;
@@ -83,3 +88,5 @@ $color_form_field_text:     $cclaireGrayDark;
 $color_foot_standard:       #ababab;
 // fonts
 $font_standard_type_custom: 'Droid Sans', Helvetica, Arial, sans-serif;
+$font_standard_size:        14px;
+$font_heading_size:         36px;

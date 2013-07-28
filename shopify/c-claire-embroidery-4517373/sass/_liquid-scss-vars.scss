@@ -2,8 +2,12 @@
 //+ ../assets/custom.scss.liquid 
 //+ after it has been compiled from custom.scss
 
-// bgcolors
+// any vars used in calculations / formulas combined with the 
+// shopify variables listed below must also be declared here
+// or else shopify won't be able to process the file
 $cclaireBtnHoverDarken:         5%;
+
+// bgcolors
 $color_bg_main:                 {{ settings.color_bg_main }};
 $color_bg_header:               {{ settings.color_bg_header }};
 $color_bg_footer:               {{ settings.color_bg_footer }};
@@ -23,3 +27,5 @@ $color_form_field_text:         {{ settings.color_form_field_text }};
 $color_foot_standard:           {{ settings.color_foot_standard }};
 // fonts
 $font_standard_type_custom:     {{ settings.font_standard_type_custom }};
+$font_standard_size:            {{ settings.font_standard_size }};
+$font_heading_size:             {{ settings.font_heading_size }};
