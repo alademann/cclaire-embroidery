@@ -1,6 +1,51 @@
 /**
  * CClaire Embroidery Custom Shopify CSS 
  */
+
+$cclaireBtnHoverDarken:         5%;
+
+/* bgcolors */
+$color_bg_main:                 {{ settings.color_bg_main }};
+$color_bg_header:               {{ settings.color_bg_header }};
+$color_bg_footer:               {{ settings.color_bg_footer }};
+$color_nav_divider:             {{ settings.color_nav_divider }};
+$nav_drop_bg:                   {{ settings.nav_drop_bg }};
+$color_paging_bg:               {{ settings.color_paging_bg }};
+$color_form_field_bg:           {{ settings.color_form_field_bg }};
+$color_form_field_border:       {{ settings.color_form_field_border }};
+$color_general_divider:         {{ settings.color_general_divider }};
+/* buttons */
+$color_btn_text:                {{ settings.color_btn_text }};
+$color_btn_bg:                  {{ settings.color_btn_bg }};
+$color_btn_alt_bg:              {{ settings.color_btn_alt_bg }};
+$color_paging_bg:               {{ settings.color_paging_bg }};
+/* homepage slider overlay */
+$color_slider_mask:             {{ settings.color_slider_mask }};
+$color_slider_alpha:            .8;
+$color_slider_text:             {{ settings.color_slider_text }};
+/* text colors */
+$color_body_standard:           {{ settings.color_body_standard }};
+$color_body_link:               {{ settings.color_body_link }};
+$color_body_nav:                {{ settings.color_body_nav }};
+$color_body_heading:            {{ settings.color_body_heading }};
+$color_form_field_text:         {{ settings.color_form_field_text }};
+$color_head_general:            {{ settings.color_head_general }};
+$color_foot_standard:           {{ settings.color_foot_standard }};
+$color_foot_heading:            {{ settings.color_foot_heading }};
+$color_foot_link:               {{ settings.color_foot_link }};
+/* fonts */
+$font_standard_size:            {{ settings.font_standard_size }}px;
+$font_heading_size:             {{ settings.font_heading_size }}px;
+$nav_drop_font_size:            {{ settings.nav_drop_font_size }}px;
+$font_nav_size:                 {{ settings.font_nav_size }}px;
+$font_prod_title_size:          {{ settings.font_prod_title_size }}px;
+$fontBigPriceSize:              {{ settings.font_heading_size | plus: -12 }}px;
+/* images */
+$theme_icons_mode_head:         {{ settings.theme_icons_mode_head }};
+$theme_icons_mode_body:         {{ settings.theme_icons_mode_body }};
+/* misc */
+$prod_sale_mode:                {{ settings.prod_sale_mode }};
+ 
 .options .shappify_option, .selectors {
   padding-bottom: 0;
   margin-bottom: 10px;
@@ -339,7 +384,7 @@ select:focus {
   /**/
 }
 #basket .cartitem .amt {
-  width: 11%;
+  width: 15%;
   text-align: center;
   line-height: 33px;
 }
@@ -347,7 +392,7 @@ select:focus {
   font-size: $font_standard_size + 2;
 }
 #basket .cartitem .remove {
-  width: 19%;
+  width: 15%;
   text-align: center;
   /**/
 }
@@ -359,6 +404,36 @@ select:focus {
 #basket .foot {
   padding-top: 22px;
 }
+#basket .foot.top {
+  float: left;
+  width: 100%;
+  clear: both;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+#basket .foot.top .updatecont,
+#basket .foot.top .checkoutcont {
+  float: right;
+}
+#basket .foot.top .updatecont {
+  margin-top: 1px;
+}
+#basket .foot.top .updatecont .button {
+  float: right;
+  margin-right: 13px;
+}
+#basket .foot.top .checkoutcont {
+  padding-right: 26px;
+}
+#basket .foot.top .checkoutcont .total {
+  margin-top: 11px;
+  float: right;
+  width: 66%;
+}
+#basket .foot.top .checkoutcont .button {
+  text-transform: uppercase;
+}
 #basket .foot .button {
   display: inline;
 }
@@ -368,20 +443,29 @@ select:focus {
   float: left;
 }
 #basket .foot .instructions {
-  width: 15%;
+  width: 53%;
 }
 #basket .foot .updatecont {
   width: 17%;
   text-align: center;
+  margin-top: 11px;
 }
 #basket .foot .checkoutcont {
   width: 30%;
   text-align: center;
 }
 #basket .foot .checkoutcont .total {
+  margin-top: 21px;
   float: left;
-  width: 0.57895;
+  width: 50%;
   font-size: $fontBigPriceSize;
+}
+#basket .foot .checkoutcont .button,
+#basket .foot .checkoutcont .extrapaymentmethods {
+  float: right;
+}
+#basket .foot .checkoutcont .extrapaymentmethods {
+  clear: right;
 }
 #basket .foot .extrapaymentmethods input[type="image"] {
   border: 0;
@@ -400,6 +484,43 @@ select:focus {
   padding: 2px 1px 0;
 }
 
+@media only screen and (max-width: 767px) {
+  #basket .cartitem .image,
+  #basket .cartitem .desc {
+    float: none;
+    width: 100%;
+  }
+  #basket .cartitem .desc {
+    margin-bottom: 15px;
+  }
+  #basket .cartitem .qty,
+  #basket .cartitem .amt,
+  #basket .cartitem .remove {
+    padding-top: 30px;
+    width: 33%;
+  }
+  #basket .cartitem .qty {
+    padding-top: 11px;
+  }
+  #basket .foot.top {
+    display: none;
+  }
+  #basket .foot .instructions,
+  #basket .foot .instructions textarea,
+  #basket .foot .updatecont,
+  #basket .foot .checkoutcont {
+    float: none;
+    width: 100%;
+  }
+  #basket .foot .updatecont,
+  #basket .foot .checkoutcont .total {
+    margin-top: 0;
+  }
+  #basket .foot .checkoutcont .total {
+    float: none;
+    width: auto;
+  }
+}
 #shipping-calculator .selectreplace {
   vertical-align: middle;
   width: 100%;
