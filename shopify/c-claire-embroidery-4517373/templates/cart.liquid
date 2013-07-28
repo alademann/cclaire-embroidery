@@ -17,6 +17,14 @@
         </script>
         <form action="/cart" method="post" id="cartform">
             <div id="basket" class="cf">
+                <div class="top foot">
+                    <!-- these will float right... so reverse the order to match the bottom footer -->
+                    <div class="checkoutcont">
+                        <input type="submit" class="button" name="checkoutTop" value="{{ settings.text_checkout }}" />
+                        <div class="total">{{ cart.total_price | money_with_currency }}</div>
+                    </div>
+                    <div class="updatecont"><input type="submit" class="button update altcolor" id="update-cart" name="update" value="Update" />&nbsp;</div>
+                </div> <!--/ top .foot -->
                 <ul>
                 {% for item in cart.items %}
                     <li>

@@ -118,6 +118,43 @@
     // -------------------------
     .foot {
 
+        // the one on top
+        &.top {
+            float: left;
+            width: 100%;
+            clear: both;
+            position: absolute;
+            top: 0;
+            right: $containerPadX;
+
+            .updatecont,
+            .checkoutcont {
+                float: right;
+            }
+
+            .updatecont {
+                margin-top: $checkoutRowItemDefaultPad - $lineHeightBase - 10;
+                .button {
+                    float: right;
+                    margin-right: $containerPadX + 3;
+                }
+            }
+            .checkoutcont {
+                padding-right: ($containerPadX * 2) + 6;
+                .total {
+                    margin-top: $checkoutRowItemDefaultPad - $lineHeightBase;
+                    float: right;
+                    width: 66%;
+                }
+                .button {
+                    // even though we are using a smaller button
+                    // we still want it to match the visuals of the big one
+                    // in the bottom footer of the cart page.
+                    text-transform: uppercase;
+                }
+            }
+        }
+
         padding-top: $checkoutRowItemDefaultPad - 8px;
 
         .button {
@@ -135,27 +172,37 @@
 
         .instructions {
             // should be the same width as .image + .desc
-            width: $checkoutImgColWidthTtl;
+            width: $checkoutImgColWidthTtl + $checkoutDescColWidth;
         }
         .updatecont {
             // should be the same width as qty column
             // since update button relates to updated quantities
             width: $checkoutQtyColWidth;
             text-align: center;
+            margin-top: $checkoutRowItemDefaultPad - $lineHeightBase;
         }
         .checkoutcont {
             // contains both the subtotal and the checkout btn
             width: $checkoutAmtColWidth + $checkoutBtnColWidth;
             text-align: center;
             .total {
+                margin-top: $checkoutRowItemDefaultPad - $lineHeightBase + 10;
                 // should line up with .amt column
                 float: left;
                 // should be the proportional amount that 
                 // the .amt column takes up
-                width: $checkoutAmtColWidth / $checkoutBtnColWidth;
+                width: round(100 - percentage($checkoutAmtColWidth / ($checkoutBtnColWidth + $checkoutAmtColWidth)));
                 font-size: #{"$fontBigPriceSize"};
             }
+            .button, 
+            .extrapaymentmethods {
+                float: right;
+            }
+            .extrapaymentmethods {
+                clear: right;
+            }
         }
+        // line up "update" / total with big checkout button vertically
 
 
         // END LINE UP COLUMNS FROM CARTITEM ABOVE

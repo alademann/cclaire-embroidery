@@ -9,6 +9,7 @@ $btnHeightLarge:            49px;
 $btnFontSizeLarge:          20px;
 $borderRadiusBase:          2px; // standard for buttons
 $borderRadiusInput:         5px;
+$containerPadX:             10px;
 
 // COLORS
 // -------------------------
@@ -36,8 +37,8 @@ $checkoutImgColWidth:       13%;
 $checkoutImgColWidthTtl:    $checkoutImgColMarginRt + $checkoutImgColWidth;
 $checkoutDescColWidth:      38%;
 $checkoutQtyColWidth:       17%;
-$checkoutAmtColWidth:       11%; // TODO: increase?
-$checkoutBtnColWidth:       19%;
+$checkoutAmtColWidth:       15%; // TODO: increase?
+$checkoutBtnColWidth:       15%;
 
 
 // PRODUCT PAGES
