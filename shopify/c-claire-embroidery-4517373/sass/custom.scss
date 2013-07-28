@@ -4,10 +4,6 @@
 
 @import 'compass';
 @import 'variables';
-
-// replacement for style.css.liquid
-@import '_style.scss';
-/* CUSTOM BEGINS HERE */
 @import 'custom-manifest';
 
 // PRODUCT OPTIONS

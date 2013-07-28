@@ -6,8 +6,7 @@
 {% include 'theme-meta' %}
 {{ content_for_header }}
 
-{{ 'style.scss.css' | asset_url | stylesheet_tag }}
-{{ 'template-conditionals.css' | asset_url | stylesheet_tag }}
+{{ 'style.css' | asset_url | stylesheet_tag }}
 {{ 'skeleton.css' | asset_url | stylesheet_tag }}
 {{ 'custom.scss.css' | asset_url | stylesheet_tag }}
 
