@@ -13,6 +13,52 @@
                 }
                 return false;
             }
+
+            $(document).ready(function(){
+
+                var isNumber = function(n) {
+                  return !isNaN(parseFloat(n)) && isFinite(n);
+                };
+
+                var checkVal = function($input, index) {
+                    newVals[index] = $input.val();
+
+                    var valIsNumeric = isNumber(newVals[index]);
+                    if(valIsNumeric && newVals[index] > -1) {
+                        goodVals[index] = newVals[index];
+                    } else {
+                        // not a number
+                    }
+
+                    // if it was an invalid entry.. goodVals[index] will still have the 
+                    // last known good value to put back in there on blur
+                    $input.val(goodVals[index]);
+
+                };
+
+                var $itemQtyInput = $('.item-qty-input');
+                var goodVals = [];
+                var newVals = [];
+                $.each($itemQtyInput, function (index, item) {
+                    var $input = $(this);
+                    goodVals[index] = $input.val();
+                    newVals[index] = goodVals[index];
+                    
+                    $input.on('focus', function (e) {
+                        $(this).select();
+                    });
+
+                    $input.on('change', function (e) {
+                        checkVal($input, index);
+                    });
+
+                    $input.on('blur', function (e) {
+                        checkVal($input, index);
+                    });
+
+                });
+
+            }); // END document.ready()
         // ]]>
         </script>
         <form action="/cart" method="post" id="cartform">
@@ -58,7 +104,7 @@
                                 {% unless settings.hide_plusmin_hide %}
                                 <a class="minibutton minus" href="javascript:modifyQuantity('#updates_{{ item.id }}', -1, {{ item.id }})">-</a>
                                 {% endunless %}
-                                <input class="short" type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();">
+                                <input class="short item-qty-input" type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}">
                                 {% unless settings.hide_plusmin_hide %}
                                 <a class="minibutton plus" href="javascript:modifyQuantity('#updates_{{ item.id }}', 1, {{ item.id }})">+</a>
                                 {% endunless %}
@@ -68,7 +114,7 @@
                                 </span>
                             </div>
                             <div class="remove">
-                                <a class="button remove" href="/cart/change?line={{ forloop.index }}&quantity=0" onclick="">Remove</a>
+                                <a class="button altcolor remove" href="/cart/change?line={{ forloop.index }}&quantity=0" onclick="">Remove</a>
                             </div>
                         </div>
                     </li>
