@@ -2,108 +2,6 @@
  * Black & White
  * Checkout CSS
  */
- 
-/* PASTE CONTENTS OF checkout-extras.css here */
-#basket ul > li:first-child .cartitem {
-  padding-top: 11px;
-}
-#basket .cartitem .image {
-  margin-top: 19px;
-}
-#basket .cartitem .desc {
-  padding-top: 19px;
-  color: lighten($color_foot_standard, 8);
-}
-#basket .cartitem .desc .title {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 19px;
-}
-#basket .cartitem .desc .title a {
-  font-size: inherit;
-}
-#basket .cartitem .desc .properties {
-  font-size: inherit;
-}
-#basket .cartitem .desc .properties li {
-  font-size: 12px;
-  line-height: 16px;
-}
-#basket .cartitem .desc .properties li strong {
-  color: lighten($color_foot_standard, 15);
-}
-#basket .cartitem .desc .long-desc {
-  display: none;
-}
-#basket .cartitem .qty,
-#basket .cartitem .amt,
-#basket .cartitem .remove {
-  padding-top: 19px;
-}
-#basket .cartitem .qty {
-  padding-top: 0;
-}
-#basket .cartitem .qty .minibutton {
-  font-size: inherit;
-}
-#basket .cartitem .qty input {
-  font-size: inherit;
-}
-#basket .cartitem .amt {
-  line-height: 33px;
-}
-#basket .cartitem .amt .amount {
-  font-size: inherit;
-}
-#basket .cartitem .remove {
-  font-size: inherit;
-}
-#basket .cartitem .remove .button {
-  float: none;
-  width: auto;
-  padding: 7px 15px;
-}
-
-.button.remove {
-  background-color: #bf3030 !important;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
-}
-.button.remove:hover, .button.remove:focus {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-  background-color: #ab2b2b !important;
-}
-
-.step1 #thumbs div {
-  height: auto !important;
-  max-height: 50px;
-}
-
-.price,
-[itemprop="price"],
-.amount,
-.total,
-#cost {
-  font-family: "Droid Sans", Helvetica, Arial, sans-serif !important;
-}
-.price strong,
-[itemprop="price"] strong,
-.amount strong,
-.total strong,
-#cost strong {
-  font-weight: 700 !important;
-}
-
-#productinfo [itemprop="price"] strong {
-  font-size: 24px;
-}
-
-#cost {
-  font-weight: 700 !important;
-}
-
-/* END checkout-extras.css */
 
 {% assign font_heading_type_split = settings.font_heading_type | split: '|' %}
 {% if font_heading_type_split.first == 'GWF' %}
@@ -154,24 +52,346 @@
     @import url(//fonts.googleapis.com/css?family={{ font_standard_type_split.last }});
 {% endif %}
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   (Tweaked for CleanThemes theme)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
 body {
-    background:{{ settings.color_bg_main }}
-    {% if settings.bg_image_body && settings.bg_image_body != '' %}
-    url({{ settings.bg_image_body | asset_url }}) {{ settings.bg_repeat }} center {{ settings.bg_offset_y }}
-    {% endif %};
-    font:{{ settings.font_standard_style }} {{ settings.font_standard_size }}px {{ font_standard_type }}, sans-serif;
-    line-height: 1.4em;
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-a {
+/* CSS clear fix */
+ /* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+
+.cf:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}
+
+/* simpleclear */
+.simpleclear {
+    clear:both;
+}
+
+/* -------------------------   
+  Site
+-------------------------  */
+
+  body {
+      font:{{ settings.font_standard_style }} {{ settings.font_standard_size }}px {{ font_standard_type }}, sans-serif;
+      line-height: 1.4em;
+      color:{{ settings.color_body_standard }};
+      background:{{ settings.color_bg_main }}
+      {% unless settings.bg_image_body == '' %}
+          {% if settings.bg_offset_body_y == '' %}
+              {% assign bg_offset_body_y = '0px' %}
+          {% else %}
+              {% capture bg_offset_body_y %}{{ settings.bg_offset_body_y }}px{% endcapture %}
+          {% endif %}
+          url('{{ settings.bg_image_body | asset_url }}') {{ settings.bg_repeat_body | replace: 'top', bg_offset_body_y }}
+      {% endunless %};
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      font:{{ settings.font_heading_style }} {{ settings.font_heading_size }}px/{{ settings.font_heading_size }}px {{ font_heading_type }}, sans-serif;
+  }
+
+  h2 {
+      font-size:{{ settings.font_heading_size | plus: -4 }}px;
+  }
+  h3 {
+      font-size:{{ settings.font_heading_size | plus: -6 }}px;
+  }
+  h4 {
+      font-size:{{ settings.font_heading_size | plus: -8 }}px;
+  }
+  h5 {
+      font-size:{{ settings.font_heading_size | plus: -10 }}px;
+  }
+  h6 {
+      font-size:{{ settings.font_heading_size | plus: -12 }}px;
+  }
+
+  i, em {
+      font-style:italic;
+  }
+
+  b, strong {
+      font-weight:bold;
+  }
+
+  a {
+      color:{{ settings.color_body_link }};
+      text-decoration:none !important;
+      border-bottom: 1px dashed transparent !important;
+  }
+
+  a:hover {
+      color:{{ settings.color_body_link }} !important;
+      border-bottom: 1px dashed {{ settings.color_body_link }} !important;
+      text-decoration: none;
+  }
+
+  a.highlight {
+      display:inline-block;
+      zoom:1;
+      *display:inline;
+      max-width:100%;
+      -moz-transition: box-shadow 200ms; /* Firefox 4 */
+      -webkit-transition: box-shadow 200ms; /* Safari and Chrome */
+      -o-transition: box-shadow 200ms; /* Opera */
+      transition: box-shadow 200ms;
+  }
+
+  a.highlight img {
+      z-index:-1;
+      position:relative;
+  }
+
+  .error {
+      color:{{ settings.color_body_link }};
+      font-style:italic;
+  }
+
+  input,
+  .textboxcont,
+  textarea {
+      background:{{ settings.color_form_field_bg }};
+      border:1px solid {{ settings.color_form_field_border }};
+      color:{{ settings.color_form_field_text }};
+      -moz-transition: border-color 200ms; /* Firefox 4 */
+      -webkit-transition: border-color 200ms; /* Safari and Chrome */
+      -o-transition: border-color 200ms; /* Opera */
+      transition: border-color 200ms;
+      -webkit-appearance: none; /* iOS */
+      
+      -moz-border-radius: 5px 5px 5px 5px;
+      -webkit-border-radius: 5px 5px 5px 5px;
+      border-radius: 5px 5px 5px 5px;
+  }
+
+  input, input.short {
+      padding: 0;
+      height: 28px;
+      line-height: 28px;
+      text-indent: 6px;
+  }
+  input[type=text], input[type=password] {
+    padding: 0 !important;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+      background-color: #fff;
+      outline: 0;
+      border-color: {{ settings.color_btn_bg }};
+      @include box-shadow(0 0 0 1px {{ settings.color_btn_bg }});
+  }
+
+  input[type=radio] {
+      -webkit-appearance: radio;
+  }
+
+  .textboxcont input {
+      border:0;
+      height:36px;
+      width:100%;
+      text-indent:18px;
+  }
+
+  textarea {
+      width:95%;
+      padding:5px;
+      height:100px;
+      margin-top:8px;
+  }
+
+  input[type=submit] {
+      height: auto;
+      text-indent: 0;
+      cursor: pointer;
+  }
+
+  input[type=checkbox] {
+      vertical-align:middle;
+      -webkit-appearance: checkbox;
+  }
+
+  .hidden {
+      display:none;
+  }
+
+  a.button,
+  input.button,
+  .button a,
+  input[type="submit"] {
+      outline: 0 !important;
+      border:none !important;
+      background:{{ settings.color_btn_bg }};
+      font:1.05em {{ font_heading_type }},Arial,sans-serif;
+      color: {{ settings.color_btn_text }};
+      padding:7px 15px;
+      cursor:pointer;
+      display:inline-block;
+      zoom:1;
+      *display:inline;
+      
+      -webkit-box-shadow: 0 0 2px 0 #000;
+      -moz-box-shadow: 0 0 2px 0 #000;
+      box-shadow: 0 0 2px 0 #000;
+
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+  }
+
+  a.button.altcolor,
+  input.button.altcolor,
+  .button.altcolor a {
+      background-color:{{ settings.color_btn_alt_bg }};
+  }
+
+
+  a.button.large,
+  input.button.large,
+  .button.large a {
+      padding:15px;
+      display:block;
+      text-transform:uppercase;
+      font-size:20px;
+  }
+
+  a.button.large.plus,
+  input.button.large.plus,
+  .button.large.plus a {
+      text-align:left;
+  }
+
+  a.button:hover,
+  input.button:hover,
+  .button a:hover,
+  input[type="submit"]:hover {
+      color: {{ settings.color_btn_text }};
+      -webkit-box-shadow: 0 0 2px 1px #000;
+      -moz-box-shadow: 0 0 2px 1px #000;
+      box-shadow: 0 0 2px 1px #000;
+  }
+
+  .betweenbuttons {
+      margin-left:10px;
+      margin-right:10px;
+  }
+
+  .loadingimg {
+      background:url({{ settings.loading_graphic | asset_url }}) center center no-repeat;
+      min-height:40px;
+  }
+
+
+/* -------------------------  
+  CHECKOUT
+------------------------- */
+
+/* progress spinners are a mess */
+#purchase-progress,
+#cost #spinner { {
+  display: inline-block;
+  width: auto;
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#credit-card-info table {
+  width: 100%;
+}
+#credit-card-info #credit_card_first_name,
+#credit-card-info #credit_card_last_name,
+#credit-card-info #credit_card_number {
+  width: 96%;
+}
+
+#credit_card_verification_value { margin-left: 6px; }
+
+.plisthead {
+  font-size: 11px !important;
+  line-height: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#thumbs td {
+  padding: 0 8px 8px 0 !important;
+}
+
+/*a {
     color:#000;
     text-decoration:underline;
-}
+}*/
 
+/* shows the page is secure */
 #info-bar {
     padding:10px 0;
     background:{{ settings.color_bg_header }};
     color:{{ settings.color_head_general }};
+    border-bottom: 1px solid {{ settings.color_bg_header }};
 }
 
 #header #tagline .title {
@@ -213,7 +433,16 @@ a {
     font-size:100%;
 }
 
-input[type=submit] {
+#thumbs div {
+    height: auto !important;
+    max-height: 50px;
+}
+
+.form td input {
+  padding: 0 6px !important;
+}
+
+/*input[type=submit] {
     border:0;
     background:{{ settings.color_btn_bg }};
     font:1.05em Arial,sans-serif;
@@ -231,7 +460,7 @@ input[type=submit] {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-}
+}*/
 
 #buttons input {
     font-weight:normal;
@@ -245,13 +474,12 @@ input[type=submit] {
 #order-num,
 #steps,
 #header #tagline .subtitle {
-    font: {{ settings.font_heading_style }} 24px {{ font_heading_type }}, sans-serif;
-    line-height:30px;
+    font: {{ settings.font_heading_style }} {{ settings.font_prod_title_size | plus: 4 }}px {{ font_heading_type }}, sans-serif;
+    line-height: {{ settings.font_prod_title_size | plus: 10 }}px;
     border-bottom:1px solid {{ settings.color_general_divider }};
     margin-bottom: 20px;
-    padding-top:20px;
-    padding-bottom:10px;
-    color:#333;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 #cost, #order-num {
@@ -268,16 +496,37 @@ input[type=submit] {
     border-color:{{ settings.color_general_divider }};
 }
 
+#content { padding: 0 !important; }
+
 #overview {
-    background:none;
+    background: rgba(255,255,255,.1);
     border:none;
 }
 
-#buttons {
-    background:#f7f7f7;
-    border:1px solid #ccc;
+.group,
+#email,
+#buttons,
+#addresses {
+    background: transparent !important;
+    background: rgba(255,255,255,.1) !important;
+    border: 0 none !important;
+    border-top: 1px solid {{ settings.color_general_divider }} !important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
 }
 
+#buttons {
+  padding: 0 !important;
+}
+#buttons td {
+  padding: 12px 10px !important;
+}
+
+.group h3,
+.pgroup h3,
 h4.active-customer,
 #header #tagline .subtitle,
 #overview h2,
@@ -288,7 +537,12 @@ h4.active-customer,
 #thumbs h3 span,
 #cost,
 #steps {
-    color:{{ settings.color_body_standard }};
+    color:{{ settings.color_body_standard }} !important;
+    text-shadow: none !important;
+}
+
+.group h3 {
+  padding-top: 6px !important;
 }
 
 #wallet {
