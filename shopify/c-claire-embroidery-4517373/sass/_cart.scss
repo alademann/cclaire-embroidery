@@ -1,12 +1,18 @@
 // CART
 // -------------------------
+.template-cart {
+    #maincontent {
+        // give the header some room to breathe
+        top: $checkoutRowItemDefaultPad;
+    }
+}
 #basket {
 
     // GENERAL
     // -------------------------
     textarea {
         width: 360px;
-        height: 111px;
+        height: 80px;
     }
 
 
@@ -16,14 +22,14 @@
         // used to be .cartitem.first - but that is not working in the template
         &:first-child {
             .cartitem {
-                padding-top: $checkoutRowItemDefaultPad - $checkoutRowItemPadTop;
+                padding-top: 0;
                 border-top: 0;
             }
         }
     }
     .cartitem {
         border-bottom: 1px solid #{"$color_general_divider"};
-        padding: $checkoutRowItemDefaultPad 0;
+        padding: ($checkoutRowItemDefaultPad - $checkoutRowItemPadTop) 0 $checkoutRowItemDefaultPad;
         
         // all the immediate children of cartitem float left
         .image, 
