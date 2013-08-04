@@ -49,7 +49,7 @@ $theme_icons_mode_head:         {{ settings.theme_icons_mode_head }};
 $theme_icons_mode_body:         {{ settings.theme_icons_mode_body }};
 /* misc */
 $prod_sale_mode:                {{ settings.prod_sale_mode }};
-
+ 
 .options .shappify_option, .selectors {
   padding-bottom: 0;
   margin-bottom: 10px;
@@ -61,6 +61,8 @@ $prod_sale_mode:                {{ settings.prod_sale_mode }};
   float: left;
   text-align: right;
   width: 160px;
+  height: 34px;
+  margin-top: 4px;
 }
 
 .options .shappify_option .shappify_option_value, .selectors .select-wrapper {
@@ -103,6 +105,19 @@ $prod_sale_mode:                {{ settings.prod_sale_mode }};
   padding: 0;
   font-size: 20px;
   line-height: 28px;
+}
+
+#maincontent {
+  padding: 0 0 40px 0;
+}
+
+.paging a, .flex-direction-nav .flex-next, .flex-direction-nav .flex-prev, .paging span {
+  display: block;
+  float: left;
+}
+
+.selectreplace .selectpicker .arr {
+  line-height: 1;
 }
 
 p {
@@ -361,6 +376,12 @@ input.short,
   font-weight: 700 !important;
 }
 
+button::-moz-focus-inner,
+select::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
 a.button,
 input.button,
 .button a {
@@ -607,12 +628,15 @@ input[type="submit"]:focus {
   display: block;
 }
 
+.template-cart #maincontent h1 {
+  margin: 0;
+}
+
 #basket textarea {
   width: 360px;
   height: 80px;
 }
 #basket ul > li:first-child .cartitem {
-  padding-top: 0;
   border-top: 0;
 }
 #basket .cartitem {
@@ -729,18 +753,19 @@ input[type="submit"]:focus {
 }
 #basket .foot.top .updatecont .button {
   float: right;
-  margin-right: 13px;
+  margin-right: 40px;
 }
 #basket .foot.top .checkoutcont {
   padding-right: 26px;
 }
 #basket .foot.top .checkoutcont .total {
-  margin-top: 10px;
   float: right;
   width: 66%;
+  margin-top: 0;
 }
 #basket .foot.top .checkoutcont .button {
   text-transform: uppercase;
+  right: 0;
 }
 #basket .foot .button {
   display: inline;
@@ -763,10 +788,15 @@ input[type="submit"]:focus {
   text-align: center;
 }
 #basket .foot .checkoutcont .total {
-  margin-top: 20px;
+  padding-bottom: 0;
+  margin-top: 10px;
   float: left;
   width: 50%;
   font-size: $fontBigPriceSize;
+}
+#basket .foot .checkoutcont .button {
+  position: relative;
+  right: 18px;
 }
 #basket .foot .checkoutcont .button,
 #basket .foot .checkoutcont .extrapaymentmethods {
@@ -866,9 +896,12 @@ input[type="submit"]:focus {
 
 .description ul.tabs li a {
   padding: 0 15px;
+  height: 30px;
+  line-height: 34px;
 }
 .description ul.tabs li a.active {
   padding-top: 4px;
+  height: 34px;
 }
 
 #productinfo #rg-gallery,

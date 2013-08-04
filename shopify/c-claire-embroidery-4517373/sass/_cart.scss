@@ -2,8 +2,9 @@
 // -------------------------
 .template-cart {
     #maincontent {
-        // give the header some room to breathe
-        // top: $checkoutRowItemDefaultPad;
+        h1 {
+            margin: 0;
+        }
     }
 }
 #basket {
@@ -22,7 +23,6 @@
         // used to be .cartitem.first - but that is not working in the template
         &:first-child {
             .cartitem {
-                padding-top: 0;
                 border-top: 0;
             }
         }
@@ -156,21 +156,22 @@
                 margin-top: $checkoutRowItemDefaultPad - $line-height-computed - 10;
                 .button {
                     float: right;
-                    margin-right: $containerPadX + 3;
+                    margin-right: 40px;
                 }
             }
             .checkoutcont {
                 padding-right: ($containerPadX * 2) + 6;
                 .total {
-                    margin-top: $checkoutRowItemDefaultPad - $line-height-computed;
                     float: right;
                     width: 66%;
+                    margin-top: 0;
                 }
                 .button {
                     // even though we are using a smaller button
                     // we still want it to match the visuals of the big one
                     // in the bottom footer of the cart page.
                     text-transform: uppercase;
+                    right: 0;
                 }
             }
         }
@@ -206,13 +207,18 @@
             width: $checkoutAmtColWidth + $checkoutBtnColWidth;
             text-align: center;
             .total {
-                margin-top: $checkoutRowItemDefaultPad - $line-height-computed + 10;
+                padding-bottom: 0;
+                margin-top: $checkoutRowItemDefaultPad - $line-height-computed;
                 // should line up with .amt column
                 float: left;
                 // should be the proportional amount that 
                 // the .amt column takes up
                 width: round(100 - percentage($checkoutAmtColWidth / ($checkoutBtnColWidth + $checkoutAmtColWidth)));
                 font-size: #{"$fontBigPriceSize"};
+            }
+            .button {
+                position: relative;
+                right: 18px;
             }
             .button, 
             .extrapaymentmethods {

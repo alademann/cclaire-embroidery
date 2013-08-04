@@ -103,9 +103,27 @@
         <div class="producttype contentsection">See more: {{ product.type | link_to_type }}</div>
         {% endif %}
 
+        {% comment %} List out product tags - don't show special 'related' tags {% endcomment %}
+        {% assign tagsHTML = '' %}
+        {% assign mostRecentTagHTML = '' %}
+        {% for tag in product.tags %}
+            {% assign firstbit = tag | split: '-' | first %}
+            {% unless firstbit == 'related' %}
+                {% capture mostRecentTagHTML %}<a href="/collections/all/{{ tag | handleize }}">{{ tag }},</a> {% endcapture %}
+                {% capture tagsHTML %}{{ tagsHTML }}{{ mostRecentTagHTML }}{% endcapture %}
+            {% endunless %}
+        {% endfor %}
+        
+        {% if tagsHTML contains 'a' %}
+        {% assign mostRecentTagWithoutCommaHTML = mostRecentTagHTML | replace: ',','' %}
+        <div class="tags contentsection">
+            Tags: {{ tagsHTML | replace: mostRecentTagHTML, mostRecentTagWithoutCommaHTML }}
+        </div>
+        {% endif %}
+
     </div><!--/ eight columns (left column) -->
     
-    <div id="detail" class="seven columns offset-by-one">
+    <div id="detail" class="eight columns offset-by-one">
  
         <h1 itemprop="name">{{ product.title }}</h1>
         {% if settings.prod_show_vendor %}
@@ -113,7 +131,7 @@
         {% endif %}
         <div id="price-field" class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <span itemprop="price">
-                $<strong>{{ product.variants.first.price | money_with_currency }}</strong>
+                <strong>{{ product.variants.first.price | money_with_currency }}</strong>
             </span>
             {% if product.variants.first.compare_at_price > product.variants.first.price %}
                 <div class="was-price">was {{ product.variants.first.compare_at_price | money }}</div>
@@ -272,26 +290,8 @@
         <h3>{{ settings.text_soldout }}</h3>
         {% endif %}
         
-        {% comment %} List out product tags - don't show special 'related' tags {% endcomment %}
-        {% assign tagsHTML = '' %}
-        {% assign mostRecentTagHTML = '' %}
-        {% for tag in product.tags %}
-            {% assign firstbit = tag | split: '-' | first %}
-            {% unless firstbit == 'related' %}
-                {% capture mostRecentTagHTML %}<a href="/collections/all/{{ tag | handleize }}">{{ tag }},</a> {% endcapture %}
-                {% capture tagsHTML %}{{ tagsHTML }}{{ mostRecentTagHTML }}{% endcapture %}
-            {% endunless %}
-        {% endfor %}
-        
-        {% if tagsHTML contains 'a' %}
-        {% assign mostRecentTagWithoutCommaHTML = mostRecentTagHTML | replace: ',','' %}
-        <div class="tags contentsection">
-            Tags: {{ tagsHTML | replace: mostRecentTagHTML, mostRecentTagWithoutCommaHTML }}
-        </div>
-        {% endif %}
-        
         {% if collection %}
-            <div class="paging simpletext">
+            <div class="paging simpletext hidden">
             {% if collection.previous_product %}
                 <span class="prevwrap"><a class="prev" href="{{ collection.previous_product }}">&#8249;</a> <a class="text" href="{{ collection.previous_product }}">Previous</a></span>
             {% endif %}

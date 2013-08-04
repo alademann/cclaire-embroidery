@@ -676,6 +676,19 @@ body {
   /* Hover for standard text <a> tags */
 }
 
+body #maincontent {
+  padding: 0 0 40px 0;
+}
+
+body .paging a, body .flex-direction-nav .flex-next, body .flex-direction-nav .flex-prev, body .paging span {
+  display: block;
+  float: left;
+}
+
+body .selectreplace .selectpicker .arr {
+  line-height: 1;
+}
+
 body p {
   margin: 0 0 10px;
 }
@@ -935,6 +948,12 @@ body #cost {
   font-weight: 700 !important;
 }
 
+body button::-moz-focus-inner,
+body select::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
 body a.button,
 body input.button,
 body .button a {
@@ -1128,12 +1147,24 @@ body .field-with-errors .error-message {
   text-align: right;
   margin-bottom: 0;
   width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 body .field-with-errors input,
 body .field-with-errors select,
 body .field-with-errors textarea {
   margin-top: -20px;
+}
+
+#email body .field-with-errors {
+  left: auto;
+  right: 28%;
+  text-align: left;
+  top: 4px;
+  bottom: auto;
+  margin-bottom: 10px;
 }
 
 body .step2 .field-with-errors .error-message {
@@ -1245,6 +1276,7 @@ body #email {
 
 body #email input {
   width: 50%;
+  font-size: 100%;
 }
 
 body #email .active-customer:before {

@@ -54,6 +54,9 @@
         text-align: right;
         margin-bottom: 0; // override
         width: $left-label-width - $address-form-margins;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     // the idiots at shopify actually put a <br> element below the message
     // so to get the inputs to line up again... we need to revert the line height
@@ -61,6 +64,15 @@
     select,
     textarea {
         margin-top: -$line-height-computed;
+    }
+
+    #email & {
+        left: auto;
+        right: 28%;
+        text-align: left;
+        top: 4px;
+        bottom: auto;
+        margin-bottom: $line-height-computed / 2;
     }
 }
 

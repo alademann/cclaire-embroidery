@@ -1,7 +1,7 @@
 <footer id="pagefooter">
     <div class="container">
         {% if settings.enable_signup %}
-        <div class="eight columns offset-by-four row registercont">
+        <div class="sixteen columns row registercont">
             <h4>{{ settings.text_subscribetolist }}</h4>
             {% form 'customer' %}
                 {% if form.posted_successfully? %}

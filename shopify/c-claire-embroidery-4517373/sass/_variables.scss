@@ -172,6 +172,8 @@ $prodOptionMargin:          10px;
     float: left;
     text-align: right;
     width: $prodOptionLabelWidth;
+    height: $input-height-base;
+    margin-top: 4px;
 }
 %option-value {
     position: absolute;

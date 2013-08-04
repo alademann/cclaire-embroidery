@@ -46,9 +46,13 @@
     // DEFAULT PADDING - see "RESPONSIVE" section for 
     // additional padding based on media-queries
     padding: 0 15px;
+    height: $input-height-base - 4px;
+    line-height: $input-height-base;
+    
     // needed for specificity
     &.active {
         padding-top: 4px;
+        height: $input-height-base;
     }
 }
 
