@@ -1,14 +1,119 @@
+
+
 // BASE VARS
 // -------------------------
-$lineHeightBase:            19px;
-$btnPadding:                7px 15px;
-$btnPaddingLarge:           nth($btnPadding, 2);
-$inputHeight:               36px;
-$btnHeight:                 33px;
-$btnHeightLarge:            49px;
-$btnFontSizeLarge:          20px;
-$borderRadiusBase:          2px; // standard for buttons
-$borderRadiusInput:         5px;
+// Grays
+// -------------------------
+
+$gray-darker:               lighten(#000, 13.5%); // #222
+$gray-dark:                 lighten(#000, 20%);   // #333
+$gray:                      lighten(#000, 33.5%); // #555
+$gray-light:                lighten(#000, 60%);   // #999
+$gray-lighter:              lighten(#000, 93.5%); // #eee
+
+$brand-primary:             #428bca;
+$brand-success:             #5cb85c;
+$brand-warning:             #f0ad4e;
+$brand-danger:              #d9534f;
+$brand-info:                #5bc0de;
+
+// $body-bg:                #fff;
+$text-color:                $gray-dark;
+
+$font-size-base:            14px;
+$line-height-base:          1.428571429; // 20/14
+$line-height-computed:      floor($font-size-base * $line-height-base); // ~20px
+
+$font-size-large:           ceil($font-size-base * 1.25); // ~18px
+$font-size-small:           ceil($font-size-base * 0.85); // ~12px
+
+$line-height-large:         1.33;
+$line-height-small:         1.5;
+
+// Based on 14px font-size and 1.428 line-height (~20px to start)
+
+$padding-base-vertical:     6px;
+$padding-base-horizontal:   12px;
+
+$padding-large-vertical:    10px;
+$padding-large-horizontal:  16px;
+
+$padding-small-vertical:    5px;
+$padding-small-horizontal:  10px;
+
+$border-radius-base:        4px;
+$border-radius-large:       6px;
+$border-radius-small:       3px;
+
+$input-bg:                       #fff;
+$input-bg-disabled:              $gray-lighter;
+
+$input-border:                   #ccc;
+$input-border-radius:            $border-radius-base;
+
+$input-color-placeholder:        $gray-light;
+
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);
+$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2);
+$input-height-small:             (ceil($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2);
+
+$legend-border-color:            #e5e5e5;
+
+
+// Form states and alerts
+// -------------------------
+
+$state-warning-text:             #c09853;
+$state-warning-bg:               #fcf8e3;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 3%);
+
+$state-danger-text:              #b94a48;
+$state-danger-bg:                #f2dede;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 3%);
+
+$state-success-text:             #468847;
+$state-success-bg:               #dff0d8;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%);
+
+$state-info-text:                #3a87ad;
+$state-info-bg:                  #d9edf7;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%);
+
+
+// Alerts
+// -------------------------
+$alert-bg:                    $state-warning-bg;
+$alert-text:                  $state-warning-text;
+$alert-border:                $state-warning-border;
+$alert-border-radius:         $border-radius-base;
+
+$alert-success-bg:            $state-success-bg;
+$alert-success-text:          $state-success-text;
+$alert-success-border:        $state-success-border;
+
+$alert-danger-bg:             $state-danger-bg;
+$alert-danger-text:           $state-danger-text;
+$alert-danger-border:         $state-danger-border;
+
+$alert-info-bg:               $state-info-bg;
+$alert-info-text:             $state-info-text;
+$alert-info-border:           $state-info-border;
+
+
+$focus-glow:                  "0 0 8px rgba(203,222,61, .6)";
+
+// -------------------------
+// CUSTOM BELOW HERE (TWBS ABOVE HERE)
+// -------------------------
+
+$btnPadding:                $padding-base-vertical $padding-base-horizontal;
+$btnPaddingLarge:           $padding-large-vertical $padding-large-horizontal;
+$inputHeight:               $input-height-base;
+$btnHeight:                 $input-height-base;
+$btnHeightLarge:            $input-height-large;
+// $btnFontSizeLarge:          20px;
+// $border-radius-base:          2px; // standard for buttons
+// $borderRadiusInput:         5px;
 $containerPadX:             10px;
 
 // COLORS
@@ -31,7 +136,7 @@ $removeBtnBg:               #bf3030;
 // CHECKOUT PAGES
 // -------------------------
 $checkoutRowItemDefaultPad: 30px;
-$checkoutRowItemPadTop:     $lineHeightBase;
+$checkoutRowItemPadTop:     $line-height-computed;
 $checkoutImgColMarginRt:    2%;
 $checkoutImgColWidth:       13%;
 $checkoutImgColWidthTtl:    $checkoutImgColMarginRt + $checkoutImgColWidth;
@@ -40,6 +145,9 @@ $checkoutQtyColWidth:       17%;
 $checkoutAmtColWidth:       15%; // TODO: increase?
 $checkoutBtnColWidth:       15%;
 
+$address-form-margins:      10px;
+$left-label-width:          160px;
+$left-label-padOffset:      $left-label-width - 28; // this width is what it actually ends up being
 
 // PRODUCT PAGES
 // -------------------------
@@ -116,6 +224,7 @@ $color_slider_alpha:        .8;
 // text colors
 $color_body_standard:       #ededed;
 $color_body_link:           #fff;
+$color_body_heading:        #fff;
 $color_form_field_text:     $cclaireGrayDark;
 $color_foot_standard:       #ababab;
 $color_foot_heading:        #fff;
@@ -131,3 +240,6 @@ $loading_graphic:           "loader-black.gif";
 $theme_icons_mode_head:     'dark';
 $theme_icons:               "themeicons.png";
 $social_icons:              "socialicons.png";
+
+
+@import 'mixins';

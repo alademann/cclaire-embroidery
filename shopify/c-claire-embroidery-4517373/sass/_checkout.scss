@@ -1,11 +1,360 @@
 // CHECKOUT
 // -------------------------
-.step1 {
+form {
+    line-height: $line-height-base;
+}
 
-    #thumbs div {
-        // don't assume the thumbnail is a square
-        height: auto !important;
-        max-height: $productImgSizeThumb;
+// STEP 1
+// -------------------------
+    
+    // all the "boxes" that break up the content on checkout pages
+    .group {
+        @include transition(height .15s ease-in-out);
     }
 
-} // END .step1
+    #email label, 
+    .group h3, 
+    .pgroup h3, 
+    #cost, 
+    #order-num, 
+    #steps, 
+    #header #tagline .subtitle {
+        padding-top: 0;
+    }
+
+    #main,
+    #header,
+    #header h1 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #header { padding-bottom: 0; }
+
+    #main {
+        width: 792px;
+    }
+
+    $productsWidth: 520px;
+    #products {
+        min-height: 136px;
+        width: 520px;
+
+        #thumbs div {
+            width: auto;
+            margin-right: 6px;
+        }
+
+        .plisthead {
+            font-size: $font-size-base - 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        // holds unit price info
+        span {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: $font-size-small;
+        }
+    }
+
+    #wallet {
+        margin-left: $productsWidth + 1;
+        margin-right: 0;
+        #cost, #order-num {
+            line-height: inherit;
+            font-size: 350%;
+            // idiots at shopify put a <br> in their code
+            margin-bottom: -$line-height-computed;
+        }
+        #steps {
+            display: block;
+            width: 100%;
+            padding-top: 0;
+            margin: 0;
+            line-height: $line-height-computed + 10;
+        }
+    }
+
+    #email {
+        margin: $line-height-computed 0;
+
+        input {
+            width: 50%;
+        }
+        .active-customer {
+            &:before {
+                content: "Signed in as:";
+                display: block;
+                font-size: 85%;
+                margin-bottom: 6px;
+                @include opacity(.65);
+            }
+        }
+        .sign-in-message {
+            margin-left: $address-form-margins;
+
+            a {
+                margin-left: 4px;
+            }
+        }
+    }
+
+    a {
+        color: $color_body_link;
+        border-bottom: 1px dashed transparent;
+        @include transition(border-color 200ms linear);
+
+        &:hover {
+            border-color: $color_body_link;
+            color: $color_body_link;
+            text-decoration: none;
+        }
+    }
+
+    #buttons {
+        // so the proceed buttons can float right
+        float: left;
+        width: 100%;
+
+        input {
+            font-weight: normal;
+
+            &[type="submit"] {
+                @include buttons($liquid: false);
+
+                // "proceeding" should be in the same direction we read as humans.
+                float: right;
+            }
+        }
+    }
+
+    #footer { clear: both; }
+
+    // make sure address verification notification lines up with address_selection_td
+    .multiple_address_selection td,
+    #shipping-same {
+        padding: 10px 5px 20px 5px;   
+    }
+
+    .gleft, 
+    .gright {
+        float: left;
+        width: 49%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .gleft {
+        padding-right: 1%;
+    }
+
+    .gright {
+        padding-left: 1%;
+    }
+
+    // tweak form column / label widths
+    #shipping-same {
+        margin: 5px;
+        height: $input-height-base;
+        position: relative;
+        top: 4px;
+    }
+    #addresses {
+        padding-right: 0;
+    }
+    // dim the "return to store" link so it doesn't distract from them taking the next step
+    #cancel-purchase {
+        @include opacity(.65);
+        
+        // i want the "return to store text"
+        // to float left like a back button
+        // and have the actual "proceed to next step" button float right
+
+        // this will ensure that only the link has a color
+        color: transparent;
+        a {
+            float: left;
+            display: block;
+            height: $btnHeight;
+            line-height: $btnHeight;
+            color: $color_body_link;
+
+            &:hover {
+                text-decoration: none;
+                border-bottom-color: transparent !important;
+            }
+
+            // a little back arrow magic
+            &:before {
+                content: "\25c2";
+                font-size: 200%;
+                line-height: $font-size-small;
+                height: $font-size-small;
+                vertical-align: middle;
+                margin-right: $address-form-margins / 2;
+            }
+        }
+    }
+    .form {
+
+        td, 
+        ul.inline li {
+            padding: 5px;
+        }
+
+        td.lbl,
+        ul.inline li label {
+            margin: 0;
+            text-align: right;
+            line-height: $input-height-base;
+        }
+
+        ul.inline {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+            li {
+                display: block;
+                float: left;
+                width: 100% !important;
+                margin: 0 !important;
+                padding-right: 0;
+                padding-left: 0;
+
+                &:first-child { padding-top: 0; }
+                &:last-child  { padding-bottom: 0; }
+
+                label {
+                    display: block;
+                    width: $left-label-padOffset !important;
+                    float: left;
+                    margin-right: $address-form-margins;
+                }
+
+                input, 
+                select,
+                textarea {
+                    width: $left-label-width + 62 !important;
+                    float: left;
+                    margin-right: 0 !important;
+                }
+            }
+        }
+
+        td {
+            &.lbl {
+                width: $left-label-width;
+                text-align: right;
+            }
+            input {
+                padding: $padding-base-vertical $padding-base-horizontal !important;
+                width: 100% !important;
+            }
+        }
+
+        #billing-is-shipping {
+            input[type="checkbox"] {
+                width: auto !important;
+                margin-right: $address-form-margins;
+            }
+        }
+
+    }
+
+// END STEP 1
+
+// STEP 2
+// -------------------------
+
+.step2 {
+
+    #payment-method {
+
+        // prevent payment method box from being jumpy
+        // when they choose a method that doesn't have 
+        // cc info inputs on the right side
+        .group {
+            min-height: 424px;
+        }
+
+        // the message about not sharing financial info
+        .group > .hint {
+            color: $cclaireGreen;
+            padding: 0 94px 20px;
+            border-bottom: 1px solid $color_general_divider;
+            margin-bottom: 20px;
+        }
+        .gright,
+        .gleft {
+            position: relative;
+        }
+        .gright {
+            right: -$address-form-margins;
+
+            td {
+                padding: 0 ($address-form-margins / 2);
+            }
+        }
+    }
+
+    #payment-methods {
+        label {
+            margin-bottom: 0;
+            padding-top: 5px;
+        }
+    }
+
+    #credit-card-info #credit_card_first_name, 
+    #credit-card-info #credit_card_last_name, 
+    #credit-card-info #credit_card_number {
+        width: 100%;
+    }
+
+    #credit_card_month {
+        width: 50%;
+    }
+    #credit_card_year {
+        width: 47%;
+        margin-left: 1%;
+    }
+
+    #credit_card_verification_value { width: auto; }
+
+    #marketing + label {
+        margin-left: 6px;
+    }
+
+    // why is the step2 layout different than step1??? #aggravating
+    table#buttons {
+        height: auto !important;
+
+        &, 
+        tbody, 
+        tr, 
+        td {
+            // no need for this to actually behave like a fucking table.
+            // i love it when templating systems put inline styles in the markup!!!!
+            display: block;
+            width: 100%;
+            position: relative;
+        }
+
+        tr { 
+            > td {
+                &:last-child {
+                    // this one holds the progress spinner
+                    width: auto;
+                    position: absolute;
+                    top: 1px;
+                    // sit to the left of the proceed button
+                    right: 157px;
+                }
+            }
+        }
+    }
+
+} // END .step2

@@ -496,7 +496,7 @@ html* .productpilewidget .product a {
     border: 1px solid #{"$color_general_divider"};
     padding: 3px 5px;
     z-index: 900;
-    @include border-radius($borderRadiusBase + 1);
+    @include border-radius($border-radius-base + 1);
 }
 
 #simplepopuptext .notch {
@@ -530,7 +530,7 @@ html* .productpilewidget .product a {
     display: inline-block;
     zoom: 1;
     *display: inline;
-    @include border-radius($borderRadiusBase + 1);
+    @include border-radius($border-radius-base + 1);
 }
 
 .flex-direction-nav .flex-next,
@@ -819,7 +819,7 @@ html* .productpilewidget .product a {
     color: #{"$color_btn_text"};
     background-color: #{"$color_btn_alt_bg"};
     text-align: center;
-    @include border-radius($borderRadiusBase);
+    @include border-radius($border-radius-base);
 }
 
 #productinfo #detail .added .yay {

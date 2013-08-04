@@ -1,0 +1,96 @@
+// Modeled after twbs forms
+
+// Form validation states
+//
+// Used in forms to generate the form validation CSS for warnings, errors,
+// and successes.
+
+@mixin form-control-validation($text-color: #555, $border-color: #ccc, $background-color: #f5f5f5) {
+  
+    // don't style the actual container bg/border
+    background-color: transparent;
+    border: 0 none;
+    padding: 0;
+    line-height: inherit;
+    color: $text-color;
+
+
+    // style the input
+    input {
+        background-color: $background-color;
+        border-color: $border-color;
+        @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
+
+        &:focus {
+            border-color: darken($border-color, 10%);
+            $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($border-color, 20%);
+            @include box-shadow($shadow);
+        }
+    }
+}
+
+
+
+// SHOPIFY NOTIFCATIONS SHOULD INHERIT FROM THESE WHERE APPROPRIATE!
+// -------------------------
+.field-with-errors {
+    @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+
+    position: relative;
+
+    // style the error message
+    .error-message {
+        // twbs label styles
+        display: inline-block;
+        font-size: $font-size-small;
+        font-weight: normal;
+        color: lighten($state-danger-text, 10%);
+        text-shadow: 0 1px 0 rgba($cclaireGrayDark, .5);
+
+        // line it up directly beneath the label on the left
+        position: absolute;
+        left: -$left-label-width;
+        bottom: -4px;
+        text-align: right;
+        margin-bottom: 0; // override
+        width: $left-label-width - $address-form-margins;
+    }
+    // the idiots at shopify actually put a <br> element below the message
+    // so to get the inputs to line up again... we need to revert the line height
+    input,
+    select,
+    textarea {
+        margin-top: -$line-height-computed;
+    }
+}
+
+// slightly different for step2
+// -------------------------
+.step2 .field-with-errors {
+    
+    .error-message {
+        left: auto;
+        bottom: auto;
+        top: -($line-height-computed + 2);
+        right: 0;
+        width: auto;
+    }
+
+    // the cvv area gets all jacked up when the error messages roll in
+    #credit_card_verification_value {
+        position: relative;
+        top: -($input-height-base - 3);
+        margin-bottom: -($input-height-base - 3);
+        left: 123px; // clear the label
+    }
+
+    + .hint {
+        position: relative;
+        top: -8px;
+        left: 200px; // clear the label and the input
+    }
+}
+
+label[for="credit_card_verification_value"] + .field-with-errors {
+    margin-bottom: -$input-height-base !important;
+}

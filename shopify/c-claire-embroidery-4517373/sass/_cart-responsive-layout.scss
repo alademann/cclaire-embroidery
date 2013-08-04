@@ -16,7 +16,7 @@
                 width: 33%;
             }
             .qty {
-                padding-top: $checkoutRowItemDefaultPad - $lineHeightBase;
+                padding-top: $checkoutRowItemDefaultPad - $line-height-computed;
             }
         }
         .foot {

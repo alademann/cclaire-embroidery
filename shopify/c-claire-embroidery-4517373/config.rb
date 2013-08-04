@@ -51,6 +51,8 @@
 #   UTILITIES / SUPPORT
 # =================================================
   
+  Sass::Script::Number.precision = 9
+  
   on_stylesheet_saved do |filename|
     if File.exists?(filename) 
       a = filename.split('.css')

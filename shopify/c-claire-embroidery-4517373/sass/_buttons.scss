@@ -1,21 +1,7 @@
 a.button, 
 input.button, 
 .button a {
-    font-size:  1.05em;
-    border: none !important;
-    background: #{"$color_btn_bg"};
-    color: #{"$color_btn_text"};
-    text-decoration: none !important;
-    padding: $btnPadding;
-    cursor: pointer;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    @include border-radius($borderRadiusBase);
-    &:hover {
-        color: #{"$color_btn_text"};
-        background-color: #{"darken($color_btn_bg, $cclaireBtnHoverDarken)"};
-    }
+    @include buttons($liquid: true);
 }
 
 // alt buttons (not primary green)
@@ -23,8 +9,13 @@ a.button.altcolor,
 input.button.altcolor,
 .button.altcolor a {
     background-color: #{"$color_btn_alt_bg"};
-    &:hover {
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: #{"$color_btn_text"};
         background-color: #{"darken($color_btn_alt_bg, $cclaireBtnHoverDarken)"};
+        border-color: #{"darken($color_btn_alt_bg, $cclaireBtnHoverDarken)"};
     }
 }
 
@@ -32,10 +23,10 @@ input.button.altcolor,
 a.button.large,
 input.button.large,
 .button.large a {
-    padding: $btnPaddingLarge;
-    display: block;
+    padding: $padding-large-vertical $padding-large-horizontal;
     text-transform: uppercase;
-    font-size: $btnFontSizeLarge;
+    font-size: $font-size-large;
+    @include border-radius($border-radius-large);
 }
     a.button.large.plus,
     input.button.large.plus,
@@ -49,11 +40,6 @@ input[type="submit"] {
     &:focus {
         outline: 0; // no native blurred outline please
     }
-}
-
-.betweenbuttons {
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 // the +/- qty buttons
@@ -80,6 +66,7 @@ input[type="submit"] {
         &:focus {
             @include opacity(1.0);
             background-color: $removeBtnBg !important;
+            border-color: $removeBtnBg !important;
         }
     }
 }

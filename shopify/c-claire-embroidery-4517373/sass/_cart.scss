@@ -3,7 +3,7 @@
 .template-cart {
     #maincontent {
         // give the header some room to breathe
-        top: $checkoutRowItemDefaultPad;
+        // top: $checkoutRowItemDefaultPad;
     }
 }
 #basket {
@@ -59,7 +59,7 @@
             .title {
                 display: block;
                 font-size: $font_standard_size + 2;
-                margin-bottom: $lineHeightBase;
+                margin-bottom: $line-height-computed;
                 a {
                     /**/
                 }
@@ -153,7 +153,7 @@
             }
 
             .updatecont {
-                margin-top: $checkoutRowItemDefaultPad - $lineHeightBase - 10;
+                margin-top: $checkoutRowItemDefaultPad - $line-height-computed - 10;
                 .button {
                     float: right;
                     margin-right: $containerPadX + 3;
@@ -162,7 +162,7 @@
             .checkoutcont {
                 padding-right: ($containerPadX * 2) + 6;
                 .total {
-                    margin-top: $checkoutRowItemDefaultPad - $lineHeightBase;
+                    margin-top: $checkoutRowItemDefaultPad - $line-height-computed;
                     float: right;
                     width: 66%;
                 }
@@ -199,14 +199,14 @@
             // since update button relates to updated quantities
             width: $checkoutQtyColWidth;
             text-align: center;
-            margin-top: $checkoutRowItemDefaultPad - $lineHeightBase;
+            margin-top: $checkoutRowItemDefaultPad - $line-height-computed;
         }
         .checkoutcont {
             // contains both the subtotal and the checkout btn
             width: $checkoutAmtColWidth + $checkoutBtnColWidth;
             text-align: center;
             .total {
-                margin-top: $checkoutRowItemDefaultPad - $lineHeightBase + 10;
+                margin-top: $checkoutRowItemDefaultPad - $line-height-computed + 10;
                 // should line up with .amt column
                 float: left;
                 // should be the proportional amount that 
@@ -237,8 +237,8 @@
             input[type="image"] {
                 border: 0;
                 background-color: #{"$color_body_standard"};
-                padding: $borderRadiusBase;
-                @include border-radius($borderRadiusBase);
+                padding: $border-radius-base;
+                @include border-radius($border-radius-base);
 
                 &:hover,
                 &:focus {
@@ -249,7 +249,7 @@
                 // paypal
                 &[name="goto_pp"] {
                     // align the paypal graphic so it looks centered on our colored bg
-                    padding: $borderRadiusBase ($borderRadiusBase - 1) 0;
+                    padding: $border-radius-base ($border-radius-base - 1) 0;
                 }
             }
         }

@@ -1,0 +1,170 @@
+// TYPE
+// -------------------------
+
+p { margin: 0 0 ($line-height-computed / 2); }
+small { font-size: 85%; }
+
+
+// FORMS
+// -------------------------
+
+// Normalize non-controls
+//
+// Restyle and baseline non-control form elements.
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: $line-height-computed;
+    font-size: ($font-size-base * 1.5);
+    line-height: inherit;
+    color: #{"$color_body_heading"};
+    border: 0;
+    border-bottom: 1px solid #{"$color_general_divider"};
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+
+// Normalize form controls
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+    @include box-sizing(border-box);
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9; /* IE8-9 */
+    line-height: normal;
+}
+
+// Set the height of select and file controls to match text inputs
+input[type="file"] {
+    display: block;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+    height: auto;
+}
+
+// Fix optgroup Firefox bug per https://github.com/twbs/bootstrap/issues/7611
+select optgroup {
+    font-size: inherit;
+    font-style: inherit;
+    font-family: inherit;
+}
+
+// Focus for select, file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    @include tab-focus();
+}
+
+// Fix for Chrome number input
+// Setting certain font-sizes causes the `I` bar to appear on hover of the bottom increment button.
+// See https://github.com/twbs/bootstrap/issues/8350 for more.
+input[type="number"] {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button    {
+        height: auto;
+    }
+}
+
+
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply `.form-control` to any
+// of the following form controls:
+//
+.textboxcont,
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    width: 100%;
+    height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+    padding: $padding-base-vertical $padding-base-horizontal;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: #{"$color_form_field_text"};
+    vertical-align: middle;
+    background-color: #{"$color_form_field_bg"};
+    border: 1px solid #{"$color_form_field_border"};
+    border-radius: $input-border-radius;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0, .075));
+    @include transition(#{"border-color ease-in-out .15s, box-shadow ease-in-out .15s"});
+
+    &:focus {
+        border-color: #{"$color_btn_bg"};
+        outline: 0;
+        @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), #{$focus-glow});
+    }
+
+    // Disabled and read-only inputs
+    // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+    //     disabled if the fieldset is disabled. Due to implementation difficulty,
+    //     we don't honor that edge case; we style them as disabled anyway.
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        background-color: $input-bg-disabled;
+    }
+
+    
+}
+
+// Reset height for `textarea`s
+textarea {
+    height: auto;
+}
+
+
+// SHOPIFY TEMPLATE FORM STUFF
+input.short,
+.input-small {
+    height: $input-height-base;
+    padding: $padding-base-vertical $padding-base-horizontal;
+    font-size: $font-size-base;
+    border-radius: $border-radius-base;
+}
+
+.textboxcont input {
+    border: 0;
+    height: $input-height-base;
+    width: 100%;
+}
+
+

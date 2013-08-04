@@ -1,7 +1,17 @@
 @import 'compass';
 @import 'variables';
 
-@import 'type';
-@import 'fonts';
-@import 'buttons-checkout';
-@import 'forms';
+// scaffolding
+// wrap in body so we ensure over-riding of checkout.css (which we cannot change)
+body {
+    @import 'twbs';
+
+    @import 'type';
+    @import 'fonts';
+    @import 'buttons';
+
+    // checkout only
+    @import 'notifications';
+    @import 'form-validation';
+    @import 'checkout';
+}
