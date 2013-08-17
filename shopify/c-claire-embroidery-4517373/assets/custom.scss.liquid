@@ -43,7 +43,7 @@ $font_heading_size:             {{ settings.font_heading_size }}px;
 $nav_drop_font_size:            {{ settings.nav_drop_font_size }}px;
 $font_nav_size:                 {{ settings.font_nav_size }}px;
 $font_prod_title_size:          {{ settings.font_prod_title_size }}px;
-$fontBigPriceSize:              {{ settings.font_heading_size | plus: -12 }}px;
+$fontBigPriceSize:              {{ settings.font_prod_title_size }}px;
 /* images */
 $theme_icons_mode_head:         {{ settings.theme_icons_mode_head }};
 $theme_icons_mode_body:         {{ settings.theme_icons_mode_body }};
@@ -97,6 +97,10 @@ $prod_sale_mode:                {{ settings.prod_sale_mode }};
   color: inherit;
 }
 
+.options .validation_error {
+  background-color: transparent !important;
+  border: 0 none !important;
+}
 .options #shapp_option_list {
   padding-left: 0;
   padding-right: 0;
@@ -370,6 +374,7 @@ input.short,
 
 #productinfo [itemprop="price"] strong {
   font-size: $fontBigPriceSize;
+  color: $color_btn_bg;
 }
 
 #cost {
@@ -924,10 +929,6 @@ input[type="submit"]:focus {
 #productinfo #rg-gallery .addbuttoncont.dummy,
 #productinfo #detail .addbuttoncont.dummy {
   margin-top: 0;
-}
-#productinfo #rg-gallery .addbuttoncont.dummy a,
-#productinfo #detail .addbuttoncont.dummy a {
-  width: auto;
 }
 #productinfo #detail {
   padding: 20px;

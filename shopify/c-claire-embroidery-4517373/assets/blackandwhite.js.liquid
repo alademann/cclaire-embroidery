@@ -436,6 +436,7 @@ $(function(){
     var tabiter = 0;
     $('.content-block').each(function(){
         var $alltabs = $(this).find('.jstab');
+        var $tabsContainer = null;
         if($alltabs.length > 1) {
             $alltabs.not(':first').hide();
             //Create the buttons from the first <h1...6>
@@ -455,6 +456,11 @@ $(function(){
             });
             $tabbtnholder.find(':first a').addClass('active');
             $($alltabs[0]).before($tabbtnholder);
+            $tabsContainer = $('.tabs').closest('.hide');
+            // show the tab content now that its processed
+            $.each($tabsContainer, function() {
+                $(this).removeClass('hide');
+            });
         }
     });
     

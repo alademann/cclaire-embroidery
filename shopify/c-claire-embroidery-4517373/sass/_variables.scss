@@ -236,7 +236,8 @@ $font_heading_type:         'Roboto Condensed', Helvetica, Arial, sans-serif;
 $font_standard_size:        14px;
 $font_heading_size:         36px;
 $font_nav_size:             20px;
-$fontBigPriceSize:          $font_heading_size - 12px;
+$font_prod_title_size:      20px;
+$fontBigPriceSize:          $font_prod_title_size;
 // images
 $loading_graphic:           "loader-black.gif";
 $theme_icons_mode_head:     'dark';

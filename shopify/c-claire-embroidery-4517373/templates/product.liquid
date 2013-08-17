@@ -137,20 +137,29 @@
                 <div class="was-price">was {{ product.variants.first.compare_at_price | money }}</div>
             {% endif %}
         </div>
-        <div class="description contentsection" itemprop="description">
+        <div class="description contentsection hide" itemprop="description">
             {% include 'process-html' with product.description %}
         </div>
         
         {% if product.available %}
         <form action="/cart/add" method="post" id="product-form" class="shappify_add_to_cart_form" enctype="multipart/form-data" >
-
+            <!-- Shappify Options -->
+ 
             <!-- OPTIONS container is shown only after they click the first dummy "add to cart" button if shappify options are in-play -->
-            <div class="options">
             {% if shappify_options_loaded == "0" %}
                 {% assign shappify_options_loaded = "1" %}
-                {% include 'shappify-options' %}
             {% endif %}
-
+ 
+            {% if shappify_options_loaded == "1" %}
+                <div class="options collapse">
+                    <!-- Shappify Options -->
+                    {% include 'shappify-options' %}
+                    <!--/ Shappify Options -->
+                {% else %}
+                <div class="options">
+            {% endif %}
+            <!--/ Shappify Options -->
+ 
             {% comment %} If you are using Shopify's Line Item Properties, add them here! {% endcomment %}
 
             <!-- DEFAULT SHOPPIFY OPTIONS -->
@@ -224,10 +233,17 @@
 
                 <!-- ACTUAL ADD TO CART BUTTON -->
                 <div class="addbuttoncont">
-                    <input type="submit" name="add" id="updates_{{ item.id }}" class="button large plus" value="ADD TO CART" />
+                    <input type="submit" name="add" id="updates_{{ product.id }}" class="button large plus" value="ADD TO CART" />
                 </div>
-
+ 
             </div><!--/ options -->
+            
+            {% if shappify_options_loaded == "1" %}
+                <!-- DUMMY ADD TO CART BUTTON (simply reveals options) -->
+                <div class="addbuttoncont button dummy">
+                    <a id="showOptions" class="button large plus">PERSONALIZE</a>
+                </div>
+            {% endif %}
             
             <script>
                 Shopify.money_format = '{{shop.money_format | replace: "'", '"'}}';
@@ -312,6 +328,36 @@
 
 {% if settings.prod_enable_linked_options %}
 <script>
+
+// SHAPPIFY COLLAPSE CUSTOMIZATIONS
+// (c) Copyright 2013 Aaron Lademann. All Rights Reserved. Contact: aaron.lademann@gmail.com
+$(document).on('DOMNodeInserted', '#shapp_option_list_{{ product.id }}', function(e) {
+    initCustomizeCollapse();
+}); 
+
+var initCustomizeCollapse = function () {
+    // REVEAL OPTIONS WHEN THE "DUMMY" ADD TO CART BUTTON IS CLICKED
+    var $dummyAddBtn = $('#showOptions');
+    var $options = $('.options');
+    var $shappifyOptions = $('#shappify_custom_options_{{ product.id }}');
+    
+    $dummyAddBtn.click(function(){
+        
+        $(this).addClass('hide');
+        $options.addClass('in');
+    });
+
+    // check to see if there are no shappify options
+    // if there are not... fade the options in
+    var anyShappifyOptions = $shappifyOptions.attr('style') == '';
+    
+    if(!anyShappifyOptions) {
+        $dummyAddBtn.addClass('hide');
+        $options.addClass('in');
+    }
+
+};
+
 // (c) Copyright 2011 Caroline Schnapp. All Rights Reserved. Contact: mllegeorgesand@gmail.com
 // See http://wiki.shopify.com/Linked_Options
 var Shopify = Shopify || {};

@@ -43,7 +43,7 @@ $font_heading_size:             {{ settings.font_heading_size }}px;
 $nav_drop_font_size:            {{ settings.nav_drop_font_size }}px;
 $font_nav_size:                 {{ settings.font_nav_size }}px;
 $font_prod_title_size:          {{ settings.font_prod_title_size }}px;
-$fontBigPriceSize:              {{ settings.font_heading_size | plus: -12 }}px;
+$fontBigPriceSize:              {{ settings.font_prod_title_size }}px;
 /* images */
 $theme_icons_mode_head:         {{ settings.theme_icons_mode_head }};
 $theme_icons_mode_body:         {{ settings.theme_icons_mode_body }};

@@ -2,6 +2,11 @@
     // wrap everything in options so its specific enough
     // to over-ride the inline css that this plugin generates in the DOM
     
+    .validation_error {
+        background-color: transparent !important;
+        border: 0 none !important;
+    }
+
     #shapp_option_list {
         padding-left: 0;
         padding-right: 0;

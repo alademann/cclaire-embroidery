@@ -11,7 +11,10 @@
 }
 #productinfo {
     [itemprop="price"] {
-        strong { font-size: #{"$fontBigPriceSize"}; }
+        strong { 
+            font-size: #{"$fontBigPriceSize"}; 
+            color: #{"$color_btn_bg"};
+        }
     }
 }
 #cost {
