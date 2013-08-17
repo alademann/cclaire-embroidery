@@ -881,6 +881,36 @@ input[type="submit"]:focus {
   padding: 7px 22px;
 }
 
+#crumbs {
+  line-height: 40px;
+  font-size: 85%;
+  z-index: 5;
+  position: relative;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+#crumbs:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+#crumbs .sep {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  margin: 0 2px;
+  color: rgba($color_body_standard, .4);
+}
+#crumbs a {
+  color: $color_body_standard;
+}
+#crumbs .active {
+  cursor: default !important;
+}
+
 .selectors {
   float: left;
   clear: both;

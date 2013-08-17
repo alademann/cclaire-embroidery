@@ -6,6 +6,40 @@
 @import 'variables';
 @import 'custom-manifest';
 
+// BREADCRUMBS
+// -------------------------
+#crumbs {
+    line-height: 40px;
+    font-size: 85%;
+    z-index: 5;
+    position: relative;
+
+    @include transition(opacity .2s ease);
+
+    @include opacity(.8);
+
+    &:hover {
+        @include opacity(1);
+    }
+
+    .sep {
+        display: inline-block;
+        *zoom: 1;
+        *display: inline;
+        margin: 0 2px;
+        color: #{"rgba($color_body_standard, .4)"};
+    }
+
+    a {
+        color: #{"$color_body_standard"};
+    }
+    .active {
+        cursor: default !important;
+    }
+}
+
+
+
 // PRODUCT OPTIONS
 // -------------------------
 .selectors {
