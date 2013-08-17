@@ -349,13 +349,12 @@ var initCustomizeCollapse = function () {
 
     // check to see if there are no shappify options
     // if there are not... fade the options in
-    var anyShappifyOptions = $shappifyOptions.attr('style') == '';
+    var anyShappifyOptions = $shappifyOptions.hasAttr('style') ? $shappifyOptions.attr('style') == '' : true;
     
     if(!anyShappifyOptions) {
         $dummyAddBtn.addClass('hide');
         $options.addClass('in');
     }
-
 };
 
 // (c) Copyright 2011 Caroline Schnapp. All Rights Reserved. Contact: mllegeorgesand@gmail.com
