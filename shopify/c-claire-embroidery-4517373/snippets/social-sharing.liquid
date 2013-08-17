@@ -19,8 +19,9 @@
 </span>
 
 {% if template contains 'product' %}
-    <a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | product_img_url: 'master' }}&description={{ product.title | escape }}" class="pin-it-button" target="_blank" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-    <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+    <span class="socialitem pinterestcont">
+        <a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | product_img_url: 'master' }}&description={{ product.title | escape }}" class="pin-it-button" target="_blank" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
 {% elsif template contains 'article' or template contains 'blog' or template contains 'page' or template contains 'collection' %}
     {% if template contains 'blog' %}{% assign shareitem = blog.articles.first %}{% endif %}
     {% if template contains 'article' %}{% assign shareitem = article %}{% endif %}
@@ -33,9 +34,10 @@
         {% assign media_url = 'logo.png' | asset_url %}
     {% endif %}
     {% if media_url %}
-        <a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ shareitem.url }}&media={{ media_url }}&description={{ shareitem.title | escape }}" class="pin-it-button" target="_blank" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+            <a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ shareitem.url }}&media={{ media_url }}&description={{ shareitem.title | escape }}" class="pin-it-button" target="_blank" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+            <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
     {% endif %}
+    </span>
 {% endif %}
 
 <span class="socialitem twittercont">
