@@ -2088,7 +2088,7 @@
         color: {{ settings.color_foot_heading }};
         font-size: 24px;
         line-height: 24px;
-        padding: 20px 0 20px;
+        padding: 0;
     }
 
     #pagefooter #recentproducts li {
@@ -3008,6 +3008,15 @@
             margin-top: 25px;
             padding-bottom: 20px;
             border-bottom: 1px solid {{ settings.color_general_divider }};
+        }
+
+        /* related products in product.liquid */
+        .productlist.related {
+            float: left;
+            width: 100%;
+            clear: both;
+            margin-top: -6px;
+            padding-bottom: 26px;
         }
         
         .productlist .product.last {

@@ -47,7 +47,7 @@
     // additional padding based on media-queries
     padding: 0 15px;
     height: $input-height-base - 4px;
-    line-height: $input-height-base;
+    line-height: $input-height-base - 4px;
     
     // needed for specificity
     &.active {
@@ -86,6 +86,12 @@
                 }
             }
         }
+    }
+    // add some extra contrast for the right column
+    #detail {
+        padding: 20px;
+        background: #{"mix($color_general_divider, $color_bg_main, 40%)"};
+        background: #{"rgba($color_general_divider, .4)"};
     }
     .singleimage { 
         margin-top: 0; 

@@ -1,6 +1,6 @@
 {% unless settings.rel_product_method == 'none' %}
 {% assign these_are_related_products = true %}
-<div class="productlist">
+<div class="productlist related">
     {% assign numberOfRelatedToShow = '8' %}
     {% if settings.rel_product_method == 'related' %}
         <!-- Products which have a matching related tag e.g. 3 products (including this one) all containing a tag 'related-group1' -->
