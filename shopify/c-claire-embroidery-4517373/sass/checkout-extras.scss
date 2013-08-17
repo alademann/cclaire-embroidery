@@ -14,4 +14,8 @@ body {
     @import 'notifications';
     @import 'form-validation';
     @import 'checkout';
+
+    .shopify-dialog {
+        color: black !important;
+    }
 }
