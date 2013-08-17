@@ -225,7 +225,7 @@
                         }
 
                         //Style any added select dropdowns
-                        $.selectReplace('#product-form');
+                        // $.selectReplace('#product-form');
                     });
                 </script>
             {% endif %}
@@ -333,6 +333,8 @@
 // (c) Copyright 2013 Aaron Lademann. All Rights Reserved. Contact: aaron.lademann@gmail.com
 $(document).on('DOMNodeInserted', '#shapp_option_list_{{ product.id }}', function(e) {
     initCustomizeCollapse();
+    // $.selectReplace('#shapp_option_list_{{ product.id }}');
+    initMaxLenInputs();
 }); 
 
 var initCustomizeCollapse = function () {
@@ -347,14 +349,63 @@ var initCustomizeCollapse = function () {
         $options.addClass('in');
     });
 
+    var getAttr = function() {
+        var attr;
+        try { 
+            attr = $shappifyOptions.hasAttr('style'); 
+        } catch(err) { 
+            attr = false; 
+        }
+
+        return attr;
+    };
+
     // check to see if there are no shappify options
     // if there are not... fade the options in
-    var anyShappifyOptions = $shappifyOptions.hasAttr('style') ? $shappifyOptions.attr('style') == '' : true;
+    var hasAttr = getAttr();
+    var anyShappifyOptions = hasAttr ? $shappifyOptions.attr('style') == '' : true;
     
     if(!anyShappifyOptions) {
         $dummyAddBtn.addClass('hide');
         $options.addClass('in');
     }
+};
+
+var initMaxLenInputs = function () {
+    // since shappify doesn't allow customization of maxlen
+    // we're going to set up textareas as 10 character max
+    // and regular text inputs as 3 character max.
+    // <textarea rows="1" wrap="Off" maxlength="10"></textarea>
+    var $options = $('.options').find('.shappify_option');
+    $.each($options, function () {
+        var $input = $(this).find('.shappify_option_value input, .shappify_option_value textarea');
+        if($input.is('textarea')) {
+            $input
+                .attr('maxlength', 10)
+                .attr('rows', 1)
+                .attr('wrap', 'Off');
+
+            // sine MSIE doesn't honor maxlength attr on textareas....
+            var limitLength = function() { 
+                var len = parseInt($input.attr('maxlength'), 10); 
+                var val = $input.val();
+                if(val.length >= len) { 
+                    $input.val(val.substr(0, len));
+                    return false;
+                }
+            };
+
+            $input.bind('keypress', function (e) {
+                limitLength();
+
+                // disable enter key so it acts like a true single line input
+                if ((e.keyCode || e.which) == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
+    });
 };
 
 // (c) Copyright 2011 Caroline Schnapp. All Rights Reserved. Contact: mllegeorgesand@gmail.com

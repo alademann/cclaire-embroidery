@@ -1,4 +1,5 @@
 .options { 
+
     // wrap everything in options so its specific enough
     // to over-ride the inline css that this plugin generates in the DOM
     
@@ -26,6 +27,22 @@
         // value to the right of the label
         .shappify_option_value {
             @extend %option-value;
+
+            // since shappify doesn't allow customization of maxlen
+            // we're going to set up textareas as 10 character max
+            // and regular text inputs as 3 character max.
+            input[type="text"] {
+                // max length will be 3
+            }
+            textarea {
+                // max length will be 10
+
+                // make it act like a normal text input
+                resize: none;
+                overflow: hidden;
+                height: $input-height-base;
+                padding: $padding-base-vertical $padding-base-horizontal;
+            }
         }
     }
 }
