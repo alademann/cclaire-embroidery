@@ -56,6 +56,8 @@
     {% assign font_standard_type = settings.font_standard_type %}
 {% endif %}
 
+{% assign asset_url_https = "//cdn.shopify.com/s/files/1/0247/6071/t/2/assets/" %}
+ 
 /* @GROUP normalize.css v2.1.0 | MIT License | git.io/normalize 
 */
     article,
@@ -283,7 +285,7 @@
             {% else %}
                 {% capture bg_offset_body_y %}{{ settings.bg_offset_body_y }}px{% endcapture %}
             {% endif %}
-            url('{{ settings.bg_image_body | asset_url }}') {{ settings.bg_repeat_body | replace: 'top', bg_offset_body_y }}
+            url('{{ asset_url_https }}{{ settings.bg_image_body }}') {{ settings.bg_repeat_body | replace: 'top', bg_offset_body_y }}
         {% endunless %};
         position: relative;
         z-index: 5;
@@ -402,7 +404,7 @@
     }
 
     .loadingimg {
-        background: url({{ settings.loading_graphic | asset_url }}) center center no-repeat;
+        background: url({{ asset_url_https }}{{ settings.loading_graphic }}) center center no-repeat;
         min-height: 40px;
     }
 
@@ -416,7 +418,7 @@
     #util-bar {
         background:{{ settings.color_bg_header }}
         {% unless settings.bg_image_head == '' %}
-        url({{ settings.bg_image_head | asset_url }}) {{ settings.bg_repeat_head }}
+        url({{ asset_url_https }}{{ settings.bg_image_head }}) {{ settings.bg_repeat_head }}
         {% endunless %};
         color: {{ settings.color_head_general }};
         {% unless settings.head_padding == '' %}padding:{{ settings.head_padding }}px 0;{% endunless %}
@@ -534,9 +536,9 @@
 
     #util-bar .actions .logindrop {
         {% if settings.theme_icons_mode_head == 'dark' %}
-        background: url('{{ 'themeicons.png' | asset_url }}') no-repeat right -220px;
+        background: url('{{ asset_url_https }}{{ 'themeicons.png' }}') no-repeat right -220px;
         {% else %}
-        background: url('{{ 'themeicons.png' | asset_url }}') no-repeat right -311px;
+        background: url('{{ asset_url_https }}{{ 'themeicons.png' }}') no-repeat right -311px;
         {% endif %}
         padding-right: 15px;
         margin-left: 10px;
@@ -578,7 +580,7 @@
         text-transform: capitalize;
         width: 28px;
         margin-right: 2px;
-        background: url('{{ 'socialicons.png' | asset_url }}');
+        background: url('{{ asset_url_https }}{{ 'socialicons.png' }}');
     }
     {% comment %} Calculate the sprite offset, and create the high-DPI offset too {% endcomment %}
     {% if settings.social_sprite_mode == 'light' %}
@@ -647,7 +649,7 @@
         border: none;
         width: 22px;
         height: 28px;
-        background: url('{{ 'themeicons.png' | asset_url }}') no-repeat 5px -360px;
+        background: url('{{ asset_url_https }}{{ 'themeicons.png' }}') no-repeat 5px -360px;
     }
 
     #util-bar #searchcont.slideout {
@@ -675,9 +677,9 @@
         text-indent: 9999px;
         text-transform: capitalize;
         {% if settings.theme_icons_mode_head == 'dark' %}
-        background: url('{{ 'themeicons.png' | asset_url }}') no-repeat 5px -354px;
+        background: url('{{ asset_url_https }}{{ 'themeicons.png' }}') no-repeat 5px -354px;
         {% else %}
-        background: url('{{ 'themeicons.png' | asset_url }}') no-repeat 5px -409px;
+        background: url('{{ asset_url_https }}{{ 'themeicons.png' }}') no-repeat 5px -409px;
         {% endif %}
         
         position: absolute;
@@ -710,10 +712,10 @@
 
     #util-bar #searchcont.slideout .searchformwrap {
         position: absolute;
-        height: 20px;
+        height: 26px;
         top: 50%;
         left: 24px;
-        margin-top:-12px;
+        margin-top: -13px;
     }
 
     .smarttextinput input[type=submit] {
@@ -745,9 +747,23 @@
         border-radius: 0;
     }
 
+    .formfields.dohover .inputrow label.hoverlabel {
+        position: absolute;
+        cursor: text;
+        left: 10px;
+        top: 50%;
+        height: 90%;
+        line-height: 36px;
+        margin-top: -18px;
+        color: {{ settings.color_form_field_text }};
+    }
+
     #util-bar #searchcont.slideout .hoverlabel {
-        left: 0;
         font-size: 14px;
+        margin-top: 0;
+        top: 0;
+        height: 26px;
+        line-height: 26px;
         color: {{ settings.color_foot_heading }};
     }
 
@@ -810,9 +826,9 @@
     #pageheader nav ul li .hasdropdown {
         padding-right: 15px;
         {% if settings.theme_icons_mode_body == 'dark' %}
-        background: url({{ 'themeicons.png' | asset_url }}) right -215px no-repeat;
+        background: url({{ asset_url_https }}{{ 'themeicons.png' }}) right -215px no-repeat;
         {% else %}
-        background: url({{ 'themeicons.png' | asset_url }}) right -302px no-repeat;
+        background: url({{ asset_url_https }}{{ 'themeicons.png' }}) right -302px no-repeat;
         {% endif %}
     }
 
@@ -944,7 +960,7 @@
 
     #mainslider.loadingimg {
         min-height: 40px;
-        background: url({{ settings.loading_graphic | asset_url }}) center center no-repeat;
+        background: url({{ asset_url_https }}{{ settings.loading_graphic }}) center center no-repeat;
     }
 
     #mainslider .overlay {
@@ -1240,7 +1256,7 @@
     .flex-direction-nav .flex-next,
     .flex-direction-nav .flex-prev {
         text-indent:-999px;
-        background-image: url({{ 'themeicons.png' | asset_url }});
+        background-image: url({{ asset_url_https }}{{ 'themeicons.png' }});
         {% if settings.theme_icons_mode_head == 'dark' %}
         background-position: 1px -32px;
         {% else %}
@@ -1545,7 +1561,7 @@
         width: 50%;
         height: 100%;
         color: {{ settings.color_btn_text }};
-        background: url({{ 'transblack20.png' | asset_url }});
+        background: url({{ asset_url_https }}{{ 'transblack20.png' }});
     }
 
     #productinfo #detail .added .basket:hover {
@@ -1769,9 +1785,9 @@
         -moz-border-radius: 3px;
         border-radius: 3px;
         {% if settings.theme_icons_mode_body == 'dark' %}
-        background: url('{{ 'socialicons.png' | asset_url }}') no-repeat 0 0;
+        background: url('{{ asset_url_https }}{{ 'socialicons.png' }}') no-repeat 0 0;
         {% else %}
-        background: url('{{ 'socialicons.png' | asset_url }}') no-repeat -28px 0;
+        background: url('{{ asset_url_https }}{{ 'socialicons.png' }}') no-repeat -28px 0;
         {% endif %}
     }
 
@@ -1918,17 +1934,6 @@
         font-size: 100%;
     }
 
-    .formfields.dohover .inputrow label.hoverlabel {
-        position: absolute;
-        cursor: text;
-        left: 10px;
-        top: 50%;
-        height: 90%;
-        line-height: 36px;
-        margin-top: -18px;
-        color: {{ settings.color_form_field_text }};
-    }
-
 /* @GROUP CART
 */
 
@@ -2058,7 +2063,7 @@
         color: {{ settings.color_foot_standard }};
         background:{{ settings.color_bg_footer }}
         {% unless settings.bg_image_foot == '' %}
-        url({{ settings.bg_image_foot | asset_url }}) {{ settings.bg_repeat_foot }}
+        url({{ asset_url_https }}{{ settings.bg_image_foot }}) {{ settings.bg_repeat_foot }}
         {% endunless %};
         padding: 20px 0 60px;
         text-align: center;
@@ -2177,7 +2182,7 @@
     }
 
     #pagefooter .paymentmethods > span {
-        background: url('{{ 'payment-methods-sprite.png' | asset_url }}') 0 0 no-repeat;
+        background: url('{{ asset_url_https }}{{ 'payment-methods-sprite.png' }}') 0 0 no-repeat;
         width: 37px;
         height: 23px;
         margin: 2px;
@@ -2363,7 +2368,7 @@
         position: absolute;
         top: 0px;
         left: 0px;
-        background: url({{ 'gallery-nav.png' | asset_url }}) no-repeat -20% 50%;
+        background: url({{ asset_url_https }}{{ 'gallery-nav.png' }}) no-repeat -20% 50%;
         width: 28px;
         height: 100%;
         text-indent:-9000px;
@@ -2409,7 +2414,7 @@
         width: 16px;
         height: 16px;
         margin-right: 3px;
-        background:#464646 url({{ 'gallery-views.png' | asset_url }}) no-repeat top left;
+        background:#464646 url({{ asset_url_https }}{{ 'gallery-views.png' }}) no-repeat top left;
         border: 3px solid #464646;
         filter: alpha(opacity=80);
         opacity: 0.8;
@@ -2434,7 +2439,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        background:#fff url({{ 'loader-white.gif' | asset_url }}) no-repeat center center;
+        background:#fff url({{ asset_url_https }}{{ 'loader-white.gif' }}) no-repeat center center;
         margin:-23px 0px 0px -23px;
         z-index: 10000;
         -moz-border-radius: 10px;
@@ -2552,7 +2557,7 @@
     }
 
     .lbLoading {
-      background: #fff url({{ 'loader-white.gif' | asset_url }}) no-repeat center;
+      background: #fff url({{ asset_url_https }}{{ 'loader-white.gif' }}) no-repeat center;
     }
 
     #lbImage {
@@ -2576,7 +2581,7 @@
     }
 
     #lbPrevLink:hover {
-      background: transparent url({{ 'prevlabel.gif' | asset_url }}) no-repeat 0 15%;
+      background: transparent url({{ asset_url_https }}{{ 'prevlabel.gif' }}) no-repeat 0 15%;
     }
 
     #lbNextLink {
@@ -2584,7 +2589,7 @@
     }
 
     #lbNextLink:hover {
-      background: transparent url({{ 'nextlabel.gif' | asset_url }}) no-repeat 100% 15%;
+      background: transparent url({{ asset_url_https }}{{ 'nextlabel.gif' }}) no-repeat 100% 15%;
     }
 
     #lbBottom {
@@ -2638,7 +2643,7 @@
         /*-moz-opacity: 0.5;
         opacity: 0.5;
         filter: alpha(opacity = 50);
-        background: white url({{ 'loader-white.gif' | asset_url }}) no-repeat;
+        background: white url({{ asset_url_https }}{{ 'loader-white.gif' }}) no-repeat;
         z-index: 110;
         width: 32px;
         height: 32px;
@@ -3030,7 +3035,7 @@
         only screen and (min-device-pixel-ratio: 1.5) {
             #util-bar .socialicons li a,
             #maincontent .socialicons .rss {
-                background-image: url('{{ 'socialicons_2x.png' | asset_url }}');
+                background-image: url('{{ asset_url_https }}{{ 'socialicons_2x.png' }}');
                 -moz-background-size: 84px 196px;
                 -ie-background-size: 84px 196px;
                 -o-background-size: 84px 196px;
@@ -3045,7 +3050,7 @@
             .paging a.next,
             .flex-direction-nav .flex-next,
             .flex-direction-nav .flex-prev {
-                background-image: url('{{ 'themeicons_2x.png' | asset_url }}');
+                background-image: url('{{ asset_url_https }}{{ 'themeicons_2x.png' }}');
                 background-size: 14px 500px;
             }
     }

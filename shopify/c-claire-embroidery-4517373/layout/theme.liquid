@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Clean v2.0.4 -->
@@ -17,28 +17,28 @@
 {% assign font_standard_type_split = settings.font_standard_type | split: '|' %}
 
 {% if settings.font_heading_type == 'GWF|CUSTOM' %}
-    <link href="http://fonts.googleapis.com/css?family={{ settings.font_heading_type_custom }}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family={{ settings.font_heading_type_custom }}" rel="stylesheet" type="text/css"/>
 {% elsif font_heading_type_split.first == 'GWF' %}
-    <link href="http://fonts.googleapis.com/css?family={{ font_heading_type_split.last }}" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family={{ font_heading_type_split.last }}" rel="stylesheet" type="text/css"/>
 {% endif %}
 {% if settings.font_logo_type == 'GWF|CUSTOM' %}
-    <link href="http://fonts.googleapis.com/css?family={{ settings.font_logo_type_custom }}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family={{ settings.font_logo_type_custom }}" rel="stylesheet" type="text/css"/>
 {% elsif font_logo_type_split.first == 'GWF' %}
-    <link href="http://fonts.googleapis.com/css?family={{ font_logo_type_split.last }}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family={{ font_logo_type_split.last }}" rel="stylesheet" type="text/css"/>
 {% endif %}
 {% if settings.font_nav_type == 'GWF|CUSTOM' %}
-    <link href="http://fonts.googleapis.com/css?family={{ settings.font_nav_type_custom }}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family={{ settings.font_nav_type_custom }}" rel="stylesheet" type="text/css"/>
 {% elsif font_nav_type_split.first == 'GWF' %}
-    <link href="http://fonts.googleapis.com/css?family={{ font_nav_type_split.last }}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family={{ font_nav_type_split.last }}" rel="stylesheet" type="text/css"/>
 {% endif %}
 {% if settings.font_standard_type == 'GWF|CUSTOM' %}
     {% if settings.font_standard_type_custom == 'Droid+Sans' %}
-        <link href="http://fonts.googleapis.com/css?family={{ settings.font_standard_type_custom }}:400,700" rel="stylesheet" type="text/css"/>
+        <link href="//fonts.googleapis.com/css?family={{ settings.font_standard_type_custom }}:400,700" rel="stylesheet" type="text/css"/>
     {% else %}    
-        <link href="http://fonts.googleapis.com/css?family={{ settings.font_standard_type_custom }}" rel="stylesheet" type="text/css"/>
+        <link href="//fonts.googleapis.com/css?family={{ settings.font_standard_type_custom }}" rel="stylesheet" type="text/css"/>
     {% endif %}
 {% elsif font_standard_type_split.first == 'GWF' %}
-    <link href="http://fonts.googleapis.com/css?family={{ font_standard_type_split.last }}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family={{ font_standard_type_split.last }}" rel="stylesheet" type="text/css"/>
 {% endif %}
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -122,7 +122,6 @@ underIE9 = true;
 
 {{ "slimbox2.js" | asset_url | script_tag }}
 {{ "jquery.flexslider-min.js" | asset_url | script_tag }}
-{{ "jquery.tweet.js" | asset_url | script_tag }}
 {{ "jquery.jqzoom-core-pack.js" | asset_url | script_tag }}
 {% if template contains 'blog' and settings.blog_display != 'onecolumn_side' %}
     {{ "jquery.masonry.min.js" | asset_url | script_tag }}
