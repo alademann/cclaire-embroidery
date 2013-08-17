@@ -1,12 +1,12 @@
 {% paginate blog.articles by settings.blog_page_size %}
 <div id="crumbs" class="sixteen columns">
     <a href="/" title="Home">Home</a>
-    &raquo;
+    <i class="sep">/</i>
     <a href="{{ blog.url }}">{{ blog.title }}</a>
     {% if current_tags %}
-        &raquo; 
+        <i class="sep">/</i> 
         {% for tag in current_tags %}
-            <a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag }}{% unless forloop.last %},{% endunless %}</a>
+            <a class="current" href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag }}{% unless forloop.last %},{% endunless %}</a>
         {% endfor %}
     {% endif %}
     

@@ -1,9 +1,9 @@
 <div id="crumbs" class="sixteen columns">
     <a href="/" title="Home">Home</a>
-    &raquo;
+    <i class="sep">/</i>
     <a href="{{ blog.url }}">{{ blog.title }}</a>
-    &raquo;
-    <a href="{{ article.url }}">{{ article.title }}</a>
+    <i class="sep">/</i>
+    <strong class="active">{{ article.title }}</strong>
 </div><!-- #crumbs -->
 
 {% if settings.show_social_article %}

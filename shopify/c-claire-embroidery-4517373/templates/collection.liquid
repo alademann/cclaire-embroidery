@@ -4,8 +4,8 @@
 <div class="sixteen columns">
     <div id="crumbs">
         <a href="/" title="Home">Home</a>
-        &raquo;
-        <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+        <i class="sep">/</i>
+        <strong class="active">{{ collection.title | escape }}</strong>
     </div><!-- #crumbs -->
     
     {% if settings.show_social_coll %}

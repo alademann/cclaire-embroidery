@@ -3,11 +3,11 @@
     
 <div id="crumbs" class="sixteen columns">
     <a href="/" title="Home">Home</a>
-    &raquo;
+    <i class="sep">/</i>
     {% if collection %}
-    {{ collection.title | link_to: collection.url }} &raquo;
+    {{ collection.title | link_to: collection.url }} <i class="sep">/</i>
     {% endif %}
-	<a href="{{ product.url }}">{{ product.title }}</a>
+	<strong class="active">{{ product.title }}</strong>
 </div>
 
 <div id="productinfo" class="cf" data-featimgurl="{{ product.featured_image | product_img_url: 'small' }}" itemscope itemtype="http://schema.org/Product">
