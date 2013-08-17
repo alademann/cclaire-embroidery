@@ -520,13 +520,28 @@ $(function(){
     });
     
     //Show/hide search box
-    $('.searchbtn').click(function(){
+    var $searchInput = $('#searchcont').parent().find('#searchinput');
+    var $searchSubmit = $searchInput.find(' + input[type=submit]');
+    var _searchShown = false;
+    $('.searchbtn').on('click', function(){
         if($(this).toggleClass('expanded').hasClass('expanded')) {
-            $('#searchcont').animate({width:$(this).parent().find('#searchinput').width()}, 400);
+            var searchInputWidth  = $searchInput.outerWidth(true);
+            var searchSubmitWidth = $searchSubmit.outerWidth(true);
+            $('#searchcont').animate({width: searchInputWidth + searchSubmitWidth}, 400);
+            _searchShown = true;
         } else {
             $('#searchcont').animate({width:0}, 400);
+            _searchShown = false;
         }
         return false;
+    });
+
+    // hide the search field when user clicks outside the search area
+    $(document.body).click(function (e) {
+        var targetID = '#searchcont';
+        if(_searchShown && $(e.target).closest(targetID).length < 1) {
+            $('.searchbtn').trigger('click');
+        }
     });
     
     //Register button
